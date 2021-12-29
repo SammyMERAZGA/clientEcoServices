@@ -1,24 +1,21 @@
 <template>
-  <v-app id="inspire">
-
-    <v-app-bar app>
-    </v-app-bar>
-
-    <v-main>
-      <!--  -->
-    </v-main>
+  <v-app :style="{ background: $vuetify.theme.themes.dark.background }">
+    <Sidebar />
+    <SidebarRight />
   </v-app>
 </template>
 
 <script lang="ts">
-
+import Sidebar from '../components/Sidebar.vue';
+import SidebarRight from '../components/SidebarRight.vue';
 import Vue from "vue";
 import Component from "vue-class-component";
 
 @Component({
-  components: {},
+  components: {
+    Sidebar,
+    SidebarRight,
+  },
 })
-
-export default class App extends Vue {
-}
+export default class App extends Vue {}
 </script>

@@ -22,3 +22,4 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+# clientEcoServices git init git add . git commit -m first commit git branch -M main git remote add origin https://github.com/SammyMERAZGA/clientEcoServices.git git push -u origin main

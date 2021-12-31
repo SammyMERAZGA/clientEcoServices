@@ -1,7 +1,7 @@
 <template>
   <v-navigation-drawer v-model="drawer" app color="white" mini-variant mini-variant-width="90">
-    <v-avatar class="d-block text-center mx-auto mt-4" size="40">
-      <v-icon color="#11d86a">fas fa-leaf</v-icon>
+    <v-avatar class="d-block text-center mx-auto mt-4" size="60">
+      <v-img src="../assets/ecoServices.png"></v-img>
     </v-avatar>
     <v-list flat class="mt-4">
       <v-list-item-group v-model="selectedItem">

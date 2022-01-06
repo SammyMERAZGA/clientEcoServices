@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <Sidebar />
     <v-main>
       <router-view/>
     </v-main>
@@ -9,9 +10,11 @@
 <script lang='ts'>
 import Vue from 'vue'
 import Component from "vue-class-component";
+import Sidebar from './components/Sidebar.vue';
 
 @Component({
   components: {
+    Sidebar,
   }
 })
 

@@ -50,7 +50,8 @@ export default class Sidebar extends Vue {
     { icon: "fas fa-shopping-cart", text: "Boutique", route: "/store" },
     { icon: "fas fa-book", text: "Guides", route: "/guides" },
     { icon: "fas fa-leaf", text: "Services", route: "/services" },
-    { icon: "fas fa-user", text: "Compte", route: "/account" },
+    { icon: "fas fa-user-cog", text: "Compte", route: "/account" },
+    { icon: "fas fa-user", text: "Connexion", route: "/login" },
   ];
 }
 </script>

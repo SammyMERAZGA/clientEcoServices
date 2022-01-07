@@ -6,6 +6,7 @@ import Store from "../views/Store.vue";
 import Guides from "../views/Guides.vue";
 import Services from "../views/Services.vue";
 import Account from "../views/Account.vue";
+import Login from "../views/Login.vue";
 
 Vue.use(VueRouter);
 
@@ -20,25 +21,30 @@ const routes: Array<RouteConfig> = [
     name: "About",
     component: About,
   },
-    {
+  {
     path: "/store",
     name: "Store",
     component: Store,
   },
-    {
+  {
     path: "/guides",
     name: "Guides",
     component: Guides,
   },
-    {
+  {
     path: "/services",
     name: "Services",
     component: Services,
   },
-    {
+  {
     path: "/account",
     name: "Account",
     component: Account,
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: Login,
   },
 ];
 

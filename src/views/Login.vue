@@ -13,7 +13,7 @@
                         <h1
                           class="text-center display-2 black--text text--accent-3"
                         >
-                          Connexion à Eco Services
+                          Connexion
                         </h1>
                         <div class="text-center mt-4">
                           <v-btn class="mx-2" fab color="indigo" outlined>

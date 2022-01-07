@@ -5,11 +5,23 @@
       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita in sit
       ut esse illum inventore quo repellendus soluta, eaque voluptatem,
       voluptatum omnis. Exercitationem quaerat, atque voluptatum id sed commodi
-      nesciunt maxime magnam, ratione magni tenetur aut quisquam rem suscipit
-      aperiam dicta placeat. Magnam, quibusdam reprehenderit! Lorem ipsum dolor
-      sit amet consectetur adipisicing elit. Distinctio, pariatur nostrum.
-      Dolores quam commodi omnis perspiciatis placeat, dolor vel ullam
-      praesentium eveniet nobis doloribus tenetur.
+      nesciunt maxime magnam.
+    </p>
+    <h3 class="display-1 text-center mt-3 mb-9">
+      <i class="fas fa-question-circle"></i>
+      <span class="ml-2"> Qui sommes-nous ?</span>
+    </h3>
+    <p class="text-center mb-8">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis,
+      fuga saepe voluptatibus fugiat harum mollitia!
+    </p>
+    <h3 class="display-1 text-center mt-3 mb-9">
+      <i class="fas fa-bullseye"></i>
+      <span class="ml-2"> Notre objectif</span>
+    </h3>
+    <p class="text-center mb-8">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis,
+      fuga saepe voluptatibus fugiat harum mollitia!
     </p>
     <h3 class="display-1 text-center mt-3 mb-9">
       <i class="fas fa-users"></i>

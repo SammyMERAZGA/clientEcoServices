@@ -1,5 +1,129 @@
 <template>
   <div>
-    <h1 class="display-1 text-center mt-3">This is the service page</h1>
+    <h1 class="display-1 text-center mt-3">Services</h1>
+    <h3 class="subtitle-1 text-center mt-3 mb-5">
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum, quasi
+      ullam omnis vitae corporis explicabo.
+    </h3>
+    <v-divider class="ml-10 mr-10 mb-10"></v-divider>
+
+    <v-card outlined class="ma-10 rounded-lg" elevation="15">
+      <br />
+      <h1 class="text-center display-1">Demande de devis</h1>
+      <h2 class="subtitle-1 text-center mt-3">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum, quasi
+        ullam omnis vitae corporis explicabo.
+      </h2>
+      <v-divider class="mt-6 mx-4"></v-divider>
+      <br />
+      <v-form v-model="valid">
+        <v-container>
+          <v-row class="align-content justify-center">
+            <v-col cols="12" md="3">
+              <v-text-field
+                v-model="firstname"
+                :rules="nameRules"
+                :counter="20"
+                label="Prénom"
+                required
+                class="ml-10 mr-14"
+              ></v-text-field>
+            </v-col>
+
+            <v-col cols="12" md="3">
+              <v-text-field
+                v-model="lastname"
+                :rules="nameRules"
+                :counter="20"
+                label="Nom"
+                required
+                class="ml-10 mr-14"
+              ></v-text-field>
+            </v-col>
+
+            <v-col cols="12" md="4">
+              <v-text-field
+                v-model="email"
+                :rules="emailRules"
+                label="E-mail"
+                required
+                class="ml-10 mr-14"
+              ></v-text-field>
+            </v-col> </v-row
+          ><br />
+          <v-row class="align-content justify-center">
+            <v-col cols="12" md="3">
+              <v-text-field
+                v-model="firstname"
+                :rules="nameRules"
+                :counter="15"
+                label="Nom de l'entreprise"
+                required
+                class="ml-10 mr-14"
+              ></v-text-field>
+            </v-col>
+
+            <v-col cols="12" md="4">
+              <v-text-field
+                v-model="adress"
+                :rules="adressRules"
+                label="Adresse de l'entreprise"
+                required
+                class="ml-10 mr-14"
+              ></v-text-field>
+            </v-col>
+            <v-col cols="12" md="2">
+              <v-text-field
+                v-model="postalCode"
+                :rules="postalCodeRules"
+                label="Code postal"
+                required
+                class="ml-10 mr-14"
+              ></v-text-field>
+            </v-col>
+            <v-col cols="12" md="3">
+              <v-text-field
+                v-model="city"
+                :rules="cityRules"
+                label="Ville"
+                required
+                class="ml-10 mr-14"
+              ></v-text-field>
+            </v-col>
+          </v-row>
+          <v-row class="align-content justify-center">
+            <v-col class="d-flex mt-8" cols="12" sm="6">
+              <v-select :items="services" label="Service" outlined></v-select>
+            </v-col>
+          </v-row>
+          <v-row class="align-content justify-center ml-10 mr-10">
+            <v-textarea
+              label="Ajouter un message pour votre demande de devis"
+              auto-grow
+              outlined
+              rows="8"
+              row-height="25"
+              shaped
+            ></v-textarea>
+          </v-row>
+          <v-row class="align-content justify-center ml-10 mr-10">
+            <v-btn class="ma-2 mb-8" color="success">
+              Envoyer la demande
+              <v-icon right dark> fas fa-edit </v-icon>
+            </v-btn>
+          </v-row>
+        </v-container>
+      </v-form>
+    </v-card>
   </div>
 </template>
+
+<script lang="ts">
+import Vue from "vue";
+import Component from "vue-class-component";
+
+@Component
+export default class Services extends Vue {
+  services = ["Conseil", "Développement", "Formation", "Réseau"];
+}
+</script>

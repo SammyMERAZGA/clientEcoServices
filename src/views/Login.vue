@@ -11,7 +11,7 @@
                     <v-col cols="12" md="8">
                       <v-card-text class="mt-12">
                         <h1
-                          class="text-center display-2 black--text text--accent-3"
+                          class="text-center display-1 black--text text--accent-3"
                         >
                           Connexion
                         </h1>
@@ -46,9 +46,11 @@
                             color="blue accent-3"
                           />
                         </v-form>
-                        <h3 class="text-center mt-4">Mot de passe oublié ?</h3>
+                        <h3 class="text-center h6 mt-4">
+                          Mot de passe oublié ?
+                        </h3>
                       </v-card-text>
-                      <div class="text-center mt-3 mb-15">
+                      <div class="text-center mt-1 mb-15">
                         <v-btn rounded color="yellow accent-3" light
                           >Connexion</v-btn
                         >
@@ -59,13 +61,13 @@
                         <h1 class="text-center display-1">
                           Vous n'êtes pas inscrit ?
                         </h1>
-                        <h4 class="text-center mt-5">
+                        <h4 class="text-center h6 mt-7">
                           Rejoignez-nous maintenant pour pouvoir faire des
                           achats, réaliser des devis, consulter nos guides, et
                           bien plus encore !
                         </h4>
                       </v-card-text>
-                      <div class="text-center">
+                      <div class="text-center mt-5">
                         <v-btn rounded outlined light @click="step++"
                           >Inscription</v-btn
                         >
@@ -80,12 +82,12 @@
                         <h1 class="text-center display-1">
                           Bienvenue à nouveau !
                         </h1>
-                        <h4 class="text-center mt-5">
+                        <h4 class="text-center h6 mt-7">
                           Pour rester en contact avec nous, veuillez vous
                           connecter avec vos informations personnelles
                         </h4>
                       </v-card-text>
-                      <div class="text-center">
+                      <div class="text-center mt-5">
                         <v-btn rounded outlined dark @click="step--"
                           >Connexion</v-btn
                         >
@@ -95,7 +97,7 @@
                     <v-col cols="12" md="8">
                       <v-card-text class="mt-8 mb-3">
                         <h1
-                          class="text-center display-2 black--text text--accent-3"
+                          class="text-center display-1 black--text text--accent-3"
                         >
                           Inscription
                         </h1>

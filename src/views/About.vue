@@ -37,6 +37,88 @@
         </figure>
       </slide>
     </carousel-3d>
+    <h3 class="display-1 text-center mt-15 mb-9">
+      <i class="fas fa-envelope"></i>
+      <span class="ml-2"> Nous contacter ?</span>
+    </h3>
+    <p class="text-center mb-8">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis,
+      fuga saepe voluptatibus fugiat harum mollitia!
+    </p>
+    <v-container class="fill-height mb-8" fluid>
+      <v-row align="center" justify="center">
+        <v-col cols="12" sm="8" md="8">
+          <v-card class="elevation-12 rounded-xl">
+            <v-row>
+              <h1 class="text-center mt-5 display-1 mb-5">Formulaire de contact</h1>
+              <v-form v-model="valid">
+                <v-row class="align-content justify-center">
+                  <v-col cols="12" md="4">
+                    <v-text-field
+                      v-model="firstname"
+                      :rules="nameRules"
+                      :counter="20"
+                      label="Prénom"
+                      required
+                      class="mr-10"
+                    ></v-text-field>
+                  </v-col>
+
+                  <v-col cols="12" md="4">
+                    <v-text-field
+                      v-model="lastname"
+                      :rules="nameRules"
+                      :counter="20"
+                      label="Nom"
+                      required
+                      class="ml-10"
+                    ></v-text-field>
+                  </v-col>
+                  <v-row>
+                    <v-col cols="12" md="6">
+                      <v-text-field
+                        v-model="email"
+                        :rules="emailRules"
+                        label="E-mail"
+                        required
+                        class="ml-5"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col class="d-flex ml-10" sm="5">
+                      <v-select
+                        :items="motifs"
+                        label="Motif"
+                        outlined
+                      ></v-select>
+                    </v-col>
+                  </v-row>
+                  <v-row>
+                    <v-col class="d-flex" sm="15">
+                      <v-textarea
+                        label="Votre message"
+                        auto-grow
+                        outlined
+                        rows="7"
+                        row-height="25"
+                        shaped
+                      ></v-textarea>
+                    </v-col>
+                  </v-row>
+                  <v-row>
+                    <v-col class="d-flex justify-center">
+                      <v-btn class="mb-10" color="success">
+                        Envoyer le message
+                        <v-icon right dark> fas fa-paper-plane </v-icon>
+                      </v-btn>
+                    </v-col>
+                  </v-row>
+                </v-row>
+              </v-form>
+            </v-row>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 
@@ -52,6 +134,13 @@ import Component from "vue-class-component";
   },
 })
 export default class About extends Vue {
+  motifs = [
+    "Demande de renseignements",
+    "Partenariat",
+    "Recrutement",
+    "Autres",
+  ];
+
   slides = [
     {
       src: "https://practicaltyping.com/wp-content/uploads/2020/08/gon.png",

@@ -38,7 +38,7 @@
                           />
                           <v-text-field
                             id="password"
-                            label="Password"
+                            label="Mot de passe"
                             name="password"
                             class="ml-3"
                             prepend-icon="fas fa-lock"

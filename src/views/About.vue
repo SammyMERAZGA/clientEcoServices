@@ -24,6 +24,14 @@
       fuga saepe voluptatibus fugiat harum mollitia!
     </p>
     <h3 class="display-1 text-center mt-3 mb-9">
+      <i class="fas fa-shopping-bag"></i>
+      <span class="ml-2"> Notre boutique</span>
+    </h3>
+    <p class="text-center mb-8">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis,
+      fuga saepe voluptatibus fugiat harum mollitia!
+    </p>
+    <h3 class="display-1 text-center mt-3 mb-9">
       <i class="fas fa-users"></i>
       <span class="ml-2"> Notre équipe</span>
     </h3>
@@ -50,7 +58,9 @@
         <v-col cols="12" sm="8" md="8">
           <v-card class="elevation-12 rounded-xl">
             <v-row>
-              <h1 class="text-center mt-5 display-1 mb-5">Formulaire de contact</h1>
+              <h1 class="text-center mt-5 display-1 mb-5">
+                Formulaire de contact
+              </h1>
               <v-form v-model="valid">
                 <v-row class="align-content justify-center">
                   <v-col cols="12" md="4">
@@ -93,7 +103,7 @@
                     </v-col>
                   </v-row>
                   <v-row>
-                    <v-col class="d-flex" sm="15">
+                    <v-col class="ml-5 mr-5" sm="15">
                       <v-textarea
                         label="Votre message"
                         auto-grow

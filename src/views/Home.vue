@@ -324,7 +324,7 @@ import Component from "vue-class-component";
     SidebarRight,
   },
 })
-export default class App extends Vue {}
+export default class Home extends Vue {}
 </script>
 
 <style>

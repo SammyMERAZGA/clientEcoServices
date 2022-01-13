@@ -1,24 +1,7 @@
 <template>
   <v-app :style="{ background: $vuetify.theme.themes.dark.background }">
-    <SidebarRight />
+    <h1 data-text="ÉcoServices" class="text-center mt-8">ÉcoServices</h1>
     <v-container>
-      <v-toolbar color="rgba(0,0,0,0)" flat>
-        <v-toolbar-title class="mt-n3"
-          >Choisissez une catégorie</v-toolbar-title
-        >
-        <v-spacer></v-spacer>
-        <v-text-field
-          label="Cherchez un produit ou un service..."
-          class="mt-5"
-          color="green"
-          filled
-          append-icon="mdi-magnify"
-          dense
-          solo
-          flat
-          background-color="grey lighten-4"
-        ></v-text-field>
-      </v-toolbar>
       <v-item-group mandatory class="mt-n1">
         <v-container>
           <v-row justify="center">
@@ -29,7 +12,7 @@
                   :class="active ? 'borderme' : 'borderout'"
                   class="f-flex align-center rounded-lg mx-2"
                   dark
-                  height="140"
+                  height="180"
                   @click="toggle"
                   flat
                 >
@@ -39,17 +22,21 @@
                         <v-list-item-content>
                           <div align="center" justify="center">
                             <v-img
-                              src="../assets/ecoServices.png"
+                              src="../assets/3.png"
                               max-height="90"
                               max-width="90"
-                              contain
                             ></v-img>
                           </div>
                           <v-list-item-subtitle
                             :class="active ? 'green--text' : 'black--text'"
-                            class="caption mt-4"
+                            class="caption mt-4 ml-8"
                           >
-                            Tout
+                            Boutique
+                            <v-btn icon color="green" to="/store">
+                              <v-icon small class="mb-1 mr-3"
+                                >fas fa-shopping-cart</v-icon
+                              >
+                            </v-btn>
                           </v-list-item-subtitle>
                         </v-list-item-content>
                       </v-list-item>
@@ -65,7 +52,7 @@
                   :class="active ? 'borderme' : 'borderout'"
                   class="f-flex align-center rounded-lg mx-2"
                   dark
-                  height="140"
+                  height="180"
                   @click="toggle"
                   flat
                 >
@@ -83,9 +70,14 @@
                           </div>
                           <v-list-item-subtitle
                             :class="active ? 'green--text' : 'black--text'"
-                            class="caption mt-4"
+                            class="caption mt-4 ml-5"
                           >
                             Services
+                            <v-btn icon color="green" to="/services">
+                              <v-icon small class="mb-1 mr-3"
+                                >fas fa-leaf</v-icon
+                              >
+                            </v-btn>
                           </v-list-item-subtitle>
                         </v-list-item-content>
                       </v-list-item>
@@ -101,7 +93,7 @@
                   :class="active ? 'borderme' : 'borderout'"
                   class="f-flex align-center rounded-lg mx-2"
                   dark
-                  height="140"
+                  height="180"
                   @click="toggle"
                   flat
                 >
@@ -111,7 +103,7 @@
                         <v-list-item-content>
                           <div align="center" justify="center">
                             <v-img
-                              src="../assets/3.png"
+                              src="http://apdiq.com/wp-content/uploads/2014/07/icon-lg-guides-blue1.png"
                               max-height="90"
                               max-width="90"
                               contain
@@ -119,9 +111,14 @@
                           </div>
                           <v-list-item-subtitle
                             :class="active ? 'green--text' : 'black--text'"
-                            class="caption mt-4"
+                            class="caption mt-4 ml-7"
                           >
-                            Produits
+                            Guides
+                            <v-btn icon color="cyan" to="/guides">
+                              <v-icon small class="mr-4 mb-1"
+                                >fas fa-file-invoice</v-icon
+                              >
+                            </v-btn>
                           </v-list-item-subtitle>
                         </v-list-item-content>
                       </v-list-item>
@@ -137,7 +134,7 @@
                   :class="active ? 'borderme' : 'borderout'"
                   class="f-flex align-center rounded-lg mx-2"
                   dark
-                  height="140"
+                  height="180"
                   @click="toggle"
                   flat
                 >
@@ -147,7 +144,7 @@
                         <v-list-item-content>
                           <div align="center" justify="center">
                             <v-img
-                              src="../assets/4.png"
+                              src="../assets/ecoServices.png"
                               max-height="90"
                               max-width="90"
                               contain
@@ -155,9 +152,12 @@
                           </div>
                           <v-list-item-subtitle
                             :class="active ? 'green--text' : 'black--text'"
-                            class="caption mt-4"
+                            class="caption mt-4 ml-6"
                           >
-                            Packs
+                            À propos
+                            <v-btn icon color="#ffcd01" to="/about">
+                              <v-icon small class="mr-2">fas fa-users</v-icon>
+                            </v-btn>
                           </v-list-item-subtitle>
                         </v-list-item-content>
                       </v-list-item>
@@ -169,147 +169,13 @@
           </v-row>
         </v-container>
       </v-item-group>
-      <v-toolbar color="#EEEEEE" flat>
-        <v-toolbar-title class="mb-5">Tout</v-toolbar-title>
-      </v-toolbar>
-      <v-row>
-        <v-col cols="12" sm="6">
-          <v-card flat class="rounded-lg mx-5">
-            <v-list-item three-line>
-              <v-list-item-avatar rounded size="120" color="grey lighten-4">
-                <v-img src="../assets/logo.png"></v-img>
-              </v-list-item-avatar>
-              <v-list-item-content class="text-h5">
-                Starter Pack - Éco Services
-                <v-list-item-subtitle class="mt-1">
-                  Ce pack contient un kit éco-responsable avec des produits
-                  ménagers écologiques pour votre maison.
-                </v-list-item-subtitle>
-                <strong class="mt-3"> 29.99€ </strong>
-              </v-list-item-content>
-            </v-list-item>
-            <v-card-actions>
-              <v-btn color="#0A7DB0" block dark class="withoutupercase mb-2">
-                <v-icon class="mr-2">mdi-cart</v-icon>
-                Ajouter au panier
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-          <v-card flat class="rounded-lg mx-5 mt-6">
-            <v-list-item three-line>
-              <v-list-item-avatar rounded size="120" color="grey lighten-4">
-                <v-img
-                  src="https://adc.bjsolutions.fr/wp-content/uploads/2018/09/energe-verte2.jpg"
-                ></v-img>
-              </v-list-item-avatar>
-              <v-list-item-content class="text-h5">
-                Panneau solaire
-                <v-list-item-subtitle class="mt-1">
-                  Produisez votre propre électricité verte !
-                </v-list-item-subtitle>
-              </v-list-item-content>
-            </v-list-item>
-            <v-card-actions>
-              <v-btn color="#FCEF3C" block light class="withoutupercase mb-2">
-                <v-icon class="mr-2">fas fa-pen-square</v-icon>
-                Faire un devis
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-          <v-card flat class="rounded-lg mx-5 mt-6">
-            <v-list-item three-line>
-              <v-list-item-avatar rounded size="120" color="grey lighten-4">
-                <v-img src="../assets/6.jpg"></v-img>
-              </v-list-item-avatar>
-              <v-list-item-content class="text-h5">
-                Sac à sandwich en silicone
-                <v-list-item-subtitle class="mt-1">
-                  Le silicone est fait à base de sable, c'est donc beaucoup
-                  mieux que le plastique ! Le sac est facile à nettoyer, va au
-                  micro-ondes, au congélateur ainsi qu’au lave-vaisselle.
-                </v-list-item-subtitle>
-                <strong class="mt-3"> 1.99€ </strong>
-              </v-list-item-content>
-            </v-list-item>
-            <v-card-actions>
-              <v-btn color="#FCEF3C" block light class="withoutupercase mb-2">
-                <v-icon class="mr-2">mdi-cart</v-icon>
-                Ajouter au panier
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-col>
-        <v-col cols="12" sm="6">
-          <v-card flat class="rounded-lg mx-5">
-            <v-list-item three-line>
-              <v-list-item-avatar rounded size="120" color="grey lighten-4">
-                <v-img
-                  src="https://www.cdiscount.com/pdt2/4/6/6/1/700x700/auc2008150295466/rw/poubelle-avec-couvercle-a-charniere-50-l-noir-et-v.jpg"
-                ></v-img>
-              </v-list-item-avatar>
-              <v-list-item-content class="text-h5">
-                Poubelle écologique
-                <v-list-item-subtitle class="mt-1">
-                  Poubelle qui a été construite de façon écologique et qui
-                  permet un tri de vos déchets.
-                </v-list-item-subtitle>
-                <strong class="mt-3"> 49.99€ </strong>
-              </v-list-item-content>
-            </v-list-item>
-            <v-card-actions>
-              <v-btn color="#3E894B" block dark class="withoutupercase mb-2">
-                <v-icon class="mr-2">mdi-cart</v-icon>
-                Ajouter au panier
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-          <v-card flat class="rounded-lg mx-5 mt-6">
-            <v-list-item three-line>
-              <v-list-item-avatar rounded size="120" color="grey lighten-4">
-                <v-img src="../assets/5.png"></v-img>
-              </v-list-item-avatar>
-              <v-list-item-content class="text-h5">
-                Pack de 3 brosses à dents
-                <v-list-item-subtitle class="mt-1">
-                  Les brosses à dents compostables en bois sont une très bonne
-                  alternative écologique à prix bas. Sa durée de vie est
-                  d’environ 3 mois.
-                </v-list-item-subtitle>
-                <strong class="mt-3"> 8.99€ </strong>
-              </v-list-item-content>
-            </v-list-item>
-            <v-card-actions>
-              <v-btn color="#3E894B" block dark class="withoutupercase mb-2">
-                <v-icon class="mr-2">mdi-cart</v-icon>
-                Ajouter au panier
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-          <v-card flat class="rounded-lg mx-5 mt-6">
-            <v-list-item three-line>
-              <v-list-item-avatar rounded size="120" color="grey lighten-4">
-                <v-img
-                  src="https://www.mafuturemaison.fr/dossier/wp-content/uploads/2016/07/maison-ecologique.jpg"
-                ></v-img>
-              </v-list-item-avatar>
-              <v-list-item-content class="text-h5">
-                Isolation écologique
-                <v-list-item-subtitle class="mt-1">
-                  Les matériaux d'isolation écologiques sont principalement
-                  issus de végétaux. Leur production n'entraîne pas de pollution
-                  pour l'environnement.
-                </v-list-item-subtitle>
-              </v-list-item-content>
-            </v-list-item>
-            <v-card-actions>
-              <v-btn color="#3E894B" block dark class="withoutupercase mb-2">
-                <v-icon class="mr-2">fas fa-pen-square</v-icon>
-                Faire un devis
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-col>
-      </v-row>
+      <v-carousel hide-delimiters cycle class="mt-10" interval="2000" height="400">
+        <v-carousel-item
+          v-for="(picture, pic) in pictures"
+          :key="pic"
+          :src="picture.src"
+        ></v-carousel-item>
+      </v-carousel>
     </v-container>
   </v-app>
 </template>
@@ -324,14 +190,66 @@ import Component from "vue-class-component";
     SidebarRight,
   },
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+  pictures = [
+          {
+            src: 'https://wallpapercave.com/wp/wp5125439.jpg',
+          },
+          {
+            src: 'https://wallpapers.com/images/high/breathtaking-nature-anime-scenery-ozmhfiuqzmai1bha.jpg',
+          },
+          {
+            src: 'https://cdn.wallpapersafari.com/66/73/p5rfhv.jpg',
+          },
+          {
+            src: 'https://i.pinimg.com/originals/ae/2e/cb/ae2ecb631f037846715e0c45609cbfb8.jpg',
+          },
+        ];
+}
 </script>
 
-<style>
+<style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
+
 .v-card-borderme {
   border: 2px solid #11d86a !important;
 }
 .v-card.borderout {
   border: 1px solid #11bad8 !important;
+}
+
+h1 {
+  font-family: "Poppins", sans-serif;
+  position: relative;
+  font-size: 10vw;
+  color: #ededed;
+  -webkit-text-stroke: 0.3vw #32884c;
+  text-transform: uppercase;
+}
+
+h1::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 80%;
+  color: #11d86a;
+  -webkit-text-stroke: 0vw #11bad8;
+  border-right: 2px solid #11d86a;
+  overflow: hidden;
+  animation: animate 5s linear;
+}
+
+@keyframes animate {
+  0%,
+  10%,
+  100% {
+    width: 0;
+  }
+  70%,
+  90% {
+    width: 100%;
+  }
 }
 </style>

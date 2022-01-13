@@ -7,12 +7,14 @@
     </h3>
     <v-divider class="ml-10 mr-10 mb-10"></v-divider>
 
-    <v-card outlined class="ma-10 rounded-lg" elevation="15">
+    <v-card outlined class="ma-16 rounded-lg" elevation="15">
       <br />
-      <h1 class="text-center display-1">Demande de devis</h1>
+      <h1 class="text-center display-1">
+        <i class="fas fa-file-signature"></i>
+        <span> Demande de devis</span>
+        </h1>
       <h2 class="subtitle-1 text-center mt-3">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum, quasi
-        ullam omnis vitae corporis explicabo.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam porro blanditiis dolores aliquid cumque ullam!
       </h2>
       <v-divider class="mt-6 mx-4"></v-divider>
       <br />

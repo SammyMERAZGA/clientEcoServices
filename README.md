@@ -1,4 +1,4 @@
-# client
+## This is a project of the G4 Institute. We have to make an e-commerce site with a payment and authentication module.
 
 ## Project setup
 ```

@@ -24,7 +24,7 @@
               </div>
               <form class="card mb-4">
                 <div class="card-header">
-                  <h4 class="card-heading">Mon Profil</h4>
+                  <h4 class="card-heading mt-2">Mon Profil</h4>
                 </div>
                 <div class="card-body">
                   <div class="row mb-3">
@@ -75,7 +75,7 @@
             <div class="col-lg-8">
               <form class="card mb-4 mt-15">
                 <div class="card-header">
-                  <h4 class="card-heading">Modifier le profil</h4>
+                  <h4 class="card-heading mt-3">Modifier le profil</h4>
                 </div>
                 <div class="card-body">
                   <div class="row">
@@ -208,14 +208,6 @@ export default class Account extends Vue {}
 <style scoped>
 .card-header:first-child {
   border-radius: calc(1rem - 1px) calc(1rem - 1px) 0 0;
-}
-.card-header {
-  position: relative;
-  padding: 2rem 2rem;
-  border-bottom: none;
-  background-color: white;
-  box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%);
-  z-index: 2;
 }
 .card {
   position: relative;

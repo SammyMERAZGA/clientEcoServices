@@ -288,7 +288,9 @@
           <v-card flat class="rounded-lg mx-5 mt-6">
             <v-list-item three-line>
               <v-list-item-avatar rounded size="120" color="grey lighten-4">
-                <v-img src="https://www.mafuturemaison.fr/dossier/wp-content/uploads/2016/07/maison-ecologique.jpg"></v-img>
+                <v-img
+                  src="https://www.mafuturemaison.fr/dossier/wp-content/uploads/2016/07/maison-ecologique.jpg"
+                ></v-img>
               </v-list-item-avatar>
               <v-list-item-content class="text-h5">
                 Isolation écologique

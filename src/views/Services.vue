@@ -58,7 +58,7 @@
               <v-text-field
                 v-model="firstname"
                 :rules="nameRules"
-                :counter="15"
+                :counter="25"
                 label="Nom de l'entreprise"
                 required
                 class="ml-10 mr-14"
@@ -94,7 +94,7 @@
             </v-col>
           </v-row>
           <v-row class="align-content justify-center">
-            <v-col class="d-flex mt-8" cols="12" sm="6">
+            <v-col class="d-flex mt-4" cols="12" sm="6">
               <v-select :items="services" label="Service" outlined></v-select>
             </v-col>
           </v-row>

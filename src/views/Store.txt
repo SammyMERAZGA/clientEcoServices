@@ -1,0 +1,11 @@
+Reste à faire (Côté Front):
+
+- Filtre par catégorie à mettre en place
+- Remplacer "Tout" par la catégorie actuelle
+- Panier à mettre en place : {
+  - Ajouter un produit au Panier
+  - Supprimer un produit du panier
+  - Augmenter la quantité d'un produit du panier
+  - Total qui se calcule selon le panier
+  - PayPal + Carte Bancaire Formulaire
+}

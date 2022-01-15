@@ -119,7 +119,7 @@
         </v-list-item>
       </v-list>
       <v-divider class="mt-1 mb-8"></v-divider>
-      <v-icon id="cartIcon">fas fa-shopping-cart</v-icon>
+      <v-icon class="ml-5" id="cartIcon">fas fa-shopping-cart</v-icon>
       <strong class="ml-3">Panier</strong>
       <v-list subheader two-line class="mt-1">
         <v-list-item>
@@ -176,7 +176,7 @@
                           </div>
                           <v-list-item-subtitle
                             :class="active ? 'green--text' : 'black--text'"
-                            class="mt-n2 caption"
+                            class="mt-n2 mb-3 caption"
                             >PayPal</v-list-item-subtitle
                           >
                         </v-list-item-content>
@@ -198,8 +198,8 @@
                   flat
                 >
                   <v-row>
-                    <v-col cols="12" md="12">
-                      <v-list-item three-line class="text-center mt-1">
+                    <v-col cols="12">
+                      <v-list-item three-line class="text-center mb-2">
                         <v-list-item-content>
                           <div>
                             <v-icon :color="active ? '#11d86a' : 'black'"
@@ -208,8 +208,8 @@
                           </div>
                           <v-list-item-subtitle
                             :class="active ? 'green--text' : 'black--text'"
-                            class="mt-n2 caption"
-                            >Carte bancaire</v-list-item-subtitle
+                            class="mt-n4 caption"
+                            >CB</v-list-item-subtitle
                           >
                         </v-list-item-content>
                       </v-list-item>

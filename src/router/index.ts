@@ -7,6 +7,7 @@ import Guides from "../views/Guides.vue";
 import Services from "../views/Services.vue";
 import Account from "../views/Account.vue";
 import Login from "../views/Login.vue";
+import CreditCard from "../views/CreditCard.vue";
 
 Vue.use(VueRouter);
 
@@ -46,6 +47,11 @@ const routes: Array<RouteConfig> = [
     name: "Login",
     component: Login,
   },
+  {
+    path: "/creditCard",
+    name: "CreditCard",
+    component: CreditCard,
+  }
 ];
 
 const router = new VueRouter({

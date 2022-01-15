@@ -1,6 +1,10 @@
 <template>
   <v-app :style="{ background: $vuetify.theme.themes.dark.background }">
-    <h1 data-text="ÉcoServices" class="text-center mt-8">ÉcoServices</h1>
+    <div class="container" id="animTitle">
+      <span class="text1">Welcome in</span>
+      <span class="text2">Éco Services</span>
+      <v-divider class="mt-10"></v-divider>
+    </div>
     <v-container>
       <v-item-group mandatory class="mt-n1">
         <v-container>
@@ -169,7 +173,13 @@
           </v-row>
         </v-container>
       </v-item-group>
-      <v-carousel hide-delimiters cycle class="mt-10" interval="2000" height="400">
+      <v-carousel
+        hide-delimiters
+        cycle
+        class="mt-10"
+        interval="2000"
+        height="400"
+      >
         <v-carousel-item
           v-for="(picture, pic) in pictures"
           :key="pic"
@@ -181,30 +191,28 @@
 </template>
 
 <script lang="ts">
-import SidebarRight from "../components/SidebarRight.vue";
 import Vue from "vue";
 import Component from "vue-class-component";
 
 @Component({
   components: {
-    SidebarRight,
   },
 })
 export default class Home extends Vue {
   pictures = [
-          {
-            src: 'https://wallpapercave.com/wp/wp5125439.jpg',
-          },
-          {
-            src: 'https://wallpapers.com/images/high/breathtaking-nature-anime-scenery-ozmhfiuqzmai1bha.jpg',
-          },
-          {
-            src: 'https://cdn.wallpapersafari.com/66/73/p5rfhv.jpg',
-          },
-          {
-            src: 'https://i.pinimg.com/originals/ae/2e/cb/ae2ecb631f037846715e0c45609cbfb8.jpg',
-          },
-        ];
+    {
+      src: "https://wallpapercave.com/wp/wp5125439.jpg",
+    },
+    {
+      src: "https://wallpapers.com/images/high/breathtaking-nature-anime-scenery-ozmhfiuqzmai1bha.jpg",
+    },
+    {
+      src: "https://cdn.wallpapersafari.com/66/73/p5rfhv.jpg",
+    },
+    {
+      src: "https://i.pinimg.com/originals/ae/2e/cb/ae2ecb631f037846715e0c45609cbfb8.jpg",
+    },
+  ];
 }
 </script>
 
@@ -218,38 +226,45 @@ export default class Home extends Vue {
   border: 1px solid #11bad8 !important;
 }
 
-h1 {
-  font-family: "Poppins", sans-serif;
-  position: relative;
-  font-size: 10vw;
-  color: #ededed;
-  -webkit-text-stroke: 0.3vw #32884c;
+#animTitle {
+  text-align: center;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+}
+
+#animTitle span {
   text-transform: uppercase;
+  display: block;
 }
 
-h1::before {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 80%;
-  color: #11d86a;
-  -webkit-text-stroke: 0vw #11bad8;
-  border-right: 2px solid #11d86a;
-  overflow: hidden;
-  animation: animate 5s linear;
+.text1 {
+  color: #20a35b;
+  font-size: 60px;
+  font-weight: 700;
+  position: relative;
+  letter-spacing: 8px;
+  margin-bottom: 10px;
+  animation: text 3s 1;
 }
 
-@keyframes animate {
-  0%,
-  10%,
-  100% {
-    width: 0;
+.text2 {
+  font-size: 30px;
+  color: #11bad8;
+}
+
+@keyframes text {
+  0% {
+    color: black;
+    margin-bottom: -15px;
   }
-  70%,
-  90% {
-    width: 100%;
+  30% {
+    letter-spacing: 25px;
+    margin-bottom: -15px;
+  }
+  85% {
+    letter-spacing: 8px;
+    margin-bottom: -15px;
   }
 }
 </style>

@@ -12,7 +12,7 @@
             <v-col cols="12" md="2">
               <v-item v-slot="{ active, toggle }">
                 <v-card
-                  :color="active ? '#F6EFEF' : 'white'"
+                  :color="active ? '#b2ebc3' : 'white'"
                   :class="active ? 'borderme' : 'borderout'"
                   class="f-flex align-center rounded-lg mx-2"
                   dark
@@ -52,7 +52,7 @@
             <v-col cols="12" md="2">
               <v-item v-slot="{ active, toggle }">
                 <v-card
-                  :color="active ? '#F6EFEF' : 'white'"
+                  :color="active ? '#b2ebc3' : 'white'"
                   :class="active ? 'borderme' : 'borderout'"
                   class="f-flex align-center rounded-lg mx-2"
                   dark
@@ -93,7 +93,7 @@
             <v-col cols="12" md="2">
               <v-item v-slot="{ active, toggle }">
                 <v-card
-                  :color="active ? '#F6EFEF' : 'white'"
+                  :color="active ? '#b2ebc3' : 'white'"
                   :class="active ? 'borderme' : 'borderout'"
                   class="f-flex align-center rounded-lg mx-2"
                   dark
@@ -134,7 +134,7 @@
             <v-col cols="12" md="2">
               <v-item v-slot="{ active, toggle }">
                 <v-card
-                  :color="active ? '#F6EFEF' : 'white'"
+                  :color="active ? '#b2ebc3' : 'white'"
                   :class="active ? 'borderme' : 'borderout'"
                   class="f-flex align-center rounded-lg mx-2"
                   dark

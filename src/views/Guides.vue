@@ -5,6 +5,13 @@
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur
       reiciendis id nam molestias odit alias. Quam quos mollitia pariatur ad?
     </p>
+    <v-divider class="ml-15 mr-15 mt-5"></v-divider>
+    <div class="text-center">
+      <v-btn rounded color="green darken-1" @click="step++" dark
+        >Consulter tous les guides
+        <v-icon right> fas fa-file-invoice </v-icon>
+      </v-btn>
+    </div>
     <v-row>
       <v-col v-for="guide in guides" :key="guide.id" cols="12" md="3">
         <v-card class="elevation-12 rounded-xl ml-5 mt-5 mr-5">
@@ -127,14 +134,14 @@ export default {
         name: "Irumi Zoldik",
         image:
           "https://i.pinimg.com/564x/3d/e6/91/3de691e79b293e4e47b475971fba10b0.jpg",
-        description: "Ceci est le guide n°10, il est très intéressant",
+        description: "Ceci est le guide n°11, il est très intéressant",
       },
       {
         id: 12,
         name: "Hass",
         image:
           "https://www.nautiljon.com/images/perso/00/94/isaac_netero_12749.jpg",
-        description: "Ceci est le guide n°10, il est très intéressant",
+        description: "Ceci est le guide n°12, il est très intéressant",
       },
     ],
   }),

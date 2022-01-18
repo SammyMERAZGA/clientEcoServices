@@ -1,5 +1,5 @@
 <template>
-  <v-app id="inspire">
+  <v-app id="bgC">
     <v-content>
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
@@ -167,3 +167,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+#bgC {
+  background-color: #eeeeee;
+}
+</style>

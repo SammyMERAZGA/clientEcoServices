@@ -7,8 +7,11 @@
           >Choisissez une catégorie</v-toolbar-title
         >
         <v-spacer></v-spacer>
-        <v-text-field
-          label="Cherchez un produit ou un service..."
+        <v-toolbar placeholder="Rechercher..." shaped flat outlined>
+          <v-autocomplete class="mt-4" clearable :items="searchProducts" label="Rechercher un produit..." append-icon="fas fa-search"></v-autocomplete>
+        </v-toolbar>
+        <!-- <v-text-field
+          label="Cherchez un produit..."
           class="mt-5"
           color="green"
           filled
@@ -17,9 +20,9 @@
           solo
           flat
           background-color="grey lighten-4"
-        ></v-text-field>
+        ></v-text-field> -->
       </v-toolbar>
-      <v-item-group mandatory class="mt-n1">
+      <v-item-group mandatory class="mt-4">
         <v-container>
           <v-row justify="center" no-gutters>
             <v-col
@@ -31,7 +34,7 @@
             >
               <v-item v-slot="{ active, toggle }">
                 <v-card
-                  :color="active ? '#F6EFEF' : 'white'"
+                  :color="active ? '#b2ebc3' : 'white'"
                   :class="active ? 'borderme' : 'borderout'"
                   class="f-flex align-center rounded-lg mx-2"
                   dark
@@ -234,6 +237,7 @@ import Component from "vue-class-component";
 })
 export default class Store extends Vue {
   cart = [];
+  searchKey = "";
 
   categories = [
     {
@@ -306,6 +310,8 @@ export default class Store extends Vue {
         "https://i.pinimg.com/550x/14/e9/89/14e989620d79a8420906a9d1852b6349.jpg",
     },
   ];
+
+  searchProducts = ["Starter Pack - Éco Services", "Poubelle écologique", "Chaise en bois écologique", "Pack de 3 brosses à dents"];
 }
 </script>
 

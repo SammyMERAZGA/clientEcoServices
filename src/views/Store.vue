@@ -8,19 +8,14 @@
         >
         <v-spacer></v-spacer>
         <v-toolbar placeholder="Rechercher..." shaped flat outlined>
-          <v-autocomplete class="mt-4" clearable :items="searchProducts" label="Rechercher un produit..." append-icon="fas fa-search"></v-autocomplete>
+          <v-autocomplete
+            class="mt-4"
+            clearable
+            :items="searchProducts"
+            label="Rechercher un produit..."
+            append-icon="fas fa-search"
+          ></v-autocomplete>
         </v-toolbar>
-        <!-- <v-text-field
-          label="Cherchez un produit..."
-          class="mt-5"
-          color="green"
-          filled
-          append-icon="mdi-magnify"
-          dense
-          solo
-          flat
-          background-color="grey lighten-4"
-        ></v-text-field> -->
       </v-toolbar>
       <v-item-group mandatory class="mt-4">
         <v-container>
@@ -97,7 +92,13 @@
               </v-list-item-content>
             </v-list-item>
             <v-card-actions>
-              <v-btn color="#12A4E4" block dark class="withoutupercase mb-2">
+              <v-btn
+                color="#12A4E4"
+                block
+                dark
+                class="withoutupercase mb-2"
+                @click="addToCart(product)"
+              >
                 <v-icon class="mr-2">mdi-cart</v-icon>
                 Ajouter au panier
               </v-btn>
@@ -107,7 +108,7 @@
       </v-row>
     </v-container>
 
-    <!-- SIDEBAR RIGHT -->
+    <!-- SIDEBAR RIGHT (ShopCart) -->
     <v-navigation-drawer app color="white" right width="290">
       <v-list subheader two-line class="mt-1">
         <v-list-item>
@@ -125,32 +126,55 @@
       <v-icon class="ml-5" id="cartIcon">fas fa-shopping-cart</v-icon>
       <strong class="ml-3">Panier</strong>
       <v-list subheader two-line class="mt-1">
-        <v-list-item>
+        <v-list-item v-for="product in cart" v-bind:key="product.id">
           <v-list-item-avatar rounded color="grey lighten-4">
-            <v-img
-              src="https://practicaltyping.com/wp-content/uploads/2020/08/gon.png"
-            ></v-img>
+            <v-img :src="product.image"></v-img>
           </v-list-item-avatar>
           <v-list-item-content>
-            <v-list-item-title class="subtitle-2 mt-6"
-              >Starter Pack Ecologie</v-list-item-title
-            >
+            <v-list-item-title class="subtitle-2 mt-6">
+              {{ product.name }}
+            </v-list-item-title>
             <v-list-item-subtitle
-              >x1
-              <v-btn rounded plain color="red" small>
+              >{{ product.quantity }}
+              <v-btn
+                rounded
+                plain
+                color="amber"
+                small
+                v-on:click="cartMinusOne(product, id)"
+              >
                 <v-icon>fas fa-minus-circle</v-icon>
               </v-btn>
-              <v-btn rounded plain color="green" small>
+              <v-btn
+                rounded
+                plain
+                color="green"
+                small
+                v-on:click="cartPlusOne(product)"
+              >
                 <v-icon>fas fa-plus-circle</v-icon>
               </v-btn>
             </v-list-item-subtitle>
+            <v-btn
+              rounded
+              plain
+              color="red"
+              small
+              class="ml-4 mt-2"
+              @click="cartRemoveItem(id)"
+            >
+              <span>Supprimer</span>
+            </v-btn>
           </v-list-item-content>
-          <v-list-item-action class="caption">29.99€</v-list-item-action>
+          <v-list-item-action class="caption"
+            >{{ product.price }}€</v-list-item-action
+          >
         </v-list-item>
       </v-list>
       <v-divider class="mx-4"></v-divider>
       <v-toolbar color="rgba(0,0,0,0)" flat>
-        <strong>Total :</strong><v-spacer></v-spacer><strong>79.98€</strong>
+        <strong>Total :</strong><v-spacer></v-spacer
+        ><strong>{{ cartTotalAmount }} €</strong>
       </v-toolbar>
       <v-divider class="mx-4 mb-5"></v-divider>
       <strong class="ml-5">Méthode de paiement :</strong>
@@ -231,13 +255,46 @@
 <script lang="ts">
 import Vue from "vue";
 import Component from "vue-class-component";
+import { Product } from "../types/Product";
 
 @Component({
   components: {},
 })
 export default class Store extends Vue {
-  cart = [];
-  searchKey = "";
+  cart: Product[] = [];
+
+  addToCart(product: Product): unknown {
+    for (let i = 0; i < this.cart.length; i++) {
+      if (this.cart[i].id === product.id) {
+        return this.cart[i].quantity++;
+      }
+    }
+    this.cart.push(product);
+  }
+
+  cartPlusOne(product: Product): void {
+    product.quantity = product.quantity + 1;
+  }
+
+  cartRemoveItem(id: number): void {
+    this.$delete(this.cart, id);
+  }
+
+  cartMinusOne(product: Product, id: number): void {
+    if (product.quantity == 1) {
+      this.cartRemoveItem(id);
+    } else {
+      product.quantity = product.quantity - 1;
+    }
+  }
+
+  cartTotalAmount(): number {
+    let total = 0;
+    for (let product in this.cart) {
+      total = total + this.cart[product].quantity * this.cart[product].price;
+    }
+    return total;
+  }
 
   categories = [
     {
@@ -276,7 +333,8 @@ export default class Store extends Vue {
       category: "Packs",
       iconCategory: "fas fa-box-open",
       description: "lorem ipsum dolor",
-      price: "29.99€",
+      price: "29.99",
+      quantity: 1,
       image: "https://practicaltyping.com/wp-content/uploads/2020/08/gon.png",
     },
     {
@@ -285,7 +343,8 @@ export default class Store extends Vue {
       category: "Packs",
       iconCategory: "fas fa-box-open",
       description: "lorem ipsum dolor",
-      price: "8.99€",
+      price: "8.99",
+      quantity: 1,
       image:
         "https://i.pinimg.com/474x/4f/1c/2c/4f1c2ce4ed271c2fa266881dff741cbb.jpg",
     },
@@ -295,7 +354,8 @@ export default class Store extends Vue {
       category: "Extérieur",
       iconCategory: "fas fa-tree",
       description: "lorem ipsum dolor",
-      price: "49.99€",
+      price: "49.99",
+      quantity: 1,
       image:
         "https://i.pinimg.com/originals/17/79/c5/1779c5f69ba310be8da6856e80039669.jpg",
     },
@@ -305,13 +365,19 @@ export default class Store extends Vue {
       category: "Maison",
       iconCategory: "fas fa-home",
       description: "lorem ipsum dolor",
-      price: "39.99€",
+      price: "39.99",
+      quantity: 1,
       image:
         "https://i.pinimg.com/550x/14/e9/89/14e989620d79a8420906a9d1852b6349.jpg",
     },
   ];
 
-  searchProducts = ["Starter Pack - Éco Services", "Poubelle écologique", "Chaise en bois écologique", "Pack de 3 brosses à dents"];
+  searchProducts = [
+    "Starter Pack - Éco Services",
+    "Poubelle écologique",
+    "Chaise en bois écologique",
+    "Pack de 3 brosses à dents",
+  ];
 }
 </script>
 

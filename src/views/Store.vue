@@ -256,11 +256,14 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 import { Product } from "../types/Product";
+import { Category } from '../types/Category';
 import axios from "axios";
 
 @Component
 export default class Store extends Vue {
+
   products: Product[] = [];
+  categories: Category[] = [];
 
   cart: Product[] = [];
 
@@ -268,8 +271,13 @@ export default class Store extends Vue {
     this.products = (await axios.get(`/api/products`)).data as Product[];
   }
 
+  async allCategories(): Promise<void> {
+    this.categories = (await axios.get(`/api/categories`)).data as Category[];
+  }
+
   mounted(): void {
     this.allProducts();
+    this.allCategories();
   }
 
   addToCart(product: Product): unknown {
@@ -304,36 +312,6 @@ export default class Store extends Vue {
     }
     return total;
   }
-
-  categories = [
-    {
-      id: 1,
-      name: "Tout",
-      icon: "mdi-view-dashboard",
-      image:
-        "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/v1502144483/wnghdseei6r0502f5her.png",
-    },
-    {
-      id: 2,
-      name: "Maison",
-      icon: "fas fa-home",
-      image: "https://assets.wprock.fr/emoji/joypixels/512/1f3e0.png",
-    },
-    {
-      id: 3,
-      name: "Extérieur",
-      icon: "fas fa-tree",
-      image:
-        "https://www.haas-avocats.com/wp-content/uploads/2016/07/marque-maisondumonde-gifi-haas-avocats.jpg",
-    },
-    {
-      id: 4,
-      name: "Packs",
-      icon: "fas fa-box-open",
-      image:
-        "https://www.racenightshop.co.uk/wp-content/uploads/2019/01/race-night-start-up-package.-ideal-for-new-operators-349-p.png",
-    },
-  ];
 
   searchProducts = [
     "Starter Pack - Éco Services",

@@ -134,7 +134,8 @@ export default {
         name: "Irumi Zoldik",
         image:
           "https://i.pinimg.com/564x/3d/e6/91/3de691e79b293e4e47b475971fba10b0.jpg",
-        description: "Ceci est le guide n°11, il est très intéressant",
+        description:
+          "Ceci est le guide n°11, il est très intéressant",
       },
       {
         id: 12,

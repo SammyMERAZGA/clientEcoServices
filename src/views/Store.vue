@@ -82,8 +82,8 @@
               <v-list-item-content class="text-h5">
                 {{ product.name }}
                 <v-list-item-subtitle class="mt-1">
-                  <v-icon>{{ product.iconCategory }}</v-icon>
-                  <span class="ml-2"> {{ product.category }}</span>
+                  <v-icon>{{ product.category.icone }}</v-icon>
+                  <span class="ml-2"> {{ product.category.name }}</span>
                 </v-list-item-subtitle>
                 <v-list-item-subtitle class="mt-1">
                   {{ product.description }}
@@ -256,12 +256,21 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 import { Product } from "../types/Product";
+import axios from "axios";
 
-@Component({
-  components: {},
-})
+@Component
 export default class Store extends Vue {
+  products: Product[] = [];
+
   cart: Product[] = [];
+
+  async allProducts(): Promise<void> {
+    this.products = (await axios.get(`/api/products`)).data as Product[];
+  }
+
+  mounted(): void {
+    this.allProducts();
+  }
 
   addToCart(product: Product): unknown {
     for (let i = 0; i < this.cart.length; i++) {
@@ -323,52 +332,6 @@ export default class Store extends Vue {
       icon: "fas fa-box-open",
       image:
         "https://www.racenightshop.co.uk/wp-content/uploads/2019/01/race-night-start-up-package.-ideal-for-new-operators-349-p.png",
-    },
-  ];
-
-  products = [
-    {
-      id: 1,
-      name: "Starter Pack - Éco Services",
-      category: "Packs",
-      iconCategory: "fas fa-box-open",
-      description: "lorem ipsum dolor",
-      price: "29.99",
-      quantity: 1,
-      image: "https://practicaltyping.com/wp-content/uploads/2020/08/gon.png",
-    },
-    {
-      id: 2,
-      name: "Pack de 3 brosses à dents",
-      category: "Packs",
-      iconCategory: "fas fa-box-open",
-      description: "lorem ipsum dolor",
-      price: "8.99",
-      quantity: 1,
-      image:
-        "https://i.pinimg.com/474x/4f/1c/2c/4f1c2ce4ed271c2fa266881dff741cbb.jpg",
-    },
-    {
-      id: 3,
-      name: "Poubelle écologique",
-      category: "Extérieur",
-      iconCategory: "fas fa-tree",
-      description: "lorem ipsum dolor",
-      price: "49.99",
-      quantity: 1,
-      image:
-        "https://i.pinimg.com/originals/17/79/c5/1779c5f69ba310be8da6856e80039669.jpg",
-    },
-    {
-      id: 4,
-      name: "Chaise en bois écologique",
-      category: "Maison",
-      iconCategory: "fas fa-home",
-      description: "lorem ipsum dolor",
-      price: "39.99",
-      quantity: 1,
-      image:
-        "https://i.pinimg.com/550x/14/e9/89/14e989620d79a8420906a9d1852b6349.jpg",
     },
   ];
 

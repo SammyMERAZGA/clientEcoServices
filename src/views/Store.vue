@@ -197,12 +197,12 @@
                       <v-list-item three-line class="text-center mt-1">
                         <v-list-item-content>
                           <div>
-                            <v-icon :color="active ? '#11d86a' : 'black'"
+                            <v-icon :color="active ? 'light-blue darken-4' : 'black'"
                               >fab fa-paypal</v-icon
                             >
                           </div>
                           <v-list-item-subtitle
-                            :class="active ? 'green--text' : 'black--text'"
+                            :class="active ? 'blue--text' : 'black--text'"
                             class="mt-n2 mb-3 caption"
                             >PayPal</v-list-item-subtitle
                           >
@@ -229,12 +229,12 @@
                       <v-list-item three-line class="text-center mb-2">
                         <v-list-item-content>
                           <div>
-                            <v-icon :color="active ? '#11d86a' : 'black'"
+                            <v-icon :color="active ? 'light-blue darken-4' : 'black'"
                               >fas fa-credit-card</v-icon
                             >
                           </div>
                           <v-list-item-subtitle
-                            :class="active ? 'green--text' : 'black--text'"
+                            :class="active ? 'blue--text' : 'black--text'"
                             class="mt-n4 caption"
                             >CB</v-list-item-subtitle
                           >

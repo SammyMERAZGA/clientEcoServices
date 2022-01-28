@@ -1,8 +1,8 @@
 <template>
   <v-app :style="{ background: $vuetify.theme.themes.dark.background }">
     <div class="container" id="animTitle">
-      <span class="text1">Welcome in</span>
-      <span class="text2">Éco Services</span>
+      <span class="text1">Éco Services</span>
+      <img src="../assets/logoEco.png" alt="logo" class="logo" />
       <v-divider class="mt-10"></v-divider>
     </div>
     <v-container>
@@ -12,9 +12,9 @@
             <v-col cols="12" md="2">
               <v-item v-slot="{ active, toggle }">
                 <v-card
-                  :color="active ? '#b2ebc3' : 'white'"
-                  :class="active ? 'borderme' : 'borderout'"
+                  :color="active ? '#c8ebf1' : 'white'"
                   class="f-flex align-center rounded-lg mx-2"
+                  elevation="5"
                   dark
                   height="180"
                   @click="toggle"
@@ -52,9 +52,9 @@
             <v-col cols="12" md="2">
               <v-item v-slot="{ active, toggle }">
                 <v-card
-                  :color="active ? '#b2ebc3' : 'white'"
-                  :class="active ? 'borderme' : 'borderout'"
+                  :color="active ? '#c8ebf1' : 'white'"
                   class="f-flex align-center rounded-lg mx-2"
+                  elevation="5"
                   dark
                   height="180"
                   @click="toggle"
@@ -93,9 +93,9 @@
             <v-col cols="12" md="2">
               <v-item v-slot="{ active, toggle }">
                 <v-card
-                  :color="active ? '#b2ebc3' : 'white'"
-                  :class="active ? 'borderme' : 'borderout'"
+                  :color="active ? '#c8ebf1' : 'white'"
                   class="f-flex align-center rounded-lg mx-2"
+                  elevation="5"
                   dark
                   height="180"
                   @click="toggle"
@@ -134,9 +134,9 @@
             <v-col cols="12" md="2">
               <v-item v-slot="{ active, toggle }">
                 <v-card
-                  :color="active ? '#b2ebc3' : 'white'"
-                  :class="active ? 'borderme' : 'borderout'"
+                  :color="active ? '#c8ebf1' : 'white'"
                   class="f-flex align-center rounded-lg mx-2"
+                  elevation="5"
                   dark
                   height="180"
                   @click="toggle"
@@ -178,7 +178,7 @@
         cycle
         class="mt-10"
         interval="2000"
-        height="400"
+        height="300"
       >
         <v-carousel-item
           v-for="(picture, pic) in pictures"
@@ -248,23 +248,18 @@ export default class Home extends Vue {
   animation: text 3s 1;
 }
 
-.text2 {
-  font-size: 30px;
-  color: #11bad8;
-}
-
 @keyframes text {
   0% {
     color: black;
-    margin-bottom: -15px;
+    margin-bottom: -10px;
   }
   30% {
     letter-spacing: 25px;
-    margin-bottom: -15px;
+    margin-bottom: -10px;
   }
   85% {
     letter-spacing: 8px;
-    margin-bottom: -15px;
+    margin-bottom: -10px;
   }
 }
 </style>

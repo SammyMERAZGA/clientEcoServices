@@ -21,10 +21,7 @@
                           </v-btn>
 
                           <v-btn class="mx-2" fab color="red" outlined>
-                            <v-icon>fab fa-google-plus-g</v-icon>
-                          </v-btn>
-                          <v-btn class="mx-2" fab color="blue" outlined>
-                            <v-icon>fab fa-linkedin-in</v-icon>
+                            <v-icon>mdi-gmail</v-icon>
                           </v-btn>
                         </div>
                         <v-form>
@@ -56,19 +53,19 @@
                         >
                       </div>
                     </v-col>
-                    <v-col cols="12" md="4" class="green accent-3">
+                    <v-col cols="12" md="4" class="green darken-1">
                       <v-card-text class="white--text mt-12 pr-7">
                         <h1 class="text-center display-1">
-                          Vous n'êtes pas inscrit ?
+                          Envie de nous rejoindre ?
                         </h1>
                         <h4 class="text-center h6 mt-7">
                           Rejoignez-nous maintenant pour pouvoir faire des
-                          achats, réaliser des devis, consulter nos guides, et
+                          achats, consulter nos guides, et
                           bien plus encore !
                         </h4>
                       </v-card-text>
-                      <div class="text-center mt-5">
-                        <v-btn rounded outlined light @click="step++"
+                      <div class="text-center" id="btnRegister">
+                        <v-btn rounded outlined dark @click="step++"
                           >Inscription</v-btn
                         >
                       </div>
@@ -77,7 +74,7 @@
                 </v-window-item>
                 <v-window-item :value="2">
                   <v-row class="fill-height">
-                    <v-col cols="12" md="4" class="blue accent-3">
+                    <v-col cols="12" md="4" class="light-blue darken-3">
                       <v-card-text class="white--text mt-12">
                         <h1 class="text-center display-1">
                           Bienvenue à nouveau !
@@ -87,7 +84,7 @@
                           connecter avec vos informations personnelles
                         </h4>
                       </v-card-text>
-                      <div class="text-center mt-5">
+                      <div class="text-center" id="btnLogin">
                         <v-btn rounded outlined dark @click="step--"
                           >Connexion</v-btn
                         >
@@ -107,10 +104,7 @@
                           </v-btn>
 
                           <v-btn class="mx-2" fab color="red" outlined>
-                            <v-icon>fab fa-google-plus-g</v-icon>
-                          </v-btn>
-                          <v-btn class="mx-2" fab color="blue" outlined>
-                            <v-icon>fab fa-linkedin-in</v-icon>
+                            <v-icon>mdi-gmail</v-icon>
                           </v-btn>
                         </div>
                         <v-form>
@@ -140,7 +134,7 @@
                         </v-form>
                       </v-card-text>
                       <div class="text-center mt-n5 mb-12">
-                        <v-btn rounded color="green accent-3" dark
+                        <v-btn rounded color="light-blue darken-2" dark
                           >Inscription</v-btn
                         >
                       </div>
@@ -171,5 +165,9 @@ export default {
 <style scoped>
 #bgC {
   background-color: #eeeeee;
+}
+
+#btnRegister, #btnLogin {
+  margin-top: 40%;
 }
 </style>

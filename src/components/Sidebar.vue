@@ -7,7 +7,7 @@
     mini-variant-width="90"
   >
     <v-avatar class="d-block text-center mx-auto mt-4" size="60">
-      <v-img src="../assets/ecoServices.png"></v-img>
+      <v-img src="../assets/ecoServices.png"></v-img> <!-- OMBRE SUR LE LOGO -->
     </v-avatar>
     <v-list flat class="mt-4">
       <v-list-item-group v-model="selectedItem">
@@ -19,7 +19,7 @@
           active-class="border"
         >
           <v-list-item-content>
-            <v-icon v-text="link.icon"></v-icon>
+            <v-icon v-text="link.icon" :color="link.color"></v-icon>
             <v-list-item-subtitle
               align="center"
               v-text="link.text"
@@ -30,7 +30,7 @@
       </v-list-item-group>
     </v-list>
     <div id="deconnexion">
-      <v-icon>fas fa-sign-out-alt</v-icon><br />
+      <v-icon color="red darken-1">fas fa-sign-out-alt</v-icon><br />
       <span class="caption">Déconnexion</span>
     </div>
   </v-navigation-drawer>
@@ -45,13 +45,33 @@ export default class Sidebar extends Vue {
   selectedItem = 0;
   drawer = null;
   links = [
-    { icon: "fas fa-home", text: "Accueil", route: "/" },
-    { icon: "fas fa-info-circle", text: "À propos", route: "/about" },
-    { icon: "fas fa-shopping-cart", text: "Boutique", route: "/store" },
-    { icon: "fas fa-book", text: "Guides", route: "/guides" },
-    { icon: "fas fa-leaf", text: "Services", route: "/services" },
-    { icon: "fas fa-user-cog", text: "Compte", route: "/account" },
-    { icon: "fas fa-user", text: "Connexion", route: "/login" },
+    { icon: "fas fa-home", text: "Accueil", route: "/", color: "green darken-3" },
+    {
+      icon: "fas fa-info-circle",
+      text: "À propos",
+      route: "/about",
+      color: "green darken-3",
+    },
+    {
+      icon: "fas fa-shopping-cart",
+      text: "Boutique",
+      route: "/store",
+      color: "green darken-3",
+    },
+    { icon: "fas fa-book", text: "Guides", route: "/guides", color: "green darken-3" },
+    {
+      icon: "fas fa-leaf",
+      text: "Services",
+      route: "/services",
+      color: "green darken-3",
+    },
+    {
+      icon: "fas fa-user-cog",
+      text: "Compte",
+      route: "/account",
+      color: "green darken-3",
+    },
+    { icon: "fas fa-user", text: "Connexion", route: "/login", color: "green darken-3" },
   ];
 }
 </script>
@@ -60,7 +80,7 @@ export default class Sidebar extends Vue {
 .border {
   margin-left: 8px;
   margin-right: 8px;
-  background: #11d86a;
+  background: #A5D6A7;
   border-radius: 20px;
   text-decoration: none;
 }

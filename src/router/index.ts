@@ -8,6 +8,7 @@ import Services from "../views/Services.vue";
 import Account from "../views/Account.vue";
 import Login from "../views/Login.vue";
 import CreditCard from "../views/CreditCard.vue";
+import BackOffice from "../views/BackOffice.vue";
 
 Vue.use(VueRouter);
 
@@ -51,7 +52,12 @@ const routes: Array<RouteConfig> = [
     path: "/creditCard",
     name: "CreditCard",
     component: CreditCard,
-  }
+  },
+  {
+    path: "/backOffice",
+    name: "BackOffice",
+    component: BackOffice,
+  },
 ];
 
 const router = new VueRouter({

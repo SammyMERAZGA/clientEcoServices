@@ -60,8 +60,7 @@
                         </h1>
                         <h4 class="text-center h6 mt-7">
                           Rejoignez-nous maintenant pour pouvoir faire des
-                          achats, consulter nos guides, et
-                          bien plus encore !
+                          achats, consulter nos guides, et bien plus encore !
                         </h4>
                       </v-card-text>
                       <div class="text-center" id="btnRegister">
@@ -109,8 +108,8 @@
                         </div>
                         <v-form>
                           <v-text-field
-                            label="Nom"
-                            name="Name"
+                            label="Pseudo"
+                            name="username"
                             prepend-icon="fas fa-user"
                             type="text"
                             color="blue accent-3"
@@ -134,7 +133,7 @@
                         </v-form>
                       </v-card-text>
                       <div class="text-center mt-n5 mb-12">
-                        <v-btn rounded color="light-blue darken-2" dark
+                        <v-btn rounded color="light-blue darken-2" dark @click="register()"
                           >Inscription</v-btn
                         >
                       </div>
@@ -150,16 +149,27 @@
   </v-app>
 </template>
 
-<script>
-export default {
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  data: () => ({
-    step: 1,
-  }),
-  props: {
-    source: String,
-  },
-};
+<script lang="ts">
+import Vue from "vue";
+import Component from "vue-class-component";
+// import axios from "axios";
+// import { User } from "../types/User";
+
+@Component
+export default class Login extends Vue {
+  step = 1;
+
+  // register(User: User): void {
+  //   axios
+  //     .post("http://localhost:3000/api/users", User)
+  //     .then(response => {
+  //       console.log(response);
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // }
+}
 </script>
 
 <style scoped>
@@ -167,7 +177,8 @@ export default {
   background-color: #eeeeee;
 }
 
-#btnRegister, #btnLogin {
+#btnRegister,
+#btnLogin {
   margin-top: 40%;
 }
 </style>

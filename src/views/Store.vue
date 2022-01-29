@@ -27,15 +27,14 @@
               md="2"
               sm="4"
             >
-              <v-item v-slot="{ active, toggle }">
+              <v-hover>
                 <v-card
-                  :color="active ? '#b2ebc3' : 'white'"
-                  :class="active ? 'borderme' : 'borderout'"
+                  elevation="5"
                   class="f-flex align-center rounded-lg mx-2"
-                  dark
                   height="160"
-                  @click="toggle"
                   flat
+                  slot-scope="{ hover }"
+                  :class="`${hover ? 'class1' : 'class2'}`"
                 >
                   <v-row>
                     <v-col cols="12" sm="12">
@@ -60,7 +59,7 @@
                     </v-col>
                   </v-row>
                 </v-card>
-              </v-item>
+              </v-hover>
             </v-col>
           </v-row>
         </v-container>
@@ -197,7 +196,8 @@
                       <v-list-item three-line class="text-center mt-1">
                         <v-list-item-content>
                           <div>
-                            <v-icon :color="active ? 'light-blue darken-4' : 'black'"
+                            <v-icon
+                              :color="active ? 'light-blue darken-4' : 'black'"
                               >fab fa-paypal</v-icon
                             >
                           </div>
@@ -229,7 +229,8 @@
                       <v-list-item three-line class="text-center mb-2">
                         <v-list-item-content>
                           <div>
-                            <v-icon :color="active ? 'light-blue darken-4' : 'black'"
+                            <v-icon
+                              :color="active ? 'light-blue darken-4' : 'black'"
                               >fas fa-credit-card</v-icon
                             >
                           </div>
@@ -256,12 +257,11 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 import { Product } from "../types/Product";
-import { Category } from '../types/Category';
+import { Category } from "../types/Category";
 import axios from "axios";
 
 @Component
 export default class Store extends Vue {
-
   products: Product[] = [];
   categories: Category[] = [];
 
@@ -322,11 +322,12 @@ export default class Store extends Vue {
 }
 </script>
 
-<style>
-.v-card-borderme {
-  border: 2px solid #11d86a !important;
+<style scoped>
+.class1 {
+  background-color: #bbecac;
 }
-.v-card.borderout {
-  border: 1px solid #11bad8 !important;
+
+.class2 {
+  background-color: white;
 }
 </style>

@@ -9,16 +9,15 @@
       <v-item-group mandatory class="mt-n1">
         <v-container>
           <v-row justify="center">
-            <v-col cols="12" md="2">
-              <v-item v-slot="{ active, toggle }">
+            <v-col cols="12" md="2" v-for="page in pages" :key="page.id">
+              <v-hover>
                 <v-card
-                  :color="active ? '#c8ebf1' : 'white'"
                   class="f-flex align-center rounded-lg mx-2"
                   elevation="5"
-                  dark
                   height="180"
-                  @click="toggle"
                   flat
+                  slot-scope="{ hover }"
+                  :class="`${hover ? 'class1' : 'class2'}`"
                 >
                   <v-row>
                     <v-col cols="12" sm="12">
@@ -26,20 +25,17 @@
                         <v-list-item-content>
                           <div align="center" justify="center">
                             <v-img
-                              src="../assets/3.png"
+                              :src="page.image"
                               max-height="90"
                               max-width="90"
                             ></v-img>
                           </div>
-                          <v-list-item-subtitle
-                            :class="active ? 'green--text' : 'black--text'"
-                            class="caption mt-4 ml-8"
-                          >
-                            Boutique
-                            <v-btn icon color="green" to="/store">
-                              <v-icon small class="mb-1 mr-3"
-                                >fas fa-shopping-cart</v-icon
-                              >
+                          <v-list-item-subtitle class="caption mt-4 ml-8">
+                            {{ page.name }}
+                            <v-btn icon :color="page.iconColor" :to="page.url">
+                              <v-icon small class="mb-1 mr-3">{{
+                                page.icon
+                              }}</v-icon>
                             </v-btn>
                           </v-list-item-subtitle>
                         </v-list-item-content>
@@ -47,128 +43,7 @@
                     </v-col>
                   </v-row>
                 </v-card>
-              </v-item>
-            </v-col>
-            <v-col cols="12" md="2">
-              <v-item v-slot="{ active, toggle }">
-                <v-card
-                  :color="active ? '#c8ebf1' : 'white'"
-                  class="f-flex align-center rounded-lg mx-2"
-                  elevation="5"
-                  dark
-                  height="180"
-                  @click="toggle"
-                  flat
-                >
-                  <v-row>
-                    <v-col cols="12" sm="12">
-                      <v-list-item three-line class="text-center">
-                        <v-list-item-content>
-                          <div align="center" justify="center">
-                            <v-img
-                              src="../assets/2.png"
-                              max-height="90"
-                              max-width="90"
-                              contain
-                            ></v-img>
-                          </div>
-                          <v-list-item-subtitle
-                            :class="active ? 'green--text' : 'black--text'"
-                            class="caption mt-4 ml-5"
-                          >
-                            Services
-                            <v-btn icon color="green" to="/services">
-                              <v-icon small class="mb-1 mr-3"
-                                >fas fa-leaf</v-icon
-                              >
-                            </v-btn>
-                          </v-list-item-subtitle>
-                        </v-list-item-content>
-                      </v-list-item>
-                    </v-col>
-                  </v-row>
-                </v-card>
-              </v-item>
-            </v-col>
-            <v-col cols="12" md="2">
-              <v-item v-slot="{ active, toggle }">
-                <v-card
-                  :color="active ? '#c8ebf1' : 'white'"
-                  class="f-flex align-center rounded-lg mx-2"
-                  elevation="5"
-                  dark
-                  height="180"
-                  @click="toggle"
-                  flat
-                >
-                  <v-row>
-                    <v-col cols="12" sm="12">
-                      <v-list-item three-line class="text-center">
-                        <v-list-item-content>
-                          <div align="center" justify="center">
-                            <v-img
-                              src="http://apdiq.com/wp-content/uploads/2014/07/icon-lg-guides-blue1.png"
-                              max-height="90"
-                              max-width="90"
-                              contain
-                            ></v-img>
-                          </div>
-                          <v-list-item-subtitle
-                            :class="active ? 'green--text' : 'black--text'"
-                            class="caption mt-4 ml-7"
-                          >
-                            Guides
-                            <v-btn icon color="cyan" to="/guides">
-                              <v-icon small class="mr-4 mb-1"
-                                >fas fa-file-invoice</v-icon
-                              >
-                            </v-btn>
-                          </v-list-item-subtitle>
-                        </v-list-item-content>
-                      </v-list-item>
-                    </v-col>
-                  </v-row>
-                </v-card>
-              </v-item>
-            </v-col>
-            <v-col cols="12" md="2">
-              <v-item v-slot="{ active, toggle }">
-                <v-card
-                  :color="active ? '#c8ebf1' : 'white'"
-                  class="f-flex align-center rounded-lg mx-2"
-                  elevation="5"
-                  dark
-                  height="180"
-                  @click="toggle"
-                  flat
-                >
-                  <v-row>
-                    <v-col cols="12" sm="12">
-                      <v-list-item three-line class="text-center">
-                        <v-list-item-content>
-                          <div align="center" justify="center">
-                            <v-img
-                              src="../assets/ecoServices.png"
-                              max-height="90"
-                              max-width="90"
-                              contain
-                            ></v-img>
-                          </div>
-                          <v-list-item-subtitle
-                            :class="active ? 'green--text' : 'black--text'"
-                            class="caption mt-4 ml-6"
-                          >
-                            À propos
-                            <v-btn icon color="#ffcd01" to="/about">
-                              <v-icon small class="mr-2">fas fa-users</v-icon>
-                            </v-btn>
-                          </v-list-item-subtitle>
-                        </v-list-item-content>
-                      </v-list-item>
-                    </v-col>
-                  </v-row>
-                </v-card>
-              </v-item>
+              </v-hover>
             </v-col>
           </v-row>
         </v-container>
@@ -195,8 +70,7 @@ import Vue from "vue";
 import Component from "vue-class-component";
 
 @Component({
-  components: {
-  },
+  components: {},
 })
 export default class Home extends Vue {
   pictures = [
@@ -213,18 +87,59 @@ export default class Home extends Vue {
       src: "https://i.pinimg.com/originals/ae/2e/cb/ae2ecb631f037846715e0c45609cbfb8.jpg",
     },
   ];
+
+  pages = [
+    {
+      id: 1,
+      name: "Boutique",
+      url: "/store",
+      icon: "fas fa-shopping-cart",
+      iconColor: "indigo darken-4",
+      image:
+        "https://www.graphicsprings.com/filestorage/stencils/a7ee8cc210353c0ef5c403d513c386c4.png?width=500&height=500",
+    },
+    {
+      id: 2,
+      name: "Services",
+      url: "/services",
+      icon: "fas fa-leaf",
+      iconColor: "light-blue darken-4",
+      image:
+        "https://media.istockphoto.com/vectors/solar-panel-sun-logo-template-save-energy-green-power-and-natural-vector-id1175616187?k=20&m=1175616187&s=170667a&w=0&h=kEoGh4iEIJd6wUOLStLL1ZIHzM_884lQkk6R-qsepeM=",
+    },
+    {
+      id: 3,
+      name: "Guides",
+      url: "/guides",
+      icon: "fas fa-file-invoice",
+      iconColor: "green lighten-1",
+      image:
+        "http://construire-des-savoirs.fr/wp-content/uploads/2016/08/ecology-300x300.jpg",
+    },
+    {
+      id: 4,
+      name: "Connexion",
+      url: "/login",
+      icon: "fas fa-user-circle",
+      iconColor: "amber",
+      image:
+        "https://www.pinclipart.com/picdir/middle/532-5328720_girl-ecology-plant-clipart-makers-mark-png-download.png",
+    },
+    {
+      id: 5,
+      name: "À propos",
+      url: "/about",
+      icon: "fas fa-users",
+      iconColor: "blue-grey",
+      image:
+        "https://cdn.iconscout.com/icon/free/png-256/ecology-team-2871963-2383617.png",
+    },
+  ];
 }
 </script>
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
-
-.v-card-borderme {
-  border: 2px solid #11d86a !important;
-}
-.v-card.borderout {
-  border: 1px solid #11bad8 !important;
-}
 
 #animTitle {
   text-align: center;
@@ -261,5 +176,13 @@ export default class Home extends Vue {
     letter-spacing: 8px;
     margin-bottom: -10px;
   }
+}
+
+.class1 {
+  background-color: #c8ebf1;
+}
+
+.class2 {
+  background-color: white;
 }
 </style>

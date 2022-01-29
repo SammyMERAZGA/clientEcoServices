@@ -9,27 +9,36 @@
 
     <v-row>
       <v-col cols="12" md="3" v-for="service in services" :key="service.id">
-        <v-card class="mx-auto" max-width="344" elevation="5" outlined>
-          <v-list-item three-line>
-            <v-list-item-content>
-              <div class="text-overline mb-4">{{ service.type }}</div>
-              <v-list-item-title class="text-h5 mb-1">
-                {{ service.name }}
-              </v-list-item-title>
-              <v-list-item-subtitle>{{
-                service.description
-              }}</v-list-item-subtitle>
-            </v-list-item-content>
+        <v-hover>
+          <v-card
+            class="mx-auto"
+            max-width="344"
+            elevation="5"
+            outlined
+            slot-scope="{ hover }"
+            :class="`${hover ? 'class1' : 'class2'}`"
+          >
+            <v-list-item three-line>
+              <v-list-item-content>
+                <div class="text-overline mb-4">{{ service.type }}</div>
+                <v-list-item-title class="text-h5 mb-1">
+                  {{ service.name }}
+                </v-list-item-title>
+                <v-list-item-subtitle>{{
+                  service.description
+                }}</v-list-item-subtitle>
+              </v-list-item-content>
 
-            <v-list-item-avatar tile size="80" color="grey"
-              ><v-img :src="service.image"></v-img
-            ></v-list-item-avatar>
-          </v-list-item>
+              <v-list-item-avatar tile size="80" color="grey"
+                ><v-img :src="service.image"></v-img
+              ></v-list-item-avatar>
+            </v-list-item>
 
-          <v-card-actions>
-            <v-btn outlined rounded text> Devis </v-btn>
-          </v-card-actions>
-        </v-card>
+            <v-card-actions>
+              <v-btn outlined rounded text> Devis </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-hover>
       </v-col>
     </v-row>
 
@@ -197,3 +206,13 @@ export default class Services extends Vue {
   ];
 }
 </script>
+
+<style scoped>
+.class1 {
+  background-color: #c8ebf1;
+}
+
+.class2 {
+  background-color: white;
+}
+</style>

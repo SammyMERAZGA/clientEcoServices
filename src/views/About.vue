@@ -119,32 +119,37 @@
       <i class="fas fa-landmark"></i>
       <span class="ml-2"> Mentions légales</span>
     </h3>
-    <h4 class="overline text-decoration-underline text-center mt-3 mb-9">Réutilisations des contenus</h4>
-    <p class="body-2 text-center mb-8 ml-15 mr-15">
-      L’ensemble du matériel du site Eco Services, incluant les textes, les
-      éléments graphiques, les éléments sonores et audiovisuels, les outils de
-      suivi, est la propriété d'Eco Services, éditeur du site, et est protégé par
-      les lois internationales sur les droits d’auteur. Aucun matériel de ce
-      site ne peut être reproduit, modifié, distribué, transmis, republié,
-      affiché ou diffusé sans l’autorisation écrite préalable d'Eco Services. Pour
-      toute demande relative à l’utilisation du matériel, veuillez écrire à :
-      ecoservices.g4@gmail.com
-    </p>
-    <h4 class="overline text-decoration-underline text-center mt-3 mb-9">
-      Données à caractère personnel
-    </h4>
-    <p class="body-2 text-center mb-8 ml-15 mr-15">
-      Conformément à la loi n°78-17 du 6 janvier 1978 modifiée, le traitement
-      des données personnelles fait l’objet d’une déclaration normale auprès de
-      la Commission Nationale de l’Informatique et des Libertés (Cnil), qui en a
-      délivré récépissé sous le numéro 1882211 v 0, à la date du 19/08/2015. Vos
-      données à caractère personnel sont exclusivement destinées au responsable
-      de traitement et aux autres Utilisateurs du Site et ne seront en aucun cas
-      communiquées à des tiers non autorisés. Vous bénéficiez d’un droit
-      d’accès, de rectification et d’opposition des données à caractère
-      personnel vous concernant que vous pouvez exercer en vous adressant par
-      courriel à l’adresse suivante : ecoservices.g4@gmail.com
-    </p>
+    <v-card class="mx-auto" max-width="1000" elevation="8" shaped outlined>
+      <h4 class="overline text-decoration-underline text-center mt-3 mb-9">
+        Réutilisations des contenus
+      </h4>
+      <p class="body-2 text-center mb-8 ml-15 mr-15">
+        L’ensemble du matériel du site Eco Services, incluant les textes, les
+        éléments graphiques, les éléments sonores et audiovisuels, les outils de
+        suivi, est la propriété d'Eco Services, éditeur du site, et est protégé
+        par les lois internationales sur les droits d’auteur. Aucun matériel de
+        ce site ne peut être reproduit, modifié, distribué, transmis, republié,
+        affiché ou diffusé sans l’autorisation écrite préalable d'Eco Services.
+        Pour toute demande relative à l’utilisation du matériel, veuillez écrire
+        à : ecoservices.g4@gmail.com
+      </p>
+      <h4 class="overline text-decoration-underline text-center mt-3 mb-9">
+        Données à caractère personnel
+      </h4>
+      <p class="body-2 text-center mb-8 ml-15 mr-15">
+        Conformément à la loi n°78-17 du 6 janvier 1978 modifiée, le traitement
+        des données personnelles fait l’objet d’une déclaration normale auprès
+        de la Commission Nationale de l’Informatique et des Libertés (Cnil), qui
+        en a délivré récépissé sous le numéro 1882211 v 0, à la date du
+        19/08/2015. Vos données à caractère personnel sont exclusivement
+        destinées au responsable de traitement et aux autres Utilisateurs du
+        Site et ne seront en aucun cas communiquées à des tiers non autorisés.
+        Vous bénéficiez d’un droit d’accès, de rectification et d’opposition des
+        données à caractère personnel vous concernant que vous pouvez exercer en
+        vous adressant par courriel à l’adresse suivante :
+        ecoservices.g4@gmail.com
+      </p>
+    </v-card>
   </div>
 </template>
 

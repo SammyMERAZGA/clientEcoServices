@@ -149,6 +149,9 @@
                       <v-text-field label="Nom de l'article"></v-text-field>
                     </v-col>
                     <v-col cols="12">
+                      <v-autocomplete :items="categories" clearable persistent-hint label="Catégorie"></v-autocomplete>
+                    </v-col>
+                    <v-col cols="12">
                       <v-text-field label="Image" required></v-text-field>
                     </v-col>
                     <v-col cols="12" md="12">
@@ -189,9 +192,7 @@
           </v-dialog>
         </v-col>
         <v-col cols="12" sm="4" class="mt-15">
-          <h1 class="overline text-center mt-5">
-            Ajouter un guide
-          </h1>
+          <h1 class="overline text-center mt-5">Ajouter un guide</h1>
           <v-dialog
             class="mb-15"
             v-model="addGuideDialog"
@@ -253,9 +254,7 @@
           </v-dialog>
         </v-col>
         <v-col cols="12" sm="4" class="mt-15">
-          <h1 class="overline text-center mt-5">
-            Ajouter une catégorie
-          </h1>
+          <h1 class="overline text-center mt-5">Ajouter une catégorie</h1>
           <v-dialog
             class="mb-15"
             v-model="addCategoryDialog"
@@ -284,7 +283,11 @@
                       <v-text-field label="Nom de la catégorie"></v-text-field>
                     </v-col>
                     <v-col cols="12">
-                      <v-text-field label="Icone" placeholder="fas fa-plus-circle" required></v-text-field>
+                      <v-text-field
+                        label="Icone"
+                        placeholder="fas fa-plus-circle"
+                        required
+                      ></v-text-field>
                     </v-col>
                     <v-col cols="12">
                       <v-text-field label="Image" required></v-text-field>
@@ -375,9 +378,29 @@ export default class Commandes extends Vue {
     { name: "Obito", admin: false },
   ];
 
-    quotations = [
-    { lastName: "Merazga", firstName: "Sammy", email: "sammy.merazga@gmail.com", companyName: "Tempo One", companyAddress: "7 Avenue André Roussin", companyCity: "Marseille", companyPostalCode: "13016", service: "Panneau solaire" },
-    { lastName: "Uchiwa", firstName: "Obito", email: "obito.uchiwa@naruto.jp", companyName: "Akatsuki", companyAddress: "TKT", companyCity: "TKT", companyPostalCode: "TKT", service: "Oeil de lune" },
+  categories = ["Catégorie 1", "Catégorie 2", "Catégorie 3"];
+
+  quotations = [
+    {
+      lastName: "Merazga",
+      firstName: "Sammy",
+      email: "sammy.merazga@gmail.com",
+      companyName: "Tempo One",
+      companyAddress: "7 Avenue André Roussin",
+      companyCity: "Marseille",
+      companyPostalCode: "13016",
+      service: "Panneau solaire",
+    },
+    {
+      lastName: "Uchiwa",
+      firstName: "Obito",
+      email: "obito.uchiwa@naruto.jp",
+      companyName: "Akatsuki",
+      companyAddress: "TKT",
+      companyCity: "TKT",
+      companyPostalCode: "TKT",
+      service: "Oeil de lune",
+    },
   ];
 
   addUserDialog = false;
@@ -397,7 +420,7 @@ export default class Commandes extends Vue {
     { text: "Supprimer", value: "delete", sortable: false },
   ];
 
-    headersQuotationsTable = [
+  headersQuotationsTable = [
     {
       text: "Nom",
       align: "start",

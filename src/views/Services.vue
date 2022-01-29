@@ -1,20 +1,49 @@
 <template>
   <div>
-    <h1 class="display-1 text-center mt-3">Services</h1>
-    <h3 class="subtitle-1 text-center mt-3 mb-5">
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum, quasi
-      ullam omnis vitae corporis explicabo.
-    </h3>
+    <h1 class="display-3 text-center mt-3">Services</h1>
     <v-divider class="ml-10 mr-10 mb-10"></v-divider>
+
+    <h1 class="subtitle-1 text-center mt-3 mb-5">
+      Services que nous proposons :
+    </h1>
+
+    <v-row>
+      <v-col cols="12" md="3" v-for="service in services" :key="service.id">
+        <v-card class="mx-auto" max-width="344" elevation="5" outlined>
+          <v-list-item three-line>
+            <v-list-item-content>
+              <div class="text-overline mb-4">{{ service.type }}</div>
+              <v-list-item-title class="text-h5 mb-1">
+                {{ service.name }}
+              </v-list-item-title>
+              <v-list-item-subtitle>{{
+                service.description
+              }}</v-list-item-subtitle>
+            </v-list-item-content>
+
+            <v-list-item-avatar tile size="80" color="grey"
+              ><v-img :src="service.image"></v-img
+            ></v-list-item-avatar>
+          </v-list-item>
+
+          <v-card-actions>
+            <v-btn outlined rounded text> Devis </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v-row>
+
+    <v-divider class="mt-15 ml-10 mr-10 mb-10"></v-divider>
 
     <v-card outlined class="ma-16 rounded-lg" elevation="15">
       <br />
       <h1 class="text-center display-1">
         <i class="fas fa-file-signature"></i>
         <span> Demande de devis</span>
-        </h1>
+      </h1>
       <h2 class="subtitle-1 text-center mt-3">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam porro blanditiis dolores aliquid cumque ullam!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam porro
+        blanditiis dolores aliquid cumque ullam!
       </h2>
       <v-divider class="mt-6 mx-4"></v-divider>
       <br />
@@ -95,7 +124,11 @@
           </v-row>
           <v-row class="align-content justify-center">
             <v-col class="d-flex mt-4" cols="12" sm="6">
-              <v-select :items="services" label="Service" outlined></v-select>
+              <v-select
+                :items="servicesType"
+                label="Service"
+                outlined
+              ></v-select>
             </v-col>
           </v-row>
           <v-row class="align-content justify-center ml-10 mr-10">
@@ -126,6 +159,41 @@ import Component from "vue-class-component";
 
 @Component
 export default class Services extends Vue {
-  services = ["Conseil", "Développement", "Formation", "Réseau"];
+  servicesType = ["Conseil", "Développement", "Formation", "Réseau"];
+
+  services = [
+    {
+      id: 1,
+      name: "Panneau solaire",
+      type: "Installation",
+      description: "Produisez votre propre éléctricité !",
+      image:
+        "https://t3.ftcdn.net/jpg/01/92/27/24/360_F_192272435_0HtuUy0H66lwolEUJc5HQRtsMFAalHxc.jpg",
+    },
+    {
+      id: 2,
+      name: "Maison écologique",
+      type: "Rénovation",
+      description: "Passez du côté vert 💚",
+      image:
+        "https://www.internorm.fr/wp-content/uploads/2016/01/ecological-house-isolated-3d-image.jpg",
+    },
+    {
+      id: 1,
+      name: "Isolation intérieure",
+      type: "Travaux",
+      description: "Isoler votre maison.",
+      image:
+        "https://www.alu-pvc-bois.com/wp-content/uploads/2020/06/e3a32a44-411a-4610-9cf9-2f55a99f20a0.jpg",
+    },
+    {
+      id: 4,
+      name: "Chaudière",
+      type: "Installation",
+      description: "Passez l'hiver éco-responsable 😃",
+      image:
+        "https://static.topchaleur.com/media/catalog/product/image/1600x1600/new/chaudiere-a-granules-hidro-cantina-compact-20765-1.jpg",
+    },
+  ];
 }
 </script>

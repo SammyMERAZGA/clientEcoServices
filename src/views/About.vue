@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="display-3 text-center mt-3 mb-12">À propos</h1>
-    <p class="text-center mb-8">
+    <p class="body-2 text-center mb-8">
       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita in sit
       ut esse illum inventore quo repellendus soluta, eaque voluptatem,
       voluptatum omnis. Exercitationem quaerat, atque voluptatum id sed commodi
@@ -11,7 +11,7 @@
       <i class="fas fa-question-circle"></i>
       <span class="ml-2"> Qui sommes-nous ?</span>
     </h3>
-    <p class="text-center mb-8">
+    <p class="body-2 text-center mb-8">
       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis,
       fuga saepe voluptatibus fugiat harum mollitia!
     </p>
@@ -19,7 +19,7 @@
       <i class="fas fa-bullseye"></i>
       <span class="ml-2"> Notre objectif</span>
     </h3>
-    <p class="text-center mb-8">
+    <p class="body-2 text-center mb-8">
       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis,
       fuga saepe voluptatibus fugiat harum mollitia!
     </p>
@@ -27,29 +27,15 @@
       <i class="fas fa-shopping-bag"></i>
       <span class="ml-2"> Notre boutique</span>
     </h3>
-    <p class="text-center mb-8">
+    <p class="body-2 text-center mb-8">
       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis,
       fuga saepe voluptatibus fugiat harum mollitia!
     </p>
-    <h3 class="display-1 text-center mt-3 mb-9">
-      <i class="fas fa-users"></i>
-      <span class="ml-2"> Notre équipe</span>
-    </h3>
-    <carousel-3d :controls-visible="true" :clickable="false" :height="300">
-      <slide :index="i" :key="i" v-for="(slide, i) in slides">
-        <figure>
-          <img :src="slide.src" />
-          <figcaption>
-            <v-btn text color="white">{{ slide.text }}</v-btn>
-          </figcaption>
-        </figure>
-      </slide>
-    </carousel-3d>
     <h3 class="display-1 text-center mt-15 mb-9">
       <i class="fas fa-envelope"></i>
       <span class="ml-2"> Nous contacter ?</span>
     </h3>
-    <p class="text-center mb-8">
+    <p class="body-2 text-center mb-8">
       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis,
       fuga saepe voluptatibus fugiat harum mollitia!
     </p>
@@ -129,49 +115,50 @@
         </v-col>
       </v-row>
     </v-container>
+    <h3 class="display-1 text-center mt-3 mb-9">
+      <i class="fas fa-landmark"></i>
+      <span class="ml-2"> Mentions légales</span>
+    </h3>
+    <h4 class="overline text-decoration-underline text-center mt-3 mb-9">Réutilisations des contenus</h4>
+    <p class="body-2 text-center mb-8 ml-15 mr-15">
+      L’ensemble du matériel du site Eco Services, incluant les textes, les
+      éléments graphiques, les éléments sonores et audiovisuels, les outils de
+      suivi, est la propriété d'Eco Services, éditeur du site, et est protégé par
+      les lois internationales sur les droits d’auteur. Aucun matériel de ce
+      site ne peut être reproduit, modifié, distribué, transmis, republié,
+      affiché ou diffusé sans l’autorisation écrite préalable d'Eco Services. Pour
+      toute demande relative à l’utilisation du matériel, veuillez écrire à :
+      ecoservices.g4@gmail.com
+    </p>
+    <h4 class="overline text-decoration-underline text-center mt-3 mb-9">
+      Données à caractère personnel
+    </h4>
+    <p class="body-2 text-center mb-8 ml-15 mr-15">
+      Conformément à la loi n°78-17 du 6 janvier 1978 modifiée, le traitement
+      des données personnelles fait l’objet d’une déclaration normale auprès de
+      la Commission Nationale de l’Informatique et des Libertés (Cnil), qui en a
+      délivré récépissé sous le numéro 1882211 v 0, à la date du 19/08/2015. Vos
+      données à caractère personnel sont exclusivement destinées au responsable
+      de traitement et aux autres Utilisateurs du Site et ne seront en aucun cas
+      communiquées à des tiers non autorisés. Vous bénéficiez d’un droit
+      d’accès, de rectification et d’opposition des données à caractère
+      personnel vous concernant que vous pouvez exercer en vous adressant par
+      courriel à l’adresse suivante : ecoservices.g4@gmail.com
+    </p>
   </div>
 </template>
 
 <script>
-import { Carousel3d, Slide } from "vue-carousel-3d";
 import Vue from "vue";
 import Component from "vue-class-component";
 
-@Component({
-  components: {
-    Carousel3d,
-    Slide,
-  },
-})
+@Component
 export default class About extends Vue {
   motifs = [
     "Demande de renseignements",
     "Partenariat",
     "Recrutement",
     "Autres",
-  ];
-
-  slides = [
-    {
-      src: "https://practicaltyping.com/wp-content/uploads/2020/08/gon.png",
-      text: "Gon",
-    },
-    {
-      src: "https://i.pinimg.com/474x/4f/1c/2c/4f1c2ce4ed271c2fa266881dff741cbb.jpg",
-      text: "Killua",
-    },
-    {
-      src: "https://i.pinimg.com/originals/17/79/c5/1779c5f69ba310be8da6856e80039669.jpg",
-      text: "Kurapika",
-    },
-    {
-      src: "https://i.pinimg.com/550x/14/e9/89/14e989620d79a8420906a9d1852b6349.jpg",
-      text: "Leolio",
-    },
-    {
-      src: "https://i.pinimg.com/736x/2a/e3/a9/2ae3a9cd7e0fd614f98a24eda358d62f.jpg",
-      text: "Née avec un bob",
-    },
   ];
 }
 </script>

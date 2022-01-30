@@ -48,7 +48,11 @@
                         </h3>
                       </v-card-text>
                       <div class="text-center mt-1 mb-15">
-                        <v-btn rounded color="yellow accent-3" light
+                        <v-btn
+                          rounded
+                          color="yellow accent-3"
+                          light
+                          @click="login()"
                           >Connexion</v-btn
                         >
                       </div>
@@ -109,23 +113,22 @@
                         <v-form>
                           <v-text-field
                             label="Pseudo"
-                            name="username"
+                            :value="username"
                             prepend-icon="fas fa-user"
                             type="text"
                             color="blue accent-3"
                           />
                           <v-text-field
                             label="Email"
-                            name="Email"
+                            :value="email"
                             prepend-icon="far fa-envelope"
                             type="text"
                             color="blue accent-3"
                           />
 
                           <v-text-field
-                            id="password"
                             label="Mot de passe"
-                            name="password"
+                            :value="password"
                             prepend-icon="fas fa-lock"
                             type="password"
                             color="blue accent-3"
@@ -133,7 +136,11 @@
                         </v-form>
                       </v-card-text>
                       <div class="text-center mt-n5 mb-12">
-                        <v-btn rounded color="light-blue darken-2" dark @click="register()"
+                        <v-btn
+                          rounded
+                          color="light-blue darken-2"
+                          dark
+                          @click="register()"
                           >Inscription</v-btn
                         >
                       </div>
@@ -152,33 +159,54 @@
 <script lang="ts">
 import Vue from "vue";
 import Component from "vue-class-component";
-// import axios from "axios";
-// import { User } from "../types/User";
+import axios from "axios";
 
 @Component
 export default class Login extends Vue {
   step = 1;
 
-  // register(User: User): void {
-  //   axios
-  //     .post("http://localhost:3000/api/users", User)
-  //     .then(response => {
-  //       console.log(response);
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // }
+  username = "";
+  email = "";
+  password = "";
+
+  register(): void {
+    axios
+      .post("/api/register", {
+        username: this.username,
+        email: this.email,
+        password: this.password,
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  login(): void {
+    axios
+      .post("/api/login", {
+        email: this.email,
+        password: this.password,
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 }
 </script>
 
 <style scoped>
-#bgC {
-  background-color: #eeeeee;
-}
-
 #btnRegister,
 #btnLogin {
   margin-top: 40%;
+}
+
+#bgC {
+  background-color: #eeeeee;
 }
 </style>

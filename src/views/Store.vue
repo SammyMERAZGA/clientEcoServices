@@ -87,7 +87,7 @@
                 <v-list-item-subtitle class="mt-1">
                   {{ product.description }}
                 </v-list-item-subtitle>
-                <strong class="mt-3"> {{ product.price }} </strong>
+                <strong class="mt-3"> {{ product.price }} € </strong>
               </v-list-item-content>
             </v-list-item>
             <v-card-actions>
@@ -173,7 +173,7 @@
       <v-divider class="mx-4"></v-divider>
       <v-toolbar color="rgba(0,0,0,0)" flat>
         <strong>Total :</strong><v-spacer></v-spacer
-        ><strong>{{ cartTotalAmount }} €</strong>
+        ><strong>{{ cartTotalAmount() }} €</strong>
       </v-toolbar>
       <v-divider class="mx-4 mb-5"></v-divider>
       <strong class="ml-5">Méthode de paiement :</strong>

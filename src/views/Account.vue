@@ -45,14 +45,6 @@
                     </div>
                   </div>
                   <div class="mb-3">
-                    <label class="form-label">Bio</label>
-                    <textarea
-                      class="form-control"
-                      rows="5"
-                      placeholder="Entrez une biographie"
-                    ></textarea>
-                  </div>
-                  <div class="mb-3">
                     <label class="form-label">Email</label>
                     <input
                       class="form-control"
@@ -60,11 +52,17 @@
                       value="sammy.merazga@gmail.com"
                     />
                   </div>
-                  <label class="form-label">Mot de passe</label>
+                  <label class="form-label mt-1">Mot de passe</label>
                   <input
                     class="form-control"
                     type="password"
                     placeholder="Entrez votre mot de passe"
+                  />
+                  <label class="form-label mt-4">Nouveau mot de passe</label>
+                  <input
+                    class="form-control"
+                    type="password"
+                    placeholder="Entrez votre nouveau mot de passe"
                   />
                 </div>
                 <div class="card-footer text-end">

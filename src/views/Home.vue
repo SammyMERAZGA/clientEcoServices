@@ -165,7 +165,7 @@ export default class Home extends Vue {
 
 @keyframes text {
   0% {
-    color: black;
+    color: rgb(12, 12, 170);
     margin-bottom: -10px;
   }
   30% {

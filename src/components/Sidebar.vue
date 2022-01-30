@@ -72,6 +72,12 @@ export default class Sidebar extends Vue {
       color: "green darken-3",
     },
     { icon: "fas fa-user", text: "Connexion", route: "/login", color: "green darken-3" },
+    {
+      icon: "fas fa-user-secret",
+      text: "Back-Office",
+      route: "/backOffice",
+      color: "blue darken-3",
+    },
   ];
 }
 </script>

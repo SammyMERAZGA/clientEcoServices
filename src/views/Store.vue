@@ -181,29 +181,24 @@
         <v-container>
           <v-row justify="center">
             <v-col cols="12" md="4">
-              <v-item v-slot="{ active, toggle }">
+              <v-item>
                 <v-card
                   color="#F6EFEF"
-                  :class="active ? 'borderme' : ''"
                   class="d-flex align-center rounded-lg mt-3"
                   dark
                   height="70"
-                  @click="toggle"
                   flat
+                  to="/paypal"
                 >
                   <v-row>
                     <v-col cols="12" md="12">
                       <v-list-item three-line class="text-center mt-1">
                         <v-list-item-content>
                           <div>
-                            <v-icon
-                              :color="active ? 'light-blue darken-4' : 'black'"
-                              >fab fa-paypal</v-icon
-                            >
+                            <v-icon color="light-blue darken-4">fab fa-paypal</v-icon>
                           </div>
                           <v-list-item-subtitle
-                            :class="active ? 'blue--text' : 'black--text'"
-                            class="mt-n2 mb-3 caption"
+                            class="mt-n2 mb-3 caption blue--text"
                             >PayPal</v-list-item-subtitle
                           >
                         </v-list-item-content>
@@ -214,30 +209,28 @@
               </v-item>
             </v-col>
             <v-col cols="12" md="4">
-              <v-item v-slot="{ active, toggle }">
+              <v-item>
                 <v-card
                   color="#F6EFEF"
-                  :class="active ? 'borderme' : ''"
                   class="d-flex align-center rounded-lg mt-3"
                   dark
                   height="70"
-                  @click="toggle"
                   flat
+                  to="/creditCard"
                 >
                   <v-row>
                     <v-col cols="12">
                       <v-list-item three-line class="text-center mb-2">
                         <v-list-item-content>
                           <div>
-                            <v-icon
-                              :color="active ? 'light-blue darken-4' : 'black'"
+                            <v-icon color="light-blue darken-4"
                               >fas fa-credit-card</v-icon
                             >
                           </div>
                           <v-list-item-subtitle
-                            :class="active ? 'blue--text' : 'black--text'"
-                            class="mt-n4 caption"
-                            >CB</v-list-item-subtitle
+                            class="mt-n4 caption blue--text"
+                          >
+                            CB</v-list-item-subtitle
                           >
                         </v-list-item-content>
                       </v-list-item>

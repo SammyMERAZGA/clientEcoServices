@@ -121,9 +121,9 @@ export default class Home extends Vue {
       name: "Connexion",
       url: "/login",
       icon: "fas fa-user-circle",
-      iconColor: "amber",
+      iconColor: "blue lighten-2",
       image:
-        "https://www.pinclipart.com/picdir/middle/532-5328720_girl-ecology-plant-clipart-makers-mark-png-download.png",
+        "https://wp.ecotropics.org/wp-content/uploads/2020/05/restrepo-a-avatars.png",
     },
     {
       id: 5,

@@ -6,6 +6,23 @@
       <v-row>
         <v-card width="1500" class="rounded-xl" elevation="5">
           <h1 class="overline text-center mt-5">Liste des utilisteurs</h1>
+          <v-tooltip top>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                color="primary"
+                id="tooltip"
+                dark
+                icon
+                v-bind="attrs"
+                v-on="on"
+                ><v-icon>fas fa-info-circle</v-icon>
+              </v-btn>
+            </template>
+            <span
+              >Il faut actualiser la page pour que les modifications soient
+              prises en compte.</span
+            >
+          </v-tooltip>
           <v-dialog v-model="addUserDialog" persistent max-width="600px">
             <template v-slot:activator="{ on, attrs }">
               <v-btn
@@ -25,30 +42,35 @@
               <v-card-text>
                 <v-container>
                   <v-row>
-                    <v-col cols="12" sm="6" md="4">
-                      <v-text-field label="Nom"></v-text-field>
+                    <v-col cols="12" sm="6" md="5">
+                      <v-text-field
+                        v-model="username"
+                        label="Pseudo"
+                      ></v-text-field>
                     </v-col>
-                    <v-col cols="12" sm="6" md="4">
-                      <v-text-field label="Prénom"></v-text-field>
-                    </v-col>
-                    <v-col cols="12" sm="6" md="4">
-                      <v-text-field label="Pseudo"></v-text-field>
-                    </v-col>
-                    <v-col cols="12">
-                      <v-text-field label="Email *" required></v-text-field>
+                    <v-col cols="12" sm="6" md="7">
+                      <v-select
+                        :items="role"
+                        v-model="type"
+                        label="Professionnel ou particulier"
+                        required
+                      >
+                      </v-select>
                     </v-col>
                     <v-col cols="12">
                       <v-text-field
+                        v-model="email"
+                        label="Email *"
+                        required
+                      ></v-text-field>
+                    </v-col>
+                    <v-col cols="12">
+                      <v-text-field
+                        v-model="password"
                         label="Password *"
                         type="password"
                         required
                       ></v-text-field>
-                    </v-col>
-                    <v-col cols="12" sm="6">
-                      <v-checkbox
-                        v-model="checkbox"
-                        :label="`Administrateur`"
-                      ></v-checkbox>
                     </v-col>
                   </v-row>
                 </v-container>
@@ -65,7 +87,10 @@
                 <v-btn
                   color="blue darken-1"
                   text
-                  @click="addUserDialog = false"
+                  @click="
+                    addUserDialog = false;
+                    register();
+                  "
                 >
                   Ajouter
                 </v-btn>
@@ -146,25 +171,39 @@
                 <v-container>
                   <v-row>
                     <v-col cols="12">
-                      <v-text-field label="Nom de l'article"></v-text-field>
+                      <v-text-field
+                        v-model="productName"
+                        label="Nom de l'article"
+                      ></v-text-field>
                     </v-col>
                     <v-col cols="12">
-                      <v-autocomplete :items="categories" clearable persistent-hint label="Catégorie"></v-autocomplete>
+                      <v-select
+                        :items="categories"
+                        clearable
+                        persistent-hint
+                        label="Catégorie"
+                      ></v-select>
                     </v-col>
                     <v-col cols="12">
-                      <v-text-field label="Image" required></v-text-field>
+                      <v-text-field
+                        label="Image"
+                        v-model="productImage"
+                        required
+                      ></v-text-field>
                     </v-col>
                     <v-col cols="12" md="12">
                       <v-textarea
                         outlined
                         name="input-7-4"
                         label="Description"
+                        v-model="productDescription"
                       ></v-textarea>
                     </v-col>
                     <v-col cols="12" md="4">
                       <v-text-field
                         label="Prix"
                         placeholder="29.99"
+                        v-model="productPrice"
                         required
                       ></v-text-field>
                     </v-col>
@@ -183,7 +222,10 @@
                 <v-btn
                   color="blue darken-1"
                   text
-                  @click="addArticleDialog = false"
+                  @click="
+                    addArticleDialog = false;
+                    createProduct();
+                  "
                 >
                   Ajouter
                 </v-btn>
@@ -218,15 +260,22 @@
                 <v-container>
                   <v-row>
                     <v-col cols="12">
-                      <v-text-field label="Titre du guide"></v-text-field>
+                      <v-text-field
+                        v-model="titleGuide"
+                        label="Titre du guide"
+                      ></v-text-field>
                     </v-col>
                     <v-col cols="12">
-                      <v-text-field label="Image" required></v-text-field>
+                      <v-text-field
+                        v-model="imageGuide"
+                        label="Image"
+                        required
+                      ></v-text-field>
                     </v-col>
                     <v-col cols="12" md="12">
                       <v-textarea
                         outlined
-                        name="input-7-4"
+                        v-model="descriptionGuide"
                         label="Description"
                       ></v-textarea>
                     </v-col>
@@ -245,7 +294,10 @@
                 <v-btn
                   color="blue darken-1"
                   text
-                  @click="addGuideDialog = false"
+                  @click="
+                    addGuideDialog = false;
+                    createGuide();
+                  "
                 >
                   Ajouter
                 </v-btn>
@@ -280,17 +332,25 @@
                 <v-container>
                   <v-row>
                     <v-col cols="12">
-                      <v-text-field label="Nom de la catégorie"></v-text-field>
+                      <v-text-field
+                        v-model="categoryName"
+                        label="Nom de la catégorie"
+                      ></v-text-field>
                     </v-col>
                     <v-col cols="12">
                       <v-text-field
                         label="Icone"
                         placeholder="fas fa-plus-circle"
+                        v-model="categoryIcone"
                         required
                       ></v-text-field>
                     </v-col>
                     <v-col cols="12">
-                      <v-text-field label="Image" required></v-text-field>
+                      <v-text-field
+                        v-model="categoryImage"
+                        label="Image"
+                        required
+                      ></v-text-field>
                     </v-col>
                   </v-row>
                 </v-container>
@@ -307,7 +367,10 @@
                 <v-btn
                   color="blue darken-1"
                   text
-                  @click="addCategoryDialog = false"
+                  @click="
+                    addCategoryDialog = false;
+                    createCategory();
+                  "
                 >
                   Ajouter
                 </v-btn>
@@ -370,51 +433,24 @@
 <script lang="ts">
 import Vue from "vue";
 import Component from "vue-class-component";
+import axios from "axios";
+import { User } from "../types/User";
+import { Quotation } from "../types/Quotation";
+import { Category } from "@/types/Category";
 
 @Component
 export default class Commandes extends Vue {
-  users = [
-    { name: "Sammy", admin: true },
-    { name: "Obito", admin: false },
-  ];
-
-  categories = ["Catégorie 1", "Catégorie 2", "Catégorie 3"];
-
-  quotations = [
-    {
-      lastName: "Merazga",
-      firstName: "Sammy",
-      email: "sammy.merazga@gmail.com",
-      companyName: "Tempo One",
-      companyAddress: "7 Avenue André Roussin",
-      companyCity: "Marseille",
-      companyPostalCode: "13016",
-      service: "Panneau solaire",
-    },
-    {
-      lastName: "Uchiwa",
-      firstName: "Obito",
-      email: "obito.uchiwa@naruto.jp",
-      companyName: "Akatsuki",
-      companyAddress: "TKT",
-      companyCity: "TKT",
-      companyPostalCode: "TKT",
-      service: "Oeil de lune",
-    },
-  ];
-
-  addUserDialog = false;
-  addArticleDialog = false;
-  addGuideDialog = false;
-  addCategoryDialog = false;
-  checkbox = false;
+  users: User[] = [];
+  quotations: Quotation[] = [];
+  role = ["Particulier", "Société"];
 
   headersUsersTable = [
     {
-      text: "Nom",
+      text: "Pseudo",
       align: "start",
-      value: "name",
+      value: "username",
     },
+    { text: "Rôle", value: "type" },
     { text: "Admin", value: "admin" },
     { text: "Modifier", value: "update", sortable: false },
     { text: "Supprimer", value: "delete", sortable: false },
@@ -435,6 +471,114 @@ export default class Commandes extends Vue {
     { text: "Service", value: "service" },
     { text: "Supprimer", value: "delete", sortable: false },
   ];
+
+  async allUsers(): Promise<void> {
+    this.users = (await axios.get(`/api/users`)).data as User[];
+  }
+
+  async allQuotations(): Promise<void> {
+    this.quotations = (await axios.get(`/api/quotations`)).data as Quotation[];
+  }
+
+  mounted(): void {
+    this.allUsers();
+    this.allQuotations();
+    this.allCategories();
+  }
+
+  addUserDialog = false;
+  addArticleDialog = false;
+  addGuideDialog = false;
+  addCategoryDialog = false;
+  checkbox = false;
+
+  username = "";
+  password = "";
+  email = "";
+  type = "";
+
+  register(): void {
+    axios
+      .post("/api/register", {
+        username: this.username,
+        email: this.email,
+        password: this.password,
+        type: this.type,
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  categories: Category[] = [];
+
+  async allCategories(): Promise<void> {
+    this.categories = (await axios.get(`/api/categories`)).data as Category[];
+  }
+
+  productName = "";
+  productCategory = "";
+  productImage = "";
+  productDescription = "";
+  productPrice = "";
+
+  createProduct(): void {
+    axios
+      .post("/api/createProduct", {
+        name: this.productName,
+        category: this.productCategory,
+        image: this.productImage,
+        description: this.productDescription,
+        price: this.productPrice,
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  titleGuide = "";
+  imageGuide = "";
+  descriptionGuide = "";
+
+  createGuide(): void {
+    axios
+      .post("/api/createGuide", {
+        title: this.titleGuide,
+        image: this.imageGuide,
+        description: this.descriptionGuide,
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  categoryName = "";
+  categoryIcone = "";
+  categoryImage = "";
+
+  createCategory(): void {
+    axios
+      .post("/api/createCategory", {
+        name: this.categoryName,
+        icone: this.categoryIcone,
+        image: this.categoryImage,
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 }
 </script>
 
@@ -446,5 +590,11 @@ export default class Commandes extends Vue {
 #addBtnBottom {
   margin-left: 170px;
   margin-top: 10px;
+}
+
+#tooltip {
+  margin-top: 1%;
+  margin-left: 1213px;
+  margin-bottom: 1%;
 }
 </style>

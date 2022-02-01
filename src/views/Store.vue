@@ -3,9 +3,17 @@
     <SidebarRight />
     <v-container>
       <v-toolbar color="rgba(0,0,0,0)" flat>
-        <v-toolbar-title class="mt-n3"
-          >Choisissez une catégorie</v-toolbar-title
-        >
+          <v-col class="d-flex" cols="12" sm="3">
+            <v-select
+              :items="selectCategories"
+              label="Choisir une catégorie"
+              solo
+              class="mt-12 mb-5 rounded-xl"
+            ></v-select>
+            <v-btn icon class="ml-2 mt-12">
+              <v-icon>fas fa-search</v-icon></v-btn
+            >
+          </v-col>
         <v-spacer></v-spacer>
         <v-toolbar placeholder="Rechercher..." shaped flat outlined>
           <v-autocomplete
@@ -17,55 +25,8 @@
           ></v-autocomplete>
         </v-toolbar>
       </v-toolbar>
-      <v-item-group mandatory class="mt-4">
-        <v-container>
-          <v-row justify="center" no-gutters>
-            <v-col
-              v-for="category in categories"
-              :key="category.id"
-              cols="12"
-              md="2"
-              sm="4"
-            >
-              <v-hover>
-                <v-card
-                  elevation="5"
-                  class="f-flex align-center rounded-lg mx-2"
-                  height="160"
-                  flat
-                  slot-scope="{ hover }"
-                  :class="`${hover ? 'class1' : 'class2'}`"
-                >
-                  <v-row>
-                    <v-col cols="12" sm="12">
-                      <v-list-item three-line class="text-center">
-                        <v-list-item-content>
-                          <div align="center" justify="center">
-                            <v-img
-                              max-height="90"
-                              max-width="90"
-                              contain
-                              :src="category.image"
-                            ></v-img>
-                          </div>
-                          <v-list-item-subtitle
-                            :class="active ? 'green--text' : 'black--text'"
-                            class="caption mt-4"
-                          >
-                            {{ category.name }}
-                          </v-list-item-subtitle>
-                        </v-list-item-content>
-                      </v-list-item>
-                    </v-col>
-                  </v-row>
-                </v-card>
-              </v-hover>
-            </v-col>
-          </v-row>
-        </v-container>
-      </v-item-group>
       <v-toolbar color="#EEEEEE" flat>
-        <v-toolbar-title class="mb-5">Tout</v-toolbar-title>
+        <v-toolbar-title class="mb-5 mt-10">Tout</v-toolbar-title>
       </v-toolbar>
       <v-row>
         <v-col cols="12" sm="6" v-for="product in products" :key="product.id">
@@ -166,7 +127,7 @@
             </v-btn>
           </v-list-item-content>
           <v-list-item-action class="caption"
-            >{{ product.price }}€</v-list-item-action
+            >{{ cartTotal(product) }}€</v-list-item-action
           >
         </v-list-item>
       </v-list>
@@ -195,7 +156,9 @@
                       <v-list-item three-line class="text-center mt-1">
                         <v-list-item-content>
                           <div>
-                            <v-icon color="light-blue darken-4">fab fa-paypal</v-icon>
+                            <v-icon color="light-blue darken-4"
+                              >fab fa-paypal</v-icon
+                            >
                           </div>
                           <v-list-item-subtitle
                             class="mt-n2 mb-3 caption blue--text"
@@ -257,6 +220,7 @@ import axios from "axios";
 export default class Store extends Vue {
   products: Product[] = [];
   categories: Category[] = [];
+  selectCategories = ["Maison", "Produits", "Pack", "Autres"];
 
   cart: Product[] = [];
 
@@ -287,7 +251,7 @@ export default class Store extends Vue {
   }
 
   cartRemoveItem(id: number): void {
-    this.$delete(this.cart, id);
+    this.cart.splice(id, 1);
   }
 
   cartMinusOne(product: Product, id: number): void {
@@ -303,6 +267,13 @@ export default class Store extends Vue {
     for (let product in this.cart) {
       total = total + this.cart[product].quantity * this.cart[product].price;
     }
+    return total;
+  }
+
+  cartTotal(product: Product): number {
+    let total = 0;
+
+    total += product.quantity * product.price;
     return total;
   }
 

@@ -9,25 +9,17 @@
                 <v-window-item :value="1">
                   <v-row>
                     <v-col cols="12" md="8">
-                      <v-card-text class="mt-12">
+                      <v-card-text class="mt-5">
                         <h1
-                          class="text-center display-1 black--text text--accent-3"
+                          class="text-center display-1 black--text mb-12"
                         >
                           Connexion
                         </h1>
-                        <div class="text-center mt-4">
-                          <v-btn class="mx-2" fab color="indigo" outlined>
-                            <v-icon>fab fa-facebook-f</v-icon>
-                          </v-btn>
-
-                          <v-btn class="mx-2" fab color="red" outlined>
-                            <v-icon>mdi-gmail</v-icon>
-                          </v-btn>
-                        </div>
                         <v-form>
                           <v-text-field
                             label="Email"
                             name="Email"
+                            v-model="email"
                             class="ml-3"
                             prepend-icon="far fa-envelope"
                             type="text"
@@ -36,6 +28,7 @@
                           <v-text-field
                             id="password"
                             label="Mot de passe"
+                            v-model="password"
                             name="password"
                             class="ml-3"
                             prepend-icon="fas fa-lock"
@@ -101,26 +94,24 @@
                         >
                           Inscription
                         </h1>
-                        <div class="text-center mt-4">
-                          <v-btn class="mx-2" fab color="indigo" outlined>
-                            <v-icon>fab fa-facebook-f</v-icon>
-                          </v-btn>
-
-                          <v-btn class="mx-2" fab color="red" outlined>
-                            <v-icon>mdi-gmail</v-icon>
-                          </v-btn>
-                        </div>
                         <v-form>
+                          <v-select
+                            :items="role"
+                            class="mt-10"
+                            prepend-icon="fas fa-user-tie"
+                            label="Particulier ou professionnel ?"
+                            v-model="type"
+                          ></v-select>
                           <v-text-field
                             label="Pseudo"
-                            :value="username"
-                            prepend-icon="fas fa-user"
+                            v-model="username"
+                            prepend-icon="fas fa-user-circle"
                             type="text"
                             color="blue accent-3"
                           />
                           <v-text-field
                             label="Email"
-                            :value="email"
+                            v-model="email"
                             prepend-icon="far fa-envelope"
                             type="text"
                             color="blue accent-3"
@@ -128,7 +119,7 @@
 
                           <v-text-field
                             label="Mot de passe"
-                            :value="password"
+                            v-model="password"
                             prepend-icon="fas fa-lock"
                             type="password"
                             color="blue accent-3"
@@ -165,9 +156,12 @@ import axios from "axios";
 export default class Login extends Vue {
   step = 1;
 
+  role = [ "Particulier", "Société" ];
+
   username = "";
-  email = "";
   password = "";
+  email = "";
+  type = "";
 
   register(): void {
     axios
@@ -175,6 +169,7 @@ export default class Login extends Vue {
         username: this.username,
         email: this.email,
         password: this.password,
+        type: this.type,
       })
       .then((response) => {
         console.log(response);
@@ -184,26 +179,29 @@ export default class Login extends Vue {
       });
   }
 
-  login(): void {
-    axios
-      .post("/api/login", {
-        email: this.email,
-        password: this.password,
-      })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+  // login(): void {
+  //   axios
+  //     .post("/api/login", {
+  //       email: this.email,
+  //       password: this.password,
+  //     })
+  //     .then((response) => {
+  //       console.log(response);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }
 }
 </script>
 
 <style scoped>
-#btnRegister,
 #btnLogin {
-  margin-top: 40%;
+  margin-top: 51%;
+}
+
+#btnRegister {
+  margin-top: 20%;
 }
 
 #bgC {

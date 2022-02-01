@@ -3,10 +3,6 @@
     <h1 class="display-3 text-center mt-3">Services</h1>
     <v-divider class="ml-10 mr-10 mb-10"></v-divider>
 
-    <h1 class="subtitle-1 text-center mt-3 mb-5">
-      Services que nous proposons :
-    </h1>
-
     <v-row>
       <v-col cols="12" md="3" v-for="service in services" :key="service.id">
         <v-hover>
@@ -35,7 +31,9 @@
             </v-list-item>
 
             <v-card-actions>
-              <v-btn outlined rounded text> Devis </v-btn>
+              <v-btn outlined rounded text>
+                Devis
+              </v-btn>
             </v-card-actions>
           </v-card>
         </v-hover>

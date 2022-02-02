@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-holder bg-gray-100">
-      <div class="container px-lg-4 ">
+      <div class="container px-lg-4">
         <section>
           <div class="row">
             <div class="col-lg-4">
@@ -36,13 +36,14 @@
                       />
                     </div>
                     <div class="col">
-                      <label class="form-label">Nom</label>
+                      <label class="form-label">Pseudo</label>
                       <input
                         class="form-control"
                         placeholder="Votre nom"
-                        value="Sammy MERAZGA"
+                        value="Merazga"
                       />
                     </div>
+                    <!-- {{ userSmy }} -->
                   </div>
                   <div class="mb-3">
                     <label class="form-label">Email</label>
@@ -57,6 +58,7 @@
                     class="form-control"
                     type="password"
                     placeholder="Entrez votre mot de passe"
+                    value="root"
                   />
                   <label class="form-label mt-4">Nouveau mot de passe</label>
                   <input
@@ -84,6 +86,7 @@
                           class="form-control"
                           type="text"
                           placeholder="Nom de l'entreprise"
+                          value="Tempo One"
                         />
                       </div>
                     </div>
@@ -94,6 +97,7 @@
                           class="form-control"
                           type="text"
                           placeholder="Votre pseudo"
+                          value="Smyy"
                         />
                       </div>
                     </div>
@@ -104,6 +108,7 @@
                           class="form-control"
                           type="email"
                           placeholder="E-mail"
+                          value="sammy.merazga@gmail.com"
                         />
                       </div>
                     </div>
@@ -114,6 +119,7 @@
                           class="form-control"
                           type="text"
                           placeholder="Votre prénom"
+                          value="Sammy"
                         />
                       </div>
                     </div>
@@ -124,6 +130,7 @@
                           class="form-control"
                           type="text"
                           placeholder="Votre nom"
+                          value="Merazga"
                         />
                       </div>
                     </div>
@@ -134,6 +141,7 @@
                           class="form-control"
                           type="text"
                           placeholder="Adresse"
+                          value="My Address"
                         />
                       </div>
                     </div>
@@ -144,6 +152,7 @@
                           class="form-control"
                           type="text"
                           placeholder="Ville"
+                          value="Marseille"
                         />
                       </div>
                     </div>
@@ -154,18 +163,19 @@
                           class="form-control"
                           type="number"
                           placeholder="Code postal"
+                          value="13015"
                         />
                       </div>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-sm-6 col-md-5">
                       <div class="mb-4">
                         <label class="form-label">Pays</label>
-                        <select class="form-control custom-select">
-                          <option value="">France métropolitaine</option>
-                          <option value="">
-                            Département et région d'outre-mer
-                          </option>
-                        </select>
+                        <input
+                          class="form-control"
+                          type="text"
+                          placeholder="Pays"
+                          value="France"
+                        />
                       </div>
                     </div>
                     <div class="col-md-12">
@@ -197,10 +207,22 @@
 <script lang="ts">
 import Vue from "vue";
 import Component from "vue-class-component";
+import { User } from "../types/User";
+import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 @Component
-export default class Account extends Vue {}
+export default class Account extends Vue {
+  userSmy: User[] = [];
+
+  async user(): Promise<void> {
+    this.userSmy = (await axios.get(`/api/user`)).data as User[];
+  }
+
+  mounted(): void {
+    this.user();
+  }
+}
 </script>
 
 <style scoped>

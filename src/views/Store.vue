@@ -3,18 +3,16 @@
     <SidebarRight />
     <v-container>
       <v-toolbar color="rgba(0,0,0,0)" flat>
-          <v-col class="d-flex" cols="12" sm="3">
-            <v-select
-              :items="selectCategories"
-              label="Choisir une catégorie"
-              solo
-              class="mt-12 mb-5 rounded-xl"
-            ></v-select>
-            <v-btn icon class="ml-2 mt-12">
-              <v-icon>fas fa-search</v-icon></v-btn
-            >
-          </v-col>
-        <v-spacer></v-spacer>
+        <!-- <v-col class="d-flex" cols="12" sm="3">
+          <v-select
+            :items="selectCategories"
+            label="Choisir une catégorie"
+            solo
+            class="mt-12 mb-5 rounded-xl"
+          ></v-select>
+          <v-btn icon class="ml-2 mt-12"> <v-icon>fas fa-search</v-icon></v-btn>
+        </v-col>
+        <v-spacer></v-spacer> -->
         <v-toolbar placeholder="Rechercher..." shaped flat outlined>
           <v-autocomplete
             class="mt-4"
@@ -25,12 +23,15 @@
           ></v-autocomplete>
         </v-toolbar>
       </v-toolbar>
+      <v-toolbar class="mt-5 mb-2 rounded-xl body-1" flat color="#EEEEEE">
+        <v-toolbar-title>Démarche zéro déchet</v-toolbar-title>
+      </v-toolbar>
       <v-toolbar color="#EEEEEE" flat>
-        <v-toolbar-title class="mb-5 mt-10">Tout</v-toolbar-title>
+        <v-toolbar-title class="mb-5 mt-10 body-1">Nos produits :</v-toolbar-title>
       </v-toolbar>
       <v-row>
-        <v-col cols="12" sm="6" v-for="product in products" :key="product.id">
-          <v-card class="rounded-lg">
+        <v-col cols="12" sm="4" v-for="product in products" :key="product.id">
+          <v-card class="rounded-lg" elevation="8">
             <v-list-item three-line>
               <v-img
                 class="mr-8 mb-5 mt-5"
@@ -39,18 +40,80 @@
                 :src="product.image"
               >
               </v-img>
-              <v-list-item-content class="text-h5">
+              <v-list-item-content class="body-1">
                 {{ product.name }}
-                <v-list-item-subtitle class="mt-1">
+                <!-- <v-list-item-subtitle class="mt-1">
                   <v-icon>{{ product.category.icone }}</v-icon>
                   <span class="ml-2"> {{ product.category.name }}</span>
-                </v-list-item-subtitle>
-                <v-list-item-subtitle class="mt-1">
-                  {{ product.description }}
-                </v-list-item-subtitle>
+                </v-list-item-subtitle> -->
                 <strong class="mt-3"> {{ product.price }} € </strong>
               </v-list-item-content>
             </v-list-item>
+            <v-card-actions>
+              <v-btn
+                color="green darken-1"
+                icon
+                dark
+                @click="idProduit = product.id"
+                id="consultProductBtn"
+              >
+                <v-icon class="mr-3">fas fa-info-circle</v-icon>
+                Consulter le produit
+              </v-btn>
+            </v-card-actions>
+            <v-dialog
+              v-if="idProduit == product.id"
+              v-model="dialog"
+              persistent
+              width="600px"
+            >
+              <v-card>
+                <v-card-title class="justify-center text-center">
+                  <span class="text-h5">{{ product.name }}</span>
+                </v-card-title>
+                <div class="d-flex justify-content-between">
+                  <v-img
+                    class="mr-8 ml-8 mb-5 mt-5"
+                    max-width="200"
+                    height="200"
+                    :src="product.image"
+                  >
+                  </v-img>
+                  <v-row no-gutters>
+                    <v-card-text class="mt-5 text-center">
+                      {{ product.description }}
+                    </v-card-text>
+                    <v-card-text class="mb-15 text-center">
+                      {{ product.description2 }}
+                    </v-card-text>
+                  </v-row>
+                </div>
+
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn
+                    class="mr-0"
+                    color="red darken-1"
+                    text
+                    @click="idProduit = 0"
+                  >
+                    Retour
+                  </v-btn>
+                  <v-btn
+                    color="#12A4E4"
+                    text
+                    v-bind="attrs"
+                    v-on="on"
+                    width="300px"
+                    class="mr-10"
+                    @click="addToCart(product)"
+                  >
+                    <v-icon class="mr-2">mdi-cart</v-icon>
+                    Ajouter au panier
+                  </v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-dialog>
             <v-card-actions>
               <v-btn
                 color="#12A4E4"
@@ -213,14 +276,17 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 import { Product } from "../types/Product";
-import { Category } from "../types/Category";
+// import { Category } from "../types/Category";
 import axios from "axios";
 
 @Component
 export default class Store extends Vue {
   products: Product[] = [];
-  categories: Category[] = [];
-  selectCategories = ["Maison", "Produits", "Pack", "Autres"];
+  // categories: Category[] = [];
+  // selectCategories = ["Maison", "Produits", "Pack", "Autres"];
+
+  dialog = true;
+  idProduit = 0;
 
   cart: Product[] = [];
 
@@ -228,13 +294,13 @@ export default class Store extends Vue {
     this.products = (await axios.get(`/api/products`)).data as Product[];
   }
 
-  async allCategories(): Promise<void> {
-    this.categories = (await axios.get(`/api/categories`)).data as Category[];
-  }
+  // async allCategories(): Promise<void> {
+  //   this.categories = (await axios.get(`/api/categories`)).data as Category[];
+  // }
 
   mounted(): void {
     this.allProducts();
-    this.allCategories();
+    // this.allCategories();
   }
 
   addToCart(product: Product): unknown {
@@ -293,5 +359,9 @@ export default class Store extends Vue {
 
 .class2 {
   background-color: white;
+}
+
+#consultProductBtn {
+  margin-left: 45%;
 }
 </style>

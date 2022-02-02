@@ -176,14 +176,17 @@
                         label="Nom de l'article"
                       ></v-text-field>
                     </v-col>
-                    <v-col cols="12">
+                    <!-- <v-col cols="12">
                       <v-select
                         :items="categories"
+                        v-model="category"
+                        name="category"
+                        item-text="name"
                         clearable
                         persistent-hint
                         label="Catégorie"
                       ></v-select>
-                    </v-col>
+                    </v-col> -->
                     <v-col cols="12">
                       <v-text-field
                         label="Image"
@@ -305,7 +308,8 @@
             </v-card>
           </v-dialog>
         </v-col>
-        <v-col cols="12" sm="4" class="mt-15">
+
+        <!-- <v-col cols="12" sm="4" class="mt-15">
           <h1 class="overline text-center mt-5">Ajouter une catégorie</h1>
           <v-dialog
             class="mb-15"
@@ -377,7 +381,7 @@
               </v-card-actions>
             </v-card>
           </v-dialog>
-        </v-col>
+        </v-col> -->
       </v-row>
     </v-container>
 
@@ -436,7 +440,7 @@ import Component from "vue-class-component";
 import axios from "axios";
 import { User } from "../types/User";
 import { Quotation } from "../types/Quotation";
-import { Category } from "@/types/Category";
+// import { Category } from "@/types/Category";
 
 @Component
 export default class Commandes extends Vue {
@@ -483,7 +487,7 @@ export default class Commandes extends Vue {
   mounted(): void {
     this.allUsers();
     this.allQuotations();
-    this.allCategories();
+    // this.allCategories();
   }
 
   addUserDialog = false;
@@ -513,17 +517,17 @@ export default class Commandes extends Vue {
       });
   }
 
-  categories: Category[] = [];
+  // categories: Category[] = [];
 
-  async allCategories(): Promise<void> {
-    this.categories = (await axios.get(`/api/categories`)).data as Category[];
-  }
+  // async allCategories(): Promise<void> {
+  //   this.categories = (await axios.get(`/api/categories`)).data as Category[];
+  // }
 
   productName = "";
   productCategory = "";
   productImage = "";
   productDescription = "";
-  productPrice = "";
+  productPrice = 0;
 
   createProduct(): void {
     axios
@@ -561,24 +565,24 @@ export default class Commandes extends Vue {
       });
   }
 
-  categoryName = "";
-  categoryIcone = "";
-  categoryImage = "";
+  // categoryName = "";
+  // categoryIcone = "";
+  // categoryImage = "";
 
-  createCategory(): void {
-    axios
-      .post("/api/createCategory", {
-        name: this.categoryName,
-        icone: this.categoryIcone,
-        image: this.categoryImage,
-      })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+  // createCategory(): void {
+  //   axios
+  //     .post("/api/createCategory", {
+  //       name: this.categoryName,
+  //       icone: this.categoryIcone,
+  //       image: this.categoryImage,
+  //     })
+  //     .then((response) => {
+  //       console.log(response);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }
 }
 </script>
 

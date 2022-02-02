@@ -10,9 +10,7 @@
                   <v-row>
                     <v-col cols="12" md="8">
                       <v-card-text class="mt-5">
-                        <h1
-                          class="text-center display-1 black--text mb-12"
-                        >
+                        <h1 class="text-center display-1 black--text mb-12">
                           Connexion
                         </h1>
                         <v-form>
@@ -151,12 +149,13 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 import axios from "axios";
+import { toast } from "bulma-toast";
 
 @Component
 export default class Login extends Vue {
   step = 1;
 
-  role = [ "Particulier", "Société" ];
+  role = ["Particulier", "Société"];
 
   username = "";
   password = "";
@@ -164,6 +163,7 @@ export default class Login extends Vue {
   type = "";
 
   register(): void {
+    //FORM DATA
     axios
       .post("/api/register", {
         username: this.username,
@@ -173,25 +173,43 @@ export default class Login extends Vue {
       })
       .then((response) => {
         console.log(response);
+        this.$router.push("/");
+        toast({
+          message: "Votre compte a bien été créé !",
+          type: "is-success",
+          position: "bottom-right",
+          duration: 5000,
+          dismissible: true,
+          pauseOnHover: true,
+        });
       })
       .catch((error) => {
         console.log(error);
+        alert("Erreur lors de l'inscription");
       });
   }
 
-  // login(): void {
-  //   axios
-  //     .post("/api/login", {
-  //       email: this.email,
-  //       password: this.password,
-  //     })
-  //     .then((response) => {
-  //       console.log(response);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }
+  login(): void {
+    axios
+      .post("/api/login", {
+        email: this.email,
+        password: this.password,
+      })
+      .then((response) => {
+        console.log(response);
+        this.$router.push("/account");
+        toast({
+          message: "Vous êtes bien connecté",
+          type: "is-warning",
+          position: "bottom-right",
+          duration: 5000,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Email ou mot de passe incorrect");
+      });
+  }
 }
 </script>
 

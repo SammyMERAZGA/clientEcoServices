@@ -10,6 +10,7 @@ import Login from "../views/Login.vue";
 import CreditCard from "../views/CreditCard.vue";
 import Paypal from "../views/Paypal.vue";
 import BackOffice from "../views/BackOffice.vue";
+import Conditions from "../views/Conditions.vue";
 
 Vue.use(VueRouter);
 
@@ -64,6 +65,11 @@ const routes: Array<RouteConfig> = [
     name: "BackOffice",
     component: BackOffice,
   },
+  {
+    path: "/conditions",
+    name: "Conditions",
+    component: Conditions,
+  }
 ];
 
 const router = new VueRouter({

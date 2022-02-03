@@ -200,8 +200,8 @@ export default class Login extends Vue {
         this.$router.push("/account");
         toast({
           message: "Vous êtes bien connecté",
-          type: "is-warning",
-          position: "bottom-right",
+          type: "is-success",
+          position: "bottom-center",
           duration: 5000,
         });
       })

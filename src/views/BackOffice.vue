@@ -140,7 +140,7 @@
       </v-row>
     </v-container>
 
-    <v-container>
+    <v-container id="containerBO">
       <v-row>
         <v-col cols="12" sm="4" class="mt-15">
           <h1 class="overline text-center mt-5">
@@ -600,5 +600,9 @@ export default class Commandes extends Vue {
   margin-top: 1%;
   margin-left: 1213px;
   margin-bottom: 1%;
+}
+
+#containerBO {
+  margin-left: 22%;
 }
 </style>

@@ -27,7 +27,9 @@
         <v-toolbar-title>Démarche zéro déchet</v-toolbar-title>
       </v-toolbar>
       <v-toolbar color="#EEEEEE" flat>
-        <v-toolbar-title class="mb-5 mt-10 body-1">Nos produits :</v-toolbar-title>
+        <v-toolbar-title class="mb-5 mt-10 body-1"
+          >Nos produits :</v-toolbar-title
+        >
       </v-toolbar>
       <v-row>
         <v-col cols="12" sm="4" v-for="product in products" :key="product.id">

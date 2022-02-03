@@ -31,7 +31,7 @@
       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis,
       fuga saepe voluptatibus fugiat harum mollitia!
     </p>
-    <h3 class="display-1 text-center mt-15 mb-9">
+    <h3 class="display-1 text-center mt-10 mb-9">
       <i class="fas fa-envelope"></i>
       <span class="ml-2"> Nous contacter ?</span>
     </h3>
@@ -115,7 +115,7 @@
         </v-col>
       </v-row>
     </v-container>
-    <h3 class="display-1 text-center mt-3 mb-9">
+    <h3 class="display-1 text-center mt-3 mb-9 mt-10">
       <i class="fas fa-landmark"></i>
       <span class="ml-2"> Mentions légales</span>
     </h3>
@@ -150,6 +150,32 @@
         ecoservices.g4@gmail.com
       </p>
     </v-card>
+    <h3 class="display-1 text-center mt-3 mb-9 mt-15">
+      <i class="fas fa-globe"></i>
+      <span class="ml-2"> Réseaux sociaux</span>
+    </h3>
+    <v-col id="btnSocialNetwork">
+    <v-btn
+      color="blue lighten-2"
+      dark
+    >
+      <v-icon>fab fa-twitter</v-icon>
+    </v-btn>
+    <v-btn
+      color="pink lighten-2"
+      dark
+      class="ml-15"
+    >
+      <v-icon>fab fa-instagram</v-icon>
+    </v-btn>
+    <v-btn
+      color="blue darken-3"
+      dark
+      class="ml-15"
+    >
+      <v-icon>fab fa-facebook</v-icon>
+    </v-btn>
+    </v-col>
   </div>
 </template>
 
@@ -169,23 +195,8 @@ export default class About extends Vue {
 </script>
 
 <style>
-.carousel-3d-container figure {
-  margin: 0;
-}
-.carousel-3d-container figcaption {
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  bottom: 0;
-  position: absolute;
-  bottom: 0;
-  padding: 15px;
-  font-size: 12px;
-  min-width: 100%;
-  box-sizing: border-box;
-}
-.next span,
-.prev span {
-  color: orange;
+#btnSocialNetwork {
+  margin-left: 40%;
+  margin-top: 3%;
 }
 </style>

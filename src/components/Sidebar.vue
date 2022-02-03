@@ -7,7 +7,7 @@
     mini-variant-width="90"
   >
     <v-avatar class="d-block text-center mx-auto mt-4" size="60">
-      <v-img src="../assets/ecoServices.png"></v-img> <!-- OMBRE SUR LE LOGO -->
+      <v-img src="../assets/ecoServices.png"></v-img>
     </v-avatar>
     <v-list flat class="mt-4">
       <v-list-item-group v-model="selectedItem">
@@ -42,10 +42,21 @@ import Component from "vue-class-component";
 
 @Component
 export default class Sidebar extends Vue {
+  mode = "guest";
+
+  isConnected(): void {
+    this.mode = "login";
+  }
+
   selectedItem = 0;
   drawer = null;
   links = [
-    { icon: "fas fa-home", text: "Accueil", route: "/", color: "green darken-3" },
+    {
+      icon: "fas fa-home",
+      text: "Accueil",
+      route: "/",
+      color: "green darken-3",
+    },
     {
       icon: "fas fa-info-circle",
       text: "À propos",
@@ -58,7 +69,12 @@ export default class Sidebar extends Vue {
       route: "/store",
       color: "green darken-3",
     },
-    { icon: "fas fa-book", text: "Guides", route: "/guides", color: "green darken-3" },
+    {
+      icon: "fas fa-book",
+      text: "Guides",
+      route: "/guides",
+      color: "green darken-3",
+    },
     {
       icon: "fas fa-leaf",
       text: "Services",
@@ -71,7 +87,12 @@ export default class Sidebar extends Vue {
       route: "/account",
       color: "green darken-3",
     },
-    { icon: "fas fa-user", text: "Connexion", route: "/login", color: "green darken-3" },
+    {
+      icon: "fas fa-user",
+      text: "Connexion",
+      route: "/login",
+      color: "green darken-3",
+    },
     {
       icon: "fas fa-user-secret",
       text: "Back-Office",
@@ -86,7 +107,7 @@ export default class Sidebar extends Vue {
 .border {
   margin-left: 8px;
   margin-right: 8px;
-  background: #A5D6A7;
+  background: #a5d6a7;
   border-radius: 20px;
   text-decoration: none;
 }

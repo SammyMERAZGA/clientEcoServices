@@ -45,9 +45,7 @@
         </v-col>
       </v-row>
       <v-toolbar color="#EEEEEE" flat>
-        <v-toolbar-title class="mb-5 mt-10 body-1"
-          >Tout</v-toolbar-title
-        >
+        <v-toolbar-title class="mb-5 mt-10 body-1">Produits</v-toolbar-title>
       </v-toolbar>
       <v-row>
         <v-col cols="12" sm="4" v-for="product in products" :key="product.id">
@@ -295,12 +293,12 @@
 <script lang="ts">
 import Vue from "vue";
 import Component from "vue-class-component";
-import { Product } from "../types/Product";
+import { Product } from "../../types/Product";
 // import { Category } from "../types/Category";
 import axios from "axios";
 
 @Component
-export default class Store extends Vue {
+export default class ProductCategory extends Vue {
   products: Product[] = [];
   // categories: Category[] = [];
   // selectCategories = ["Maison", "Produits", "Pack", "Autres"];
@@ -310,8 +308,8 @@ export default class Store extends Vue {
 
   cart: Product[] = [];
 
-  async allProducts(): Promise<void> {
-    this.products = (await axios.get(`/api/products`)).data as Product[];
+  async productCategory(): Promise<void> {
+    this.products = (await axios.get(`/api/productCategory`)).data as Product[];
   }
 
   // async allCategories(): Promise<void> {
@@ -319,7 +317,7 @@ export default class Store extends Vue {
   // }
 
   mounted(): void {
-    this.allProducts();
+    this.productCategory();
     // this.allCategories();
   }
 

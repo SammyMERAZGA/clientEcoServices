@@ -10,7 +10,11 @@ import Login from "../views/Login.vue";
 import CreditCard from "../views/CreditCard.vue";
 import Paypal from "../views/Paypal.vue";
 import BackOffice from "../views/BackOffice.vue";
-import Conditions from "../views/Conditions.vue";
+// Store Category
+import HomeProducts from "../views/StoreCategory/HomeProducts.vue";
+import Others from "../views/StoreCategory/Others.vue";
+import Pack from "../views/StoreCategory/Pack.vue";
+import ProductCategory from '../views/StoreCategory/ProductCategory.vue';
 
 Vue.use(VueRouter);
 
@@ -66,9 +70,24 @@ const routes: Array<RouteConfig> = [
     component: BackOffice,
   },
   {
-    path: "/conditions",
-    name: "Conditions",
-    component: Conditions,
+    path: "/store/homeProducts",
+    name: "HomeProducts",
+    component: HomeProducts,
+  },
+  {
+    path: "/store/others",
+    name: "Others",
+    component: Others,
+  },
+  {
+    path: "/store/pack",
+    name: "Pack",
+    component: Pack,
+  },
+  {
+    path: "/store/productCategory",
+    name: "ProductCategory",
+    component: ProductCategory,
   }
 ];
 

@@ -15,6 +15,8 @@ import HomeProducts from "../views/StoreCategory/HomeProducts.vue";
 import Others from "../views/StoreCategory/Others.vue";
 import Pack from "../views/StoreCategory/Pack.vue";
 import ProductCategory from '../views/StoreCategory/ProductCategory.vue';
+// Paypal Buttons
+import PaypalButton from "../views/PaypalButtons.vue";
 
 Vue.use(VueRouter);
 
@@ -88,7 +90,12 @@ const routes: Array<RouteConfig> = [
     path: "/store/productCategory",
     name: "ProductCategory",
     component: ProductCategory,
-  }
+  },
+  {
+    path: "/buttons",
+    name: "PaypalButton",
+    component: PaypalButton,
+  },
 ];
 
 const router = new VueRouter({

@@ -1,39 +1,60 @@
 <template>
-  <v-navigation-drawer
-    v-model="drawer"
-    app
-    color="white"
-    mini-variant
-    mini-variant-width="90"
-  >
-    <v-avatar class="d-block text-center mx-auto mt-4" size="60">
-      <v-img src="../assets/ecoServices.png"></v-img>
-    </v-avatar>
-    <v-list flat class="mt-4">
-      <v-list-item-group v-model="selectedItem">
-        <v-list-item
-          v-for="link in links"
-          :key="link.text"
-          router
-          :to="link.route"
-          active-class="border"
+  <div>
+    <v-navigation-drawer
+      v-model="drawer"
+      app
+      color="white"
+      mini-variant
+      mini-variant-width="90"
+    >
+      <v-avatar class="d-block text-center mx-auto mt-4" size="60">
+        <v-img src="../assets/ecoServices.png"></v-img>
+      </v-avatar>
+      <v-list flat class="mt-4">
+        <v-list-item-group v-model="selectedItem">
+          <v-list-item
+            v-for="link in isLogin()"
+            :key="link.text"
+            router
+            :to="link.route"
+            active-class="border"
+          >
+            <v-list-item-content>
+              <v-icon v-text="link.icon" :color="link.color"></v-icon>
+              <v-list-item-subtitle
+                align="center"
+                v-text="link.text"
+                class="mt-3 caption"
+              ></v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
+      <v-btn
+        color="red"
+        class="mt-15 ml-3"
+        @click="
+          logout();
+          snackbarLogout = true;
+        "
+      >
+        <v-icon color="white">fas fa-sign-out-alt</v-icon>
+      </v-btn>
+    </v-navigation-drawer>
+    <v-snackbar color="red" v-model="snackbarLogout"
+      >Vous avez été déconnecté
+      <template v-slot:action="{ attrs }">
+        <v-btn
+          color="white"
+          text
+          v-bind="attrs"
+          @click="snackbarLogout = false"
         >
-          <v-list-item-content>
-            <v-icon v-text="link.icon" :color="link.color"></v-icon>
-            <v-list-item-subtitle
-              align="center"
-              v-text="link.text"
-              class="mt-3 caption"
-            ></v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list-item-group>
-    </v-list>
-    <div id="deconnexion">
-      <v-icon color="red darken-1">fas fa-sign-out-alt</v-icon><br />
-      <span class="caption">Déconnexion</span>
-    </div>
-  </v-navigation-drawer>
+          Fermer
+        </v-btn>
+      </template>
+    </v-snackbar>
+  </div>
 </template>
 
 <script lang="ts">
@@ -42,15 +63,14 @@ import Component from "vue-class-component";
 
 @Component
 export default class Sidebar extends Vue {
-  mode = "guest";
+  snackbarLogout = false;
 
-  isConnected(): void {
-    this.mode = "login";
-  }
+  list: string[] = [];
 
   selectedItem = 0;
   drawer = null;
-  links = [
+
+  linksGuest = [
     {
       icon: "fas fa-home",
       text: "Accueil",
@@ -82,15 +102,48 @@ export default class Sidebar extends Vue {
       color: "green darken-3",
     },
     {
-      icon: "fas fa-user-cog",
-      text: "Compte",
-      route: "/account",
+      icon: "fas fa-user",
+      text: "Connexion",
+      route: "/login",
+      color: "green darken-3",
+    },
+  ];
+
+  linksUser = [
+    {
+      icon: "fas fa-home",
+      text: "Accueil",
+      route: "/",
+      color: "green darken-3",
+    },
+    {
+      icon: "fas fa-info-circle",
+      text: "À propos",
+      route: "/about",
+      color: "green darken-3",
+    },
+    {
+      icon: "fas fa-shopping-cart",
+      text: "Boutique",
+      route: "/store",
+      color: "green darken-3",
+    },
+    {
+      icon: "fas fa-book",
+      text: "Guides",
+      route: "/guides",
+      color: "green darken-3",
+    },
+    {
+      icon: "fas fa-leaf",
+      text: "Services",
+      route: "/services",
       color: "green darken-3",
     },
     {
       icon: "fas fa-user",
-      text: "Connexion",
-      route: "/login",
+      text: "Mon compte",
+      route: "/account",
       color: "green darken-3",
     },
     {
@@ -100,6 +153,14 @@ export default class Sidebar extends Vue {
       color: "blue darken-3",
     },
   ];
+
+  isLogin(): unknown[] {
+    if (this.$store.state.isLog) {
+      return this.linksUser;
+    } else {
+      return this.linksGuest;
+    }
+  }
 }
 </script>
 
@@ -119,15 +180,5 @@ export default class Sidebar extends Vue {
 .them--light.v-list-item--active.v-list-item__subtitle,
 .theme--light.v-list-item .v-list-item__action-text {
   color: white !important;
-}
-
-#deconnexion {
-  position: absolute;
-  bottom: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  text-align: center;
 }
 </style>

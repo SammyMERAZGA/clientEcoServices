@@ -1,6 +1,32 @@
 <template>
   <v-app id="bgC">
     <v-content>
+      <v-snackbar color="success" v-model="snackbarLogin"
+        >Connexion réussie !
+        <template v-slot:action="{ attrs }">
+          <v-btn
+            color="white"
+            text
+            v-bind="attrs"
+            @click="snackbarLogin = false"
+          >
+            Fermer
+          </v-btn>
+        </template>
+      </v-snackbar>
+      <v-snackbar color="success" v-model="snackbarRegister"
+        >Inscription réussie, bienvenue sur le site !
+        <template v-slot:action="{ attrs }">
+          <v-btn
+            color="white"
+            text
+            v-bind="attrs"
+            @click="snackbarRegister = false"
+          >
+            Fermer
+          </v-btn>
+        </template>
+      </v-snackbar>
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
           <v-col cols="12" sm="8" md="8">
@@ -43,7 +69,10 @@
                           rounded
                           color="yellow accent-3"
                           light
-                          @click="login()"
+                          @click="
+                            login();
+                            snackbarLogin = true;
+                          "
                           >Connexion</v-btn
                         >
                       </div>
@@ -129,7 +158,10 @@
                           rounded
                           color="light-blue darken-2"
                           dark
-                          @click="register()"
+                          @click="
+                            register();
+                            snackbarRegister = true;
+                          "
                           >Inscription</v-btn
                         >
                       </div>
@@ -149,7 +181,6 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 import axios from "axios";
-import { toast } from "bulma-toast";
 
 @Component
 export default class Login extends Vue {
@@ -162,8 +193,10 @@ export default class Login extends Vue {
   email = "";
   type = "";
 
+  snackbarLogin = false;
+  snackbarRegister = false;
+
   register(): void {
-    //FORM DATA
     axios
       .post("/api/register", {
         username: this.username,
@@ -173,15 +206,9 @@ export default class Login extends Vue {
       })
       .then((response) => {
         console.log(response);
-        this.$router.push("/");
-        toast({
-          message: "Votre compte a bien été créé !",
-          type: "is-success",
-          position: "bottom-right",
-          duration: 5000,
-          dismissible: true,
-          pauseOnHover: true,
-        });
+        setTimeout(() => {
+          this.$router.push("/");
+        }, 700);
       })
       .catch((error) => {
         console.log(error);
@@ -197,18 +224,15 @@ export default class Login extends Vue {
       })
       .then((response) => {
         console.log(response);
-        this.$router.push("/account");
-        toast({
-          message: "Vous êtes bien connecté",
-          type: "is-success",
-          position: "bottom-center",
-          duration: 5000,
-        });
+        setTimeout(() => {
+          this.$router.push("/account");
+        }, 700);
       })
       .catch((error) => {
         console.log(error);
         alert("Email ou mot de passe incorrect");
       });
+      this.$store.commit("nowLog" , {val:true});
   }
 }
 </script>

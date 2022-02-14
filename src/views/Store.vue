@@ -2,26 +2,13 @@
   <v-app :style="{ background: $vuetify.theme.themes.dark.background }">
     <SidebarRight />
     <v-container>
-      <v-toolbar color="rgba(0,0,0,0)" flat>
-        <!-- <v-col class="d-flex" cols="12" sm="3">
-          <v-select
-            :items="selectCategories"
-            label="Choisir une catégorie"
-            solo
-            class="mt-12 mb-5 rounded-xl"
-          ></v-select>
-          <v-btn icon class="ml-2 mt-12"> <v-icon>fas fa-search</v-icon></v-btn>
-        </v-col>
-        <v-spacer></v-spacer> -->
-        <v-toolbar placeholder="Rechercher..." shaped flat outlined>
           <v-autocomplete
             clearable
             :items="searchProducts"
             label="Rechercher un produit..."
             append-icon="fas fa-search"
+            solo
           ></v-autocomplete>
-        </v-toolbar>
-      </v-toolbar>
       <v-row no-gutters justify="center" class="ml-15 mt-3">
         <v-col
           cols="12"
@@ -40,7 +27,7 @@
             outlined
             class="mb-2 mt-5"
             :to="category.url"
-            ><v-icon>{{ category.icon }}</v-icon></v-btn
+            ><v-icon>{{ category.icone }}</v-icon></v-btn
           >
         </v-col>
       </v-row>
@@ -221,73 +208,11 @@
       </v-toolbar>
       <v-divider class="mx-4 mb-5"></v-divider>
       <strong class="ml-5">Méthode de paiement :</strong>
-      <v-item-group mandatory class="mt-n1">
         <v-container>
-          <v-row justify="center">
-            <v-col cols="12" md="4">
-              <v-item>
-                <v-card
-                  color="#F6EFEF"
-                  class="d-flex align-center rounded-lg mt-3"
-                  dark
-                  height="70"
-                  flat
-                  to="/paypal"
-                >
-                  <v-row>
-                    <v-col cols="12" md="12">
-                      <v-list-item three-line class="text-center mt-1">
-                        <v-list-item-content>
-                          <div>
-                            <v-icon color="light-blue darken-4"
-                              >fab fa-paypal</v-icon
-                            >
-                          </div>
-                          <v-list-item-subtitle
-                            class="mt-n2 mb-3 caption blue--text"
-                            >PayPal</v-list-item-subtitle
-                          >
-                        </v-list-item-content>
-                      </v-list-item>
-                    </v-col>
-                  </v-row>
-                </v-card>
-              </v-item>
-            </v-col>
-            <v-col cols="12" md="4">
-              <v-item>
-                <v-card
-                  color="#F6EFEF"
-                  class="d-flex align-center rounded-lg mt-3"
-                  dark
-                  height="70"
-                  flat
-                  to="/creditCard"
-                >
-                  <v-row>
-                    <v-col cols="12">
-                      <v-list-item three-line class="text-center mb-2">
-                        <v-list-item-content>
-                          <div>
-                            <v-icon color="light-blue darken-4"
-                              >fas fa-credit-card</v-icon
-                            >
-                          </div>
-                          <v-list-item-subtitle
-                            class="mt-n4 caption blue--text"
-                          >
-                            CB</v-list-item-subtitle
-                          >
-                        </v-list-item-content>
-                      </v-list-item>
-                    </v-col>
-                  </v-row>
-                </v-card>
-              </v-item>
-            </v-col>
+          <v-row justify="center mt-2">
+            <PaypalButtons />
           </v-row>
         </v-container>
-      </v-item-group>
     </v-navigation-drawer>
   </v-app>
 </template>
@@ -296,13 +221,18 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 import { Product } from "../types/Product";
-// import { Category } from "../types/Category";
+import { Category } from "../types/Category";
 import axios from "axios";
+import PaypalButtons from "../views/PaypalButtons.vue";
 
-@Component
+@Component({
+  components: {
+    PaypalButtons,
+  }
+})
 export default class Store extends Vue {
   products: Product[] = [];
-  // categories: Category[] = [];
+  categories: Category[] = [];
   // selectCategories = ["Maison", "Produits", "Pack", "Autres"];
 
   dialog = true;
@@ -314,13 +244,13 @@ export default class Store extends Vue {
     this.products = (await axios.get(`/api/products`)).data as Product[];
   }
 
-  // async allCategories(): Promise<void> {
-  //   this.categories = (await axios.get(`/api/categories`)).data as Category[];
-  // }
+  async allCategories(): Promise<void> {
+    this.categories = (await axios.get(`/api/categories`)).data as Category[];
+  }
 
   mounted(): void {
     this.allProducts();
-    // this.allCategories();
+    this.allCategories();
   }
 
   addToCart(product: Product): unknown {
@@ -370,40 +300,6 @@ export default class Store extends Vue {
     "Pack de 3 brosses à dents",
   ];
 
-  // Boutons catégories
-
-  categories = [
-    {
-      name: "Tout",
-      icon: "fas fa-globe",
-      color: "yellow darken-2",
-      url: "/store",
-    },
-    {
-      name: "Maison",
-      icon: "fas fa-house-user",
-      color: "light-blue darken-3",
-      url: "/store/homeProducts",
-    },
-    {
-      name: "Produits",
-      icon: "fas fa-shopping-basket",
-      color: "green darken-2",
-      url: "/store/productCategory",
-    },
-    {
-      name: "Packs",
-      icon: "fas fa-box",
-      color: "red darken-3",
-      url: "/store/pack",
-    },
-    {
-      name: "Autres",
-      icon: "fas fa-ellipsis-h",
-      color: "blue-grey darken-2",
-      url: "/store/others",
-    },
-  ];
 }
 </script>
 

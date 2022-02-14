@@ -2,6 +2,84 @@
   <div>
     <h1 class="mt-5 text-center">Back-Office</h1>
     <v-divider class="mt-10 mb-10"></v-divider>
+    <v-snackbar color="success" v-model="snackbarUserAdded"
+      >Utilisateur ajouté !
+      <template v-slot:action="{ attrs }">
+        <v-btn
+          color="white"
+          text
+          v-bind="attrs"
+          @click="snackbarUserAdded = false"
+        >
+          Fermer
+        </v-btn>
+      </template>
+    </v-snackbar>
+    <v-snackbar color="red darken-2" v-model="snackbarUserDeleted"
+      >Utilisateur supprimé.
+      <template v-slot:action="{ attrs }">
+        <v-btn
+          color="white"
+          text
+          v-bind="attrs"
+          @click="snackbarUserDeleted = false"
+        >
+          Fermer
+        </v-btn>
+      </template>
+    </v-snackbar>
+    <v-snackbar color="red darken-2" v-model="snackbarQuotationDeleted"
+      >Devis supprimé.
+      <template v-slot:action="{ attrs }">
+        <v-btn
+          color="white"
+          text
+          v-bind="attrs"
+          @click="snackbarQuotationDeleted = false"
+        >
+          Fermer
+        </v-btn>
+      </template>
+    </v-snackbar>
+    <v-snackbar color="success" v-model="snackbarGuideAdded"
+      >Devis supprimé.
+      <template v-slot:action="{ attrs }">
+        <v-btn
+          color="white"
+          text
+          v-bind="attrs"
+          @click="snackbarGuideAdded = false"
+        >
+          Fermer
+        </v-btn>
+      </template>
+    </v-snackbar>
+    <v-snackbar color="success" v-model="snackbarArticleAdded"
+      >Articlé ajouté !
+      <template v-slot:action="{ attrs }">
+        <v-btn
+          color="white"
+          text
+          v-bind="attrs"
+          @click="snackbarArticleAdded = false"
+        >
+          Fermer
+        </v-btn>
+      </template>
+    </v-snackbar>
+    <v-snackbar color="success" v-model="snackbarCategoryAdded"
+      >Catégorie ajoutée !
+      <template v-slot:action="{ attrs }">
+        <v-btn
+          color="white"
+          text
+          v-bind="attrs"
+          @click="snackbarCategoryAdded = false"
+        >
+          Fermer
+        </v-btn>
+      </template>
+    </v-snackbar>
     <v-container>
       <v-row>
         <v-card width="1500" class="rounded-xl" elevation="5">
@@ -90,6 +168,7 @@
                   @click="
                     addUserDialog = false;
                     register();
+                    snackbarUserAdded = true;
                   "
                 >
                   Ajouter
@@ -140,7 +219,7 @@
       </v-row>
     </v-container>
 
-    <v-container id="containerBO">
+    <v-container>
       <v-row>
         <v-col cols="12" sm="4" class="mt-15">
           <h1 class="overline text-center mt-5">
@@ -176,7 +255,7 @@
                         label="Nom de l'article"
                       ></v-text-field>
                     </v-col>
-                    <!-- <v-col cols="12">
+                    <v-col cols="12">
                       <v-select
                         :items="categories"
                         v-model="category"
@@ -186,7 +265,7 @@
                         persistent-hint
                         label="Catégorie"
                       ></v-select>
-                    </v-col> -->
+                    </v-col>
                     <v-col cols="12">
                       <v-text-field
                         label="Image"
@@ -228,6 +307,7 @@
                   @click="
                     addArticleDialog = false;
                     createProduct();
+                    snackbarArticleAdded = true;
                   "
                 >
                   Ajouter
@@ -300,6 +380,7 @@
                   @click="
                     addGuideDialog = false;
                     createGuide();
+                    snackbarGuideAdded = true;
                   "
                 >
                   Ajouter
@@ -309,7 +390,7 @@
           </v-dialog>
         </v-col>
 
-        <!-- <v-col cols="12" sm="4" class="mt-15">
+        <v-col cols="12" sm="4" class="mt-15">
           <h1 class="overline text-center mt-5">Ajouter une catégorie</h1>
           <v-dialog
             class="mb-15"
@@ -351,8 +432,17 @@
                     </v-col>
                     <v-col cols="12">
                       <v-text-field
-                        v-model="categoryImage"
-                        label="Image"
+                        v-model="categoryColor"
+                        placeholder="green"
+                        label="Couleur"
+                        required
+                      ></v-text-field>
+                    </v-col>
+                    <v-col cols="12">
+                      <v-text-field
+                        v-model="categoryUrl"
+                        placeholder="/store/NOM_CATEGORIE"
+                        label="URL de la catégorie"
                         required
                       ></v-text-field>
                     </v-col>
@@ -381,7 +471,7 @@
               </v-card-actions>
             </v-card>
           </v-dialog>
-        </v-col> -->
+        </v-col>
       </v-row>
     </v-container>
 
@@ -448,6 +538,18 @@ export default class Commandes extends Vue {
   quotations: Quotation[] = [];
   role = ["Particulier", "Société"];
 
+  username = "";
+  password = "";
+  email = "";
+  type = "";
+
+  snackbarUserAdded = false;
+  snackbarUserDeleted = false;
+  snackbarQuotationDeleted = false;
+  snackbarGuideAdded = false;
+  snackbarArticleAdded = false;
+  snackbarCategoryAdded = false;
+
   headersUsersTable = [
     {
       text: "Pseudo",
@@ -496,11 +598,6 @@ export default class Commandes extends Vue {
   addCategoryDialog = false;
   checkbox = false;
 
-  username = "";
-  password = "";
-  email = "";
-  type = "";
-
   register(): void {
     axios
       .post("/api/register", {
@@ -511,12 +608,16 @@ export default class Commandes extends Vue {
       })
       .then((response) => {
         console.log(response);
+        setTimeout(() => {
+          window.location.reload();
+        }, 700);
       })
       .catch((error) => {
         console.log(error);
       });
   }
 
+  categories = ["Maison", "Produits", "Packs", "Autres"];
   // categories: Category[] = [];
 
   // async allCategories(): Promise<void> {
@@ -540,6 +641,9 @@ export default class Commandes extends Vue {
       })
       .then((response) => {
         console.log(response);
+        setTimeout(() => {
+          window.location.reload();
+        }, 700);
       })
       .catch((error) => {
         console.log(error);
@@ -559,6 +663,9 @@ export default class Commandes extends Vue {
       })
       .then((response) => {
         console.log(response);
+        setTimeout(() => {
+          window.location.reload();
+        }, 700);
       })
       .catch((error) => {
         console.log(error);
@@ -600,9 +707,5 @@ export default class Commandes extends Vue {
   margin-top: 1%;
   margin-left: 1213px;
   margin-bottom: 1%;
-}
-
-#containerBO {
-  margin-left: 22%;
 }
 </style>

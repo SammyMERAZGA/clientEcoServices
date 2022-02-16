@@ -16,6 +16,7 @@
 
 ![alt text](src/assets/screens/RegisterPage.png)
 
+
 ### Technologies used 💻
 
 ![TypeScript](https://img.shields.io/badge/-typescript-05122A?style=flat&logo=typescript)&nbsp;

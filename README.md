@@ -6,17 +6,17 @@
 
 ## Store Page 🛍️
 
-![alt text](src/assets/screens/HomePage.png)
+![alt text](src/assets/screens/StorePage.png)
 
 ## Back-Office Page 🛠️
 
-![alt text](src/assets/screens/HomePage.png)
+![alt text](src/assets/screens/BackOfficePage.png)
 
 ## Register Page 🔏
 
-![alt text](src/assets/screens/HomePage.png)
+![alt text](src/assets/screens/RegisterPage.png)
 
-## Technologies used 💻
+### Technologies used 💻
 
 ![TypeScript](https://img.shields.io/badge/-typescript-05122A?style=flat&logo=typescript)&nbsp;
 ![VueJS](https://img.shields.io/badge/-vuejs-05122A?style=flat&logo=vue.js)&nbsp;

@@ -1,6 +1,6 @@
 ## This is a project of the G4 Institute. We have to make an e-commerce site with a payment and authentication module.
 
-This repository is the front-end of this directory point_right https://github.com/SammyMERAZGA/serverEcoServices
+This repository is the front-end of this directory 👉 https://github.com/SammyMERAZGA/serverEcoServices
 
 ## Home Page 🏠
 

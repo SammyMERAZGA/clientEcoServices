@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
+
+#animTitle {
+  text-align: center;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+}
+
+#animTitle span {
+  text-transform: uppercase;
+  display: block;
+}
+
+.text1 {
+  color: #20a35b;
+  font-size: 60px;
+  font-weight: 700;
+  position: relative;
+  letter-spacing: 8px;
+  margin-bottom: 10px;
+  animation: text 3s 1;
+}
+
+@keyframes text {
+  0% {
+    color: rgb(12, 12, 170);
+    margin-bottom: -10px;
+  }
+  30% {
+    letter-spacing: 25px;
+    margin-bottom: -10px;
+  }
+  85% {
+    letter-spacing: 8px;
+    margin-bottom: -10px;
+  }
+}
+
+.class1 {
+  background-color: #c8ebf1;
+}
+
+.class2 {
+  background-color: white;
+}

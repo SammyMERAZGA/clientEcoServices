@@ -1,0 +1,15 @@
+.v-card.borderme {
+  border: 2px solid #01bfee !important;
+}
+
+.col-12 {
+  padding: 5px !important;
+}
+
+.v-btn.widthoutupercase {
+  text-transform: none !important;
+}
+
+#cartIcon {
+  margin-left: 35%;
+}

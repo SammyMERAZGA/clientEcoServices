@@ -4,8 +4,13 @@ import axios from "axios";
 import { User } from "../../types/User";
 import { Quotation } from "../../types/Quotation";
 // import { Category } from "@/types/Category";
+import Footer from "../../components/Footer/Footer.vue";
 
-@Component
+@Component({
+  components: {
+    Footer,
+  },
+})
 export default class Commandes extends Vue {
   users: User[] = [];
   quotations: Quotation[] = [];

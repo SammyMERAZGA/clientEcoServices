@@ -1,5 +1,7 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
+import store from "../plugins/store";
+// Pages
 import Home from "../views/Home/Home.vue";
 import About from "../views/About/About.vue";
 import Store from "../views/Store/Store.vue";
@@ -12,7 +14,7 @@ import BackOffice from "../views/BackOffice/BackOffice.vue";
 import HomeProducts from "../views/StoreCategory/HomeProducts/HomeProducts.vue";
 import Others from "../views/StoreCategory/Others/Others.vue";
 import Pack from "../views/StoreCategory/Packs/Pack.vue";
-import ProductCategory from '../views/StoreCategory/Products/ProductCategory.vue';
+import ProductCategory from "../views/StoreCategory/Products/ProductCategory.vue";
 // Footer Links
 import LegalNotice from "../views/FooterLinks/LegalNotice/LegalNotice.vue";
 import DeliveryInformation from "../views/FooterLinks/DeliveryInformation/DeliveryInformation.vue";
@@ -45,6 +47,13 @@ const routes: Array<RouteConfig> = [
     path: "/guides",
     name: "Guides",
     component: Guides,
+    beforeEnter: (to, from, next) => {
+      if (store.state.isLog == false) {
+        next("/login");
+      } else {
+        next();
+      }
+    },
   },
   {
     path: "/services",
@@ -55,6 +64,13 @@ const routes: Array<RouteConfig> = [
     path: "/account",
     name: "Account",
     component: Account,
+    beforeEnter: (to, from, next) => {
+      if (store.state.isLog == false) {
+        next("/login");
+      } else {
+        next();
+      }
+    },
   },
   {
     path: "/login",
@@ -65,6 +81,13 @@ const routes: Array<RouteConfig> = [
     path: "/backOffice",
     name: "BackOffice",
     component: BackOffice,
+    beforeEnter: (to, from, next) => {
+      if (store.state.isLog == false) {
+        next("/login");
+      } else {
+        next();
+      }
+    },
   },
   {
     path: "/store/homeProducts",
@@ -120,7 +143,7 @@ const routes: Array<RouteConfig> = [
     path: "/fournisseurs",
     name: "Suppliers",
     component: Suppliers,
-  }
+  },
 ];
 
 const router = new VueRouter({

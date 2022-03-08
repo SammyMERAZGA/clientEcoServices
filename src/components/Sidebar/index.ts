@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Component from "vue-class-component";
+import axios from "axios";
 
 @Component
 export default class Sidebar extends Vue {
@@ -100,5 +101,21 @@ export default class Sidebar extends Vue {
     } else {
       return this.linksGuest;
     }
+  }
+
+  logout(): void {
+    axios
+      .post("/api/logout")
+      .then((response) => {
+        console.log(response);
+        setTimeout(() => {
+          this.$router.push("/login");
+        }, 700);
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Deconnexion impossible");
+      });
+    this.$store.commit("nowLog", { val: false });
   }
 }

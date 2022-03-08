@@ -1,3 +1,5 @@
+<script lang="ts" src="./index.ts"></script>
+
 <template>
   <div>
     <v-card
@@ -19,5 +21,6 @@
         class="pa-3"
       />
     </v-card>
+    <Footer />
   </div>
 </template>

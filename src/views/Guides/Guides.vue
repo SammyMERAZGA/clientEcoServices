@@ -24,7 +24,7 @@
                       depressed
                       v-bind="attrs"
                       v-on="on"
-                      width="300px"
+                      width="250px"
                       @click="idGuide = guide.id"
                     >
                       Consulter le guide

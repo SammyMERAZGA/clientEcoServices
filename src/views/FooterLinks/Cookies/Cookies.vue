@@ -1,3 +1,5 @@
+<script lang="ts" src="./index.ts"></script>
+
 <template>
   <div>
     <h3 class="display-1 text-center mt-3 mb-9 mt-10">
@@ -71,5 +73,6 @@
         déposés par des prestataires techniques du Site.
       </p>
     </v-card>
+    <Footer />
   </div>
 </template>

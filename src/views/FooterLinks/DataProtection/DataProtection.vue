@@ -1,3 +1,5 @@
+<script lang="ts" src="./index.ts"></script>
+
 <template>
   <div>
     <h3 class="display-1 text-center mt-3 mb-9 mt-10">
@@ -8,7 +10,7 @@
       <h4 class="text-decoration-underline text-center mt-3 mb-9">
         Données à caractère personnel
       </h4>
-      <p class="text-center mb-8 ml-15 mr-15">
+      <p class="text-center mb-12 ml-15 mr-15">
         Conformément à la loi n°78-17 du 6 janvier 1978 modifiée, le traitement
         des données personnelles fait l’objet d’une déclaration normale auprès
         de la Commission Nationale de l’Informatique et des Libertés (CNIL), qui
@@ -22,5 +24,6 @@
         ecoservices.g4@gmail.com
       </p>
     </v-card>
+    <Footer />
   </div>
 </template>

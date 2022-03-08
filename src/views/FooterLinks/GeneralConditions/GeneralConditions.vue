@@ -1,3 +1,5 @@
+<script lang="ts" src="./index.ts"></script>
+
 <template>
   <div>
     <h3 class="text-center mt-3 mb-9 mt-10">
@@ -238,7 +240,7 @@
         Vendeur est à la disposition du Client ou par téléphone au 04 86 13 91
         10.
       </p>
-      ></v-card
-    >
+    </v-card>
+    <Footer />
   </div>
 </template>

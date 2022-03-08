@@ -33,16 +33,18 @@
           </v-list-item>
         </v-list-item-group>
       </v-list>
-      <v-btn
-        color="red"
-        class="mt-15 ml-3"
-        @click="
-          logout();
-          snackbarLogout = true;
-        "
-      >
-        <v-icon color="white">fas fa-sign-out-alt</v-icon>
-      </v-btn>
+      <v-if v-if="this.$store.state.isLog">
+        <v-btn
+          color="red"
+          class="mt-15 ml-3"
+          @click="
+            logout();
+            snackbarLogout = true;
+          "
+        >
+          <v-icon color="white">fas fa-sign-out-alt</v-icon>
+        </v-btn>
+      </v-if>
     </v-navigation-drawer>
     <v-snackbar color="red" v-model="snackbarLogout"
       >Vous avez été déconnecté

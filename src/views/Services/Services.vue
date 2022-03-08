@@ -3,15 +3,15 @@
 
 <template>
   <div>
-    <h1 class="display-3 text-center mt-3">Services</h1>
+    <h1 class="text-center mt-3">Services</h1>
     <v-divider class="ml-10 mr-10 mb-10"></v-divider>
 
     <v-row>
-      <v-col cols="12" md="3" v-for="service in services" :key="service.id">
+      <v-col cols="12" md="4" v-for="service in services" :key="service.id">
         <v-hover>
           <v-card
             class="mx-auto"
-            max-width="344"
+            max-width="350"
             elevation="5"
             outlined
             slot-scope="{ hover }"
@@ -34,9 +34,7 @@
             </v-list-item>
 
             <v-card-actions>
-              <v-btn outlined rounded text>
-                Devis
-              </v-btn>
+              <v-btn outlined rounded text> Devis </v-btn>
             </v-card-actions>
           </v-card>
         </v-hover>
@@ -47,14 +45,15 @@
 
     <v-card outlined class="ma-16 rounded-lg" elevation="15">
       <br />
-      <h1 class="text-center display-1">
+      <h1 class="text-center">
         <i class="fas fa-file-signature"></i>
         <span> Demande de devis</span>
       </h1>
-      <h2 class="subtitle-1 text-center mt-3">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam porro
-        blanditiis dolores aliquid cumque ullam!
-      </h2>
+      <p class="text-center mt-3 mr-10 ml-10">
+        Un de nos services vous intéresse ? Remplissez le formulaire de devis ci-dessous pour que
+        nous puissons prendre contact avec vous et vous donnez une estimation du
+        prix.
+      </p>
       <v-divider class="mt-6 mx-4"></v-divider>
       <br />
       <v-form v-model="valid">

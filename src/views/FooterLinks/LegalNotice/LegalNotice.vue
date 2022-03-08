@@ -1,3 +1,5 @@
+<script lang="ts" src="./index.ts"></script>
+
 <template>
   <div>
     <h3 class="display-1 text-center mt-3 mb-9 mt-10">
@@ -30,5 +32,6 @@
         à : ecoservices.g4@gmail.com
       </p>
     </v-card>
+    <Footer />
   </div>
 </template>

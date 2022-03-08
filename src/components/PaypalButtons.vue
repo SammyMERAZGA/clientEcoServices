@@ -1,13 +1,17 @@
 <template>
-  <div id="buttons">
-    <div v-if="!paidFor"></div>
+  <v-if v-if="this.$store.state.isLog">
+    <div id="buttons">
+      <div v-if="!paidFor"></div>
 
-    <div v-if="paidFor">
-      <h1 class="green--text text-center caption">Votre paiement a été effectué !</h1>
+      <div v-if="paidFor">
+        <h1 class="green--text text-center caption">
+          Votre paiement a été effectué !
+        </h1>
+      </div>
+
+      <div ref="paypal"></div>
     </div>
-
-    <div ref="paypal"></div>
-  </div>
+  </v-if>
 </template>
 
 <script>

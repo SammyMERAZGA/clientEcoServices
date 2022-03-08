@@ -1,11 +1,14 @@
+<script lang="ts" src="./index.ts"></script>
+<style src="./style.css"></style>
+
 <template>
   <div>
     <h3 class="display-1 text-center mt-3 mb-9 mt-10">
       <i class="fas fa-truck"></i>
       <span class="ml-2">Fournisseurs</span>
     </h3>
-    <v-card class="mx-auto" max-width="1000" elevation="8" shaped outlined>
-      <div class="text-center mt-8 mb-8 ml-15 mr-15">
+    <v-card id="suppliersCard" class="mx-auto" max-width="1000" elevation="8" shaped outlined>
+      <div class="text-center mt-8 ml-15 mr-15">
         <p>
           Vous produisez ou distribuez des produits issus de l'agriculture
           biologique ? Vous avez fait le choix de la distribution spécialisée en
@@ -21,5 +24,6 @@
         </p>
       </div>
     </v-card>
+    <Footer />
   </div>
 </template>

@@ -53,5 +53,6 @@
         </v-card>
       </v-col>
     </v-row>
+    <Footer />
   </div>
 </template>

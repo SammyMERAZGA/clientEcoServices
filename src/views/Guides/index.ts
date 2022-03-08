@@ -2,8 +2,13 @@ import Vue from "vue";
 import Component from "vue-class-component";
 import axios from "axios";
 import { Guide } from "../../types/Guide";
+import Footer from "../../components/Footer/Footer.vue";
 
-@Component
+@Component({
+  components: {
+    Footer,
+  },
+})
 export default class Guides extends Vue {
   dialog = true;
 

@@ -4,7 +4,6 @@
     <v-main>
       <router-view />
     </v-main>
-    <Footer />
   </v-app>
 </template>
 
@@ -12,12 +11,10 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 import Sidebar from "./components/Sidebar/Sidebar.vue";
-import Footer from "./components/Footer/Footer.vue";
 
 @Component({
   components: {
     Sidebar,
-    Footer,
   },
 })
 export default class App extends Vue {}

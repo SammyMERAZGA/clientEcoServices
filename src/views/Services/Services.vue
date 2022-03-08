@@ -160,5 +160,6 @@
         </v-container>
       </v-form>
     </v-card>
+    <Footer />
   </div>
 </template>

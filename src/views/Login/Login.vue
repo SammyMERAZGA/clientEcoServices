@@ -3,7 +3,7 @@
 
 <template>
   <v-app id="bgC">
-    <v-content>
+    <v-content class="mb-15">
       <v-snackbar color="success" v-model="snackbarLogin"
         >Connexion réussie !
         <template v-slot:action="{ attrs }">
@@ -177,5 +177,6 @@
         </v-row>
       </v-container>
     </v-content>
+    <Footer />
   </v-app>
 </template>

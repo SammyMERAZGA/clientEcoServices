@@ -65,5 +65,6 @@
         ></v-carousel-item>
       </v-carousel>
     </v-container>
+    <Footer />
   </v-app>
 </template>

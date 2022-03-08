@@ -1,8 +1,13 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 import axios from "axios";
+import Footer from "../../components/Footer/Footer.vue";
 
-@Component
+@Component({
+  components: {
+    Footer,
+  },
+})
 export default class Login extends Vue {
   step = 1;
 

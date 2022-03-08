@@ -13,6 +13,13 @@ import HomeProducts from "../views/StoreCategory/HomeProducts/HomeProducts.vue";
 import Others from "../views/StoreCategory/Others/Others.vue";
 import Pack from "../views/StoreCategory/Packs/Pack.vue";
 import ProductCategory from '../views/StoreCategory/Products/ProductCategory.vue';
+// Footer Links
+import LegalNotice from "../views/FooterLinks/LegalNotice/LegalNotice.vue";
+import DeliveryInformation from "../views/FooterLinks/DeliveryInformation/DeliveryInformation.vue";
+import GeneralConditions from "../views/FooterLinks/GeneralConditions/GeneralConditions.vue";
+import DataProtection from "../views/FooterLinks/DataProtection/DataProtection.vue";
+import Cookies from "../views/FooterLinks/Cookies/Cookies.vue";
+import Suppliers from "../views/FooterLinks/Suppliers/Suppliers.vue";
 // Paypal Buttons
 import PaypalButton from "../components/PaypalButtons.vue";
 
@@ -84,6 +91,36 @@ const routes: Array<RouteConfig> = [
     name: "PaypalButton",
     component: PaypalButton,
   },
+  {
+    path: "/mentionsLegales",
+    name: "LegalNotice",
+    component: LegalNotice,
+  },
+  {
+    path: "/informationsLivraison",
+    name: "DeliveryInformation",
+    component: DeliveryInformation,
+  },
+  {
+    path: "/conditionsGenerales",
+    name: "GeneralConditions",
+    component: GeneralConditions,
+  },
+  {
+    path: "/donnees",
+    name: "DataProtection",
+    component: DataProtection,
+  },
+  {
+    path: "/cookies",
+    name: "Cookies",
+    component: Cookies,
+  },
+  {
+    path: "/fournisseurs",
+    name: "Suppliers",
+    component: Suppliers,
+  }
 ];
 
 const router = new VueRouter({

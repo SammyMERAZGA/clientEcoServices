@@ -1,7 +1,12 @@
 import Vue from "vue";
 import Component from "vue-class-component";
+import Footer from "../../components/Footer/Footer.vue";
 
-@Component
+@Component ({
+  components: {
+    Footer,
+  },
+})
 export default class Services extends Vue {
   servicesType = ["Conseil", "Développement", "Formation", "Réseau"];
 

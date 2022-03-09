@@ -50,10 +50,6 @@
               </v-img>
               <v-list-item-content class="body-1">
                 {{ product.name }}
-                <!-- <v-list-item-subtitle class="mt-1">
-                  <v-icon>{{ product.category.icone }}</v-icon>
-                  <span class="ml-2"> {{ product.category.name }}</span>
-                </v-list-item-subtitle> -->
                 <strong class="mt-3"> {{ product.price }} € </strong>
               </v-list-item-content>
             </v-list-item>
@@ -126,7 +122,7 @@
               <v-btn
                 color="#12A4E4"
                 block
-                dark
+                disabled
                 class="withoutupercase mb-2"
                 @click="addToCart(product)"
               >

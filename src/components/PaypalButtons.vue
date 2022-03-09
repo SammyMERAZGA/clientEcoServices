@@ -24,7 +24,7 @@ export default {
       loaded: false,
       paidFor: false,
       product: {
-        price: 0.1,
+        price: 1,
       },
     };
   },

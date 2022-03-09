@@ -10,6 +10,7 @@ import Services from "../views/Services/Services.vue";
 import Account from "../views/Account/Account.vue";
 import Login from "../views/Login/Login.vue";
 import BackOffice from "../views/BackOffice/BackOffice.vue";
+import ZeroWaste from "../views/ZeroWaste/ZeroWaste.vue";
 // Store Category
 import HomeProducts from "../views/StoreCategory/HomeProducts/HomeProducts.vue";
 import Others from "../views/StoreCategory/Others/Others.vue";
@@ -47,13 +48,13 @@ const routes: Array<RouteConfig> = [
     path: "/guides",
     name: "Guides",
     component: Guides,
-    beforeEnter: (to, from, next) => {
-      if (store.state.isLog == false) {
-        next("/login");
-      } else {
-        next();
-      }
-    },
+    // beforeEnter: (to, from, next) => {
+    //   if (store.state.isLog == false) {
+    //     next("/login");
+    //   } else {
+    //     next();
+    //   }
+    // },
   },
   {
     path: "/services",
@@ -81,13 +82,13 @@ const routes: Array<RouteConfig> = [
     path: "/backOffice",
     name: "BackOffice",
     component: BackOffice,
-    beforeEnter: (to, from, next) => {
-      if (store.state.isLog == false) {
-        next("/login");
-      } else {
-        next();
-      }
-    },
+    // beforeEnter: (to, from, next) => {
+    //   if (store.state.isLog == false) {
+    //     next("/login");
+    //   } else {
+    //     next();
+    //   }
+    // },
   },
   {
     path: "/store/homeProducts",
@@ -143,6 +144,11 @@ const routes: Array<RouteConfig> = [
     path: "/fournisseurs",
     name: "Suppliers",
     component: Suppliers,
+  },
+  {
+    path: "/zeroDechet",
+    name: "ZeroWaste",
+    component: ZeroWaste,
   },
 ];
 

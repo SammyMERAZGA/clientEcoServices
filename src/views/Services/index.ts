@@ -8,7 +8,15 @@ import Footer from "../../components/Footer/Footer.vue";
   },
 })
 export default class Services extends Vue {
-  servicesType = ["Conseil", "Développement", "Formation", "Réseau"];
+  servicesType = [
+    "Panneau solaire",
+    "Maison écologique",
+    "Isolation intérieure",
+    "Isolation extérieure",
+    "Chaudière",
+    "Chênes",
+    "Autres",
+  ];
 
   services = [
     {
@@ -45,19 +53,19 @@ export default class Services extends Vue {
     },
     {
       id: 5,
-      name: "Chaudière",
-      type: "Installation",
-      description: "Passez l'hiver éco-responsable 😃",
+      name: "Isolation extérieure",
+      type: "Travaux",
+      description: "Isoler votre maison en renforçant vos murs et vos toits",
       image:
-        "https://static.topchaleur.com/media/catalog/product/image/1600x1600/new/chaudiere-a-granules-hidro-cantina-compact-20765-1.jpg",
+        "https://www.systemed.fr/images/conseils/isolation-par-l-exterieur-ite-par-laine-verre-sous-bardage-rapporte-12793-p1-l528-h528-c.jpg",
     },
     {
       id: 6,
-      name: "Chaudière",
-      type: "Installation",
-      description: "Passez l'hiver éco-responsable 😃",
+      name: "Chênes",
+      type: "Plantation",
+      description: "Couper et utilisez votre propre bois 🪵",
       image:
-        "https://static.topchaleur.com/media/catalog/product/image/1600x1600/new/chaudiere-a-granules-hidro-cantina-compact-20765-1.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Wood_grain.jpg/220px-Wood_grain.jpg",
     },
   ];
 }

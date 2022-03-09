@@ -1,9 +1,11 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 import axios from "axios";
+// TYPES
 import { User } from "../../types/User";
 import { Quotation } from "../../types/Quotation";
-// import { Category } from "@/types/Category";
+//import { Category } from "@/types/Category";
+// COMPONENTS
 import Footer from "../../components/Footer/Footer.vue";
 
 @Component({
@@ -11,7 +13,7 @@ import Footer from "../../components/Footer/Footer.vue";
     Footer,
   },
 })
-export default class Commandes extends Vue {
+export default class BackOffice extends Vue {
   users: User[] = [];
   quotations: Quotation[] = [];
   role = ["Particulier", "Société"];
@@ -21,12 +23,43 @@ export default class Commandes extends Vue {
   email = "";
   type = "";
 
+  titleGuide = "";
+  imageGuide = "";
+  descriptionGuide = "";
+
+  productName = "";
+  productCategory = "";
+  productImage = "";
+  productDescription = "";
+  productPrice = 0;
+
+  addUserDialog = false;
+  addArticleDialog = false;
+  addGuideDialog = false;
+  addCategoryDialog = false;
+  checkbox = false;
+
+  /* *** SNACKBAR *** */
+  // USER
   snackbarUserAdded = false;
+  snackbarUserUpdated = false;
   snackbarUserDeleted = false;
+  // QUOTATION
   snackbarQuotationDeleted = false;
+  // GUIDE
   snackbarGuideAdded = false;
+  snackbarGuideUpdated = false;
+  snackbarGuideDeleted = false;
+  // ARTICLE
   snackbarArticleAdded = false;
+  snackbarArticleUpdated = false;
+  snackbarArticleDeleted = false;
+  // CATEGORY
   snackbarCategoryAdded = false;
+  snackbarCategoryUpdated = false;
+  snackbarCategoryDeleted = false;
+
+  categories = ["Maison", "Produits", "Packs", "Autres"];
 
   headersUsersTable = [
     {
@@ -56,25 +89,41 @@ export default class Commandes extends Vue {
     { text: "Supprimer", value: "delete", sortable: false },
   ];
 
-  async allUsers(): Promise<void> {
-    this.users = (await axios.get(`/api/users`)).data as User[];
-  }
+  headersArticlesTable = [
+    {
+      text: "Nom",
+      align: "start",
+      value: "name",
+    },
+    { text: "Description", value: "description" },
+    { text: "Prix", value: "price" },
+    { text: "Catégorie", value: "category" },
+    { text: "Modifier", value: "update", sortable: false },
+    { text: "Supprimer", value: "delete", sortable: false },
+  ];
 
-  async allQuotations(): Promise<void> {
-    this.quotations = (await axios.get(`/api/quotations`)).data as Quotation[];
-  }
+  headersGuidesTable = [
+    {
+      text: "Titre",
+      align: "start",
+      value: "title",
+    },
+    { text: "Description", value: "description" },
+    { text: "Modifier", value: "update", sortable: false },
+    { text: "Supprimer", value: "delete", sortable: false },
+  ];
 
-  mounted(): void {
-    this.allUsers();
-    this.allQuotations();
-    // this.allCategories();
-  }
-
-  addUserDialog = false;
-  addArticleDialog = false;
-  addGuideDialog = false;
-  addCategoryDialog = false;
-  checkbox = false;
+  headersCategoriesTable = [
+    {
+      text: "Nom",
+      align: "start",
+      value: "title",
+    },
+    { text: "Couleur", value: "color" },
+    { text: "Icone", value: "icone" },
+    { text: "Modifier", value: "update", sortable: false },
+    { text: "Supprimer", value: "delete", sortable: false },
+  ];
 
   register(): void {
     axios
@@ -95,18 +144,11 @@ export default class Commandes extends Vue {
       });
   }
 
-  categories = ["Maison", "Produits", "Packs", "Autres"];
   // categories: Category[] = [];
 
   // async allCategories(): Promise<void> {
   //   this.categories = (await axios.get(`/api/categories`)).data as Category[];
   // }
-
-  productName = "";
-  productCategory = "";
-  productImage = "";
-  productDescription = "";
-  productPrice = 0;
 
   createProduct(): void {
     axios
@@ -128,10 +170,6 @@ export default class Commandes extends Vue {
       });
   }
 
-  titleGuide = "";
-  imageGuide = "";
-  descriptionGuide = "";
-
   createGuide(): void {
     axios
       .post("/api/createGuide", {
@@ -148,6 +186,20 @@ export default class Commandes extends Vue {
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  async allUsers(): Promise<void> {
+    this.users = (await axios.get(`/api/users`)).data as User[];
+  }
+
+  async allQuotations(): Promise<void> {
+    this.quotations = (await axios.get(`/api/quotations`)).data as Quotation[];
+  }
+
+  mounted(): void {
+    this.allUsers();
+    this.allQuotations();
+    // this.allCategories();
   }
 
   // categoryName = "";

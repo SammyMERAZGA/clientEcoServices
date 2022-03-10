@@ -43,15 +43,10 @@
                       ></v-text-field>
                     </v-col>
                     <v-col cols="12">
-                      <v-select
-                        :items="categories"
-                        v-model="category"
-                        name="category"
-                        item-text="name"
-                        clearable
-                        persistent-hint
-                        label="Catégorie"
-                      ></v-select>
+                      <v-text-field
+                        v-model="productCategory"
+                        label="Catégorie de l'article"
+                      ></v-text-field>
                     </v-col>
                     <v-col cols="12">
                       <v-text-field
@@ -490,6 +485,53 @@
 
     <!-- END CATEGORIE -->
 
+    <v-dialog
+      class="mb-15"
+      v-model="updateUserForm"
+      persistent
+      max-width="600px"
+    >
+      <v-card>
+        <v-card-title class="justify-center">
+          <span class="text-h5">Modifier un utilisateur</span>
+        </v-card-title>
+        <v-card-text>
+          <v-container>
+            <v-row>
+              <v-col cols="12">
+                <v-text-field
+                  v-model="usernameUser"
+                  label="Pseudo"
+                ></v-text-field>
+              </v-col>
+              <v-col cols="12">
+                <v-text-field
+                  label="Rôle"
+                  v-model="typeUser"
+                  required
+                ></v-text-field>
+              </v-col>
+              <v-col cols="12">
+                <v-checkbox
+                  v-model="adminUser"
+                  label="Administrateur"
+                ></v-checkbox>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="blue darken-1" text @click="updateUserForm = false">
+            Annuler
+          </v-btn>
+          <v-btn color="blue darken-1" text @click="updateUser()">
+            Modifier
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
     <v-container>
       <v-row>
         <v-card width="1500" class="rounded-xl" elevation="5">
@@ -597,14 +639,16 @@
                 {{ props.itemsLength }}</span
               >
             </template>
-            <template v-slot:[`item.update`]>
-              <v-btn icon to="/">
+            <template v-slot:[`item.update`]="{ item }">
+              <v-btn icon @click="editUser(item)">
                 <v-icon small> fas fa-edit </v-icon>
               </v-btn>
             </template>
-            <template v-slot:[`item.delete`]>
-              <v-btn icon to="/">
-                <v-icon small> fas fa-trash </v-icon>
+            <template v-slot:[`item.delete`]="{ item }">
+              <v-btn icon>
+                <v-icon small @click="deleteUser(item.id)">
+                  fas fa-trash
+                </v-icon>
               </v-btn>
             </template>
           </v-data-table>
@@ -664,7 +708,7 @@
           <h1 class="overline text-center mt-5">Liste des articles</h1>
           <v-data-table
             :headers="headersArticlesTable"
-            :items="articles"
+            :items="products"
             class="mb-5"
             :footer-props="{
               'items-per-page-text': 'Nb éléments par page',

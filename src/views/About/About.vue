@@ -115,13 +115,13 @@
       <span class="ml-2"> Réseaux sociaux</span>
     </h3>
     <v-col id="btnSocialNetwork">
-      <v-btn color="blue lighten-2" dark>
+      <v-btn color="blue lighten-2" dark href="https://twitter.com/yanive19">
         <v-icon>fab fa-twitter</v-icon>
       </v-btn>
-      <v-btn color="pink lighten-2" dark class="ml-15">
+      <v-btn color="pink lighten-2" dark class="ml-15" href="https://www.instagram.com/ecoservice.13/">
         <v-icon>fab fa-instagram</v-icon>
       </v-btn>
-      <v-btn color="blue darken-3" dark class="ml-15">
+      <v-btn color="blue darken-3" dark class="ml-15" href="https://www.facebook.com/people/Ecos-Ervice/100078899810074/">
         <v-icon>fab fa-facebook</v-icon>
       </v-btn>
     </v-col>

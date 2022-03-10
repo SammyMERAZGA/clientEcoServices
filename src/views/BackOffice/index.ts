@@ -4,7 +4,8 @@ import axios from "axios";
 // TYPES
 import { User } from "../../types/User";
 import { Quotation } from "../../types/Quotation";
-//import { Category } from "@/types/Category";
+import { Product } from "../../types/Product";
+import { Guide } from "../../types/Guide";
 // COMPONENTS
 import Footer from "../../components/Footer/Footer.vue";
 
@@ -16,6 +17,8 @@ import Footer from "../../components/Footer/Footer.vue";
 export default class BackOffice extends Vue {
   users: User[] = [];
   quotations: Quotation[] = [];
+  products: Product[] = [];
+  guides: Guide[] = [];
   role = ["Particulier", "Société"];
 
   username = "";
@@ -59,7 +62,20 @@ export default class BackOffice extends Vue {
   snackbarCategoryUpdated = false;
   snackbarCategoryDeleted = false;
 
-  categories = ["Maison", "Produits", "Packs", "Autres"];
+  categories = [
+    {
+      name: "Maison",
+    },
+    {
+      name: "Produits",
+    },
+    {
+      name: "Packs",
+    },
+    {
+      name: "Autres",
+    },
+  ];
 
   headersUsersTable = [
     {
@@ -117,10 +133,8 @@ export default class BackOffice extends Vue {
     {
       text: "Nom",
       align: "start",
-      value: "title",
+      value: "name",
     },
-    { text: "Couleur", value: "color" },
-    { text: "Icone", value: "icone" },
     { text: "Modifier", value: "update", sortable: false },
     { text: "Supprimer", value: "delete", sortable: false },
   ];
@@ -143,12 +157,6 @@ export default class BackOffice extends Vue {
         console.log(error);
       });
   }
-
-  // categories: Category[] = [];
-
-  // async allCategories(): Promise<void> {
-  //   this.categories = (await axios.get(`/api/categories`)).data as Category[];
-  // }
 
   createProduct(): void {
     axios
@@ -188,6 +196,57 @@ export default class BackOffice extends Vue {
       });
   }
 
+  myUserId = 0;
+  usernameUser = "";
+  emailUser = "";
+  typeUser = "";
+  adminUser = false;
+
+  updateUserForm = false;
+
+  editUser(item: User): void {
+    this.myUserId = item.id;
+    this.usernameUser = item.username;
+    this.emailUser = item.email;
+    this.typeUser = item.type;
+    this.adminUser = item.admin;
+    this.updateUserForm = true;
+  }
+
+  updateUser(): void {
+    axios
+      .put(`/api/updateUser/${this.myUserId}`, {
+        username: this.usernameUser,
+        email: this.emailUser,
+        type: this.typeUser,
+        admin: this.adminUser,
+      })
+      .then((response) => {
+        console.log(response);
+        this.myUserId = 0;
+        setTimeout(() => {
+          window.location.reload();
+        }, 700);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  deleteUser(id: number): void {
+    axios
+      .delete(`/api/user/${id}`)
+      .then((response) => {
+        console.log(response);
+        setTimeout(() => {
+          window.location.reload();
+        }, 700);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   async allUsers(): Promise<void> {
     this.users = (await axios.get(`/api/users`)).data as User[];
   }
@@ -196,28 +255,18 @@ export default class BackOffice extends Vue {
     this.quotations = (await axios.get(`/api/quotations`)).data as Quotation[];
   }
 
+  async allProducts(): Promise<void> {
+    this.products = (await axios.get(`/api/products`)).data as Product[];
+  }
+
+  async allGuides(): Promise<void> {
+    this.guides = (await axios.get(`/api/guides`)).data as Guide[];
+  }
+
   mounted(): void {
     this.allUsers();
     this.allQuotations();
-    // this.allCategories();
+    this.allProducts();
+    this.allGuides();
   }
-
-  // categoryName = "";
-  // categoryIcone = "";
-  // categoryImage = "";
-
-  // createCategory(): void {
-  //   axios
-  //     .post("/api/createCategory", {
-  //       name: this.categoryName,
-  //       icone: this.categoryIcone,
-  //       image: this.categoryImage,
-  //     })
-  //     .then((response) => {
-  //       console.log(response);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }
 }

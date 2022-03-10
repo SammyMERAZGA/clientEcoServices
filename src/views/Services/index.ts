@@ -14,7 +14,7 @@ export default class Services extends Vue {
     "Isolation intérieure",
     "Isolation extérieure",
     "Chaudière",
-    "Chênes",
+    "Recyclage de vos matériaux",
     "Autres",
   ];
 
@@ -61,11 +61,11 @@ export default class Services extends Vue {
     },
     {
       id: 6,
-      name: "Chênes",
-      type: "Plantation",
-      description: "Couper et utilisez votre propre bois 🪵",
+      name: "Recyclage de vos matériaux",
+      type: "Recyclage",
+      description: "Faites appel à nous pour recycler vos matériaux obsolète !",
       image:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Wood_grain.jpg/220px-Wood_grain.jpg",
+        "https://img.freepik.com/vecteurs-libre/logo-recyclage-terre_1639-7810.jpg?size=626&ext=jpg",
     },
   ];
 }

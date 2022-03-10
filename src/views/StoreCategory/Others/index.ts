@@ -13,7 +13,6 @@ import PaypalButtons from "../../../components/PaypalButtons.vue";
 export default class Others extends Vue {
   products: Product[] = [];
   categories: Category[] = [];
-  // selectCategories = ["Maison", "Produits", "Pack", "Autres"];
 
   dialog = true;
   idProduit = 0;

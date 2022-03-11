@@ -17,6 +17,8 @@ export default class Store extends Vue {
 
   dialog = true;
   idProduit = 0;
+  drawer = false;
+  group = null;
 
   cart: Product[] = [];
 

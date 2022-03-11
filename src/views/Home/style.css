@@ -39,13 +39,19 @@
 
 .class1 {
   background-color: #c8ebf1;
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  transition: 0.5s ease;
 }
 
 .class2 {
   background-color: white;
+  transition: 0.5s ease;
 }
 
-#astucesBtn {
-  margin: auto;
-  margin-bottom: 2%;
+@media (max-width: 576px) {
+  .carousel-home {
+    display: none;
+  }
 }

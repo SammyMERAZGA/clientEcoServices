@@ -8,6 +8,9 @@ import Footer from "../../components/Footer/Footer.vue";
   },
 })
 export default class Services extends Vue {
+
+  snackbarQuotation = false;
+
   servicesType = [
     "Panneau solaire",
     "Maison écologique",

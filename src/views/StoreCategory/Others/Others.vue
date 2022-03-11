@@ -120,7 +120,7 @@
             </v-dialog>
             <v-card-actions>
               <v-btn
-                color="#12A4E4"
+                color="red"
                 block
                 disabled
                 class="withoutupercase mb-2"

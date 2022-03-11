@@ -1,4 +1,39 @@
 #btnSocialNetwork {
-  margin-left: 38%;
   margin-top: 3%;
+}
+
+@media (max-width: 576px) {
+  .carousel-home {
+    display: none;
+  }
+}
+
+.container-about {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.prenom {
+  margin-right: 40px;
+}
+
+.nom {
+  margin-left: 40px;
+}
+
+@media (max-width: 768px) {
+  .nom,
+  .prenom,
+  .email {
+    margin: 0% 5%;
+  }
+}
+
+@media (max-width: 992px) {
+  .prenom {
+    margin-right: 18px;
+  }
+  .nom {
+    margin-left: 18px;
+  }
 }

@@ -8,21 +8,6 @@ import Footer from "../../components/Footer/Footer.vue";
   },
 })
 export default class Home extends Vue {
-  pictures = [
-    {
-      src: "https://wallpapercave.com/wp/wp5125439.jpg",
-    },
-    {
-      src: "https://wallpapers.com/images/high/breathtaking-nature-anime-scenery-ozmhfiuqzmai1bha.jpg",
-    },
-    {
-      src: "https://cdn.wallpapersafari.com/66/73/p5rfhv.jpg",
-    },
-    {
-      src: "https://i.pinimg.com/originals/ae/2e/cb/ae2ecb631f037846715e0c45609cbfb8.jpg",
-    },
-  ];
-
   pages = [
     {
       id: 1,

@@ -3,7 +3,7 @@
 
 <template>
   <v-app id="bgC">
-    <v-content class="mb-15">
+    <v-content class="mt-15 mb-15">
       <v-snackbar color="success" v-model="snackbarLogin"
         >Connexion réussie !
         <template v-slot:action="{ attrs }">
@@ -32,7 +32,7 @@
       </v-snackbar>
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
-          <v-col cols="12" sm="8" md="8">
+          <v-col cols="12" lg="8">
             <v-card class="elevation-12 rounded-xl">
               <v-window v-model="step">
                 <v-window-item :value="1">
@@ -63,9 +63,6 @@
                             color="blue accent-3"
                           />
                         </v-form>
-                        <h3 class="text-center h6 mt-4">
-                          Mot de passe oublié ?
-                        </h3>
                       </v-card-text>
                       <div class="text-center mt-1 mb-15">
                         <v-btn
@@ -90,7 +87,7 @@
                           achats, consulter nos guides, et bien plus encore !
                         </h4>
                       </v-card-text>
-                      <div class="text-center" id="btnRegister">
+                      <div class="text-center pb-5" id="btnRegister">
                         <v-btn rounded outlined dark @click="step++"
                           >Inscription</v-btn
                         >
@@ -99,7 +96,7 @@
                   </v-row>
                 </v-window-item>
                 <v-window-item :value="2">
-                  <v-row class="fill-height">
+                  <v-row class="fill-height row-inscription">
                     <v-col cols="12" md="4" class="light-blue darken-3">
                       <v-card-text class="white--text mt-12">
                         <h1 class="text-center display-1">

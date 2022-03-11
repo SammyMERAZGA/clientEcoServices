@@ -11,11 +11,11 @@
     <v-container>
       <v-item-group mandatory class="mt-n1">
         <v-container>
-          <v-row justify="center">
-            <v-col cols="12" md="2" v-for="page in pages" :key="page.id">
+          <v-row class="row-card" justify="center">
+            <v-col cols="12" md="6" lg="2" v-for="page in pages" :key="page.id">
               <v-hover>
                 <v-card
-                  class="f-flex align-center rounded-lg mx-2"
+                  class="f-flex align-center rounded-lg mx-2 card"
                   elevation="5"
                   height="180"
                   flat
@@ -51,19 +51,6 @@
           </v-row>
         </v-container>
       </v-item-group>
-      <v-carousel
-        hide-delimiters
-        cycle
-        class="mt-10"
-        interval="2000"
-        height="300"
-      >
-        <v-carousel-item
-          v-for="(picture, pic) in pictures"
-          :key="pic"
-          :src="picture.src"
-        ></v-carousel-item>
-      </v-carousel>
     </v-container>
 
     <v-card class="mx-auto mt-10 elevation-6" max-width="400">
@@ -91,7 +78,9 @@
       </v-card-text>
 
       <v-card-actions>
-        <v-btn id="astucesBtn" color="green" text to="/zeroDechet"> Astuces </v-btn>
+        <v-btn id="astucesBtn" color="green" text to="/zeroDechet">
+          Astuces
+        </v-btn>
       </v-card-actions>
     </v-card>
     <Footer />

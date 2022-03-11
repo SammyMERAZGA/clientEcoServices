@@ -6,6 +6,20 @@
     <h1 class="text-center mt-3">Services</h1>
     <v-divider class="ml-10 mr-10 mb-10"></v-divider>
 
+    <v-snackbar color="success" v-model="snackbarQuotation"
+      >Devis envoyé ! Nous le traiterons dans les plus brefs délais.
+      <template v-slot:action="{ attrs }">
+        <v-btn
+          color="white"
+          text
+          v-bind="attrs"
+          @click="snackbarQuotation = false"
+        >
+          Fermer
+        </v-btn>
+      </template>
+    </v-snackbar>
+
     <v-row>
       <v-col cols="12" md="4" v-for="service in services" :key="service.id">
         <v-hover>
@@ -50,9 +64,9 @@
         <span> Demande de devis</span>
       </h1>
       <p class="text-center mt-3 mr-10 ml-10">
-        Un de nos services vous intéresse ? Remplissez le formulaire de devis ci-dessous pour que
-        nous puissons prendre contact avec vous et vous donnez une estimation du
-        prix.
+        Un de nos services vous intéresse ? Remplissez le formulaire de devis
+        ci-dessous pour que nous puissons prendre contact avec vous et vous
+        donnez une estimation du prix.
       </p>
       <v-divider class="mt-6 mx-4"></v-divider>
       <br />
@@ -151,7 +165,11 @@
             ></v-textarea>
           </v-row>
           <v-row class="align-content justify-center ml-10 mr-10">
-            <v-btn class="ma-2 mb-8" color="success">
+            <v-btn
+              class="ma-2 mb-8"
+              color="success"
+              @click="snackbarQuotation = true"
+            >
               Envoyer la demande
               <v-icon right dark> fas fa-edit </v-icon>
             </v-btn>

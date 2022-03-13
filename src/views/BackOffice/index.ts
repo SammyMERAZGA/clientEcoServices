@@ -112,6 +112,7 @@ export default class BackOffice extends Vue {
       value: "name",
     },
     { text: "Description", value: "description" },
+    { text: "Quantité", value: "quantity" },
     { text: "Prix", value: "price" },
     { text: "Catégorie", value: "category" },
     { text: "Modifier", value: "update", sortable: false },

@@ -50,7 +50,7 @@ export default class Login extends Vue {
       .then((response) => {
         console.log(response);
         setTimeout(() => {
-          this.$router.push("/account");
+          this.$router.push("/");
         }, 700);
       })
       .catch((error) => {

@@ -15,6 +15,7 @@ export default class Others extends Vue {
   categories: Category[] = [];
 
   dialog = true;
+  drawer = false;
   idProduit = 0;
 
   cart: Product[] = [];

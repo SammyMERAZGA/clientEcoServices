@@ -5,13 +5,27 @@
   <v-app :style="{ background: $vuetify.theme.themes.dark.background }">
     <SidebarRight />
     <v-container>
-      <v-autocomplete
-        clearable
-        :items="searchProducts"
-        label="Rechercher un produit..."
-        append-icon="fas fa-search"
-        solo
-      ></v-autocomplete>
+      <div class="d-flex">
+        <v-autocomplete
+          clearable
+          :items="searchProducts"
+          label="Rechercher un produit..."
+          append-icon="fas fa-search"
+          solo
+          class="mt-5"
+        ></v-autocomplete>
+        <v-btn
+          id="btnStore"
+          @click.stop="drawer = true"
+          class="align-self-center ml-10"
+          elevation="5"
+          fab
+          icon
+          large
+          outlined
+          ><v-icon>mdi-cart</v-icon></v-btn
+        >
+      </div>
       <v-row no-gutters justify="center" class="ml-15 mt-3">
         <v-col
           cols="12"
@@ -140,7 +154,7 @@
     </v-container>
 
     <!-- SIDEBAR RIGHT (ShopCart) -->
-    <v-navigation-drawer app color="white" right width="290">
+    <v-navigation-drawer v-model="drawer" temporary absolute right>
       <v-list subheader two-line class="mt-1">
         <v-list-item>
           <v-list-item-avatar rounded>
@@ -209,13 +223,11 @@
       </v-toolbar>
       <v-divider class="mx-4 mb-5"></v-divider>
       <strong class="ml-5">Méthode de paiement :</strong>
-      <v-item-group mandatory class="mt-n1">
-        <v-container>
-          <v-row justify="center mt-2">
-            <PaypalButtons />
-          </v-row>
-        </v-container>
-      </v-item-group>
+      <v-container>
+        <v-row justify="center mt-2">
+          <PaypalButtons />
+        </v-row>
+      </v-container>
     </v-navigation-drawer>
   </v-app>
 </template>

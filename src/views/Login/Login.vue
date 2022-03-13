@@ -64,7 +64,7 @@
                           />
                         </v-form>
                       </v-card-text>
-                      <div class="text-center mt-1 mb-15">
+                      <div class="text-center mt-6 mb-5">
                         <v-btn
                           rounded
                           color="yellow accent-3"
@@ -87,7 +87,7 @@
                           achats, consulter nos guides, et bien plus encore !
                         </h4>
                       </v-card-text>
-                      <div class="text-center pb-5" id="btnRegister">
+                      <div class="text-center pb-5 mb-10" id="btnRegister">
                         <v-btn rounded outlined dark @click="step++"
                           >Inscription</v-btn
                         >

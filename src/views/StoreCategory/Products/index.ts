@@ -16,6 +16,7 @@ export default class ProductCategory extends Vue {
   // selectCategories = ["Maison", "Produits", "Pack", "Autres"];
 
   dialog = true;
+  drawer = false;
   idProduit = 0;
 
   cart: Product[] = [];

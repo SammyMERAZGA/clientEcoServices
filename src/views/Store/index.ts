@@ -26,6 +26,33 @@ export default class Store extends Vue {
     this.products = (await axios.get(`/api/products`)).data as Product[];
   }
 
+  //export to a csv file the data of products
+  exportToCsv(): void {
+    const csv = this.products.map((product) => {
+      return {
+        id: product.id,
+        name: product.name,
+        description: product.description,
+        price: product.price,
+        category: product.category,
+        image: product.image,
+      };
+    });
+    const options = {
+      fieldSeparator: ";",
+      quoteStrings: '"',
+      decimalSeparator: ".",
+      showLabels: true,
+      showTitle: true,
+      title: "Liste des produits",
+      useTextFile: false,
+      useBom: true,
+      useKeysAsHeaders: true,
+    };
+    const csvExporter = new ExportToCsv(options);
+    csvExporter.generateCsv(csv);
+  }
+
   async allCategories(): Promise<void> {
     this.categories = (await axios.get(`/api/categories`)).data as Category[];
   }

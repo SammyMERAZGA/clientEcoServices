@@ -31,7 +31,7 @@ export default {
   mounted: function () {
     const script = document.createElement("script");
     script.src =
-      "https://www.paypal.com/sdk/js?client-id=AQZvu1N6-WPQqk9HZRYbY8c0L7K6b9MJsF9rXnmsREb6fcSPPgQ4fZaaqqAkNXCLhMebsZi6fZ0KiHQ1";
+      "";
     script.addEventListener("load", this.setLoaded);
     document.body.appendChild(script);
   },

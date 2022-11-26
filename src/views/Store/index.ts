@@ -34,7 +34,7 @@ export default class Store extends Vue {
         name: product.name,
         description: product.description,
         price: product.price,
-        category: product.category,
+      //  category: product.category,
         image: product.image,
       };
     });
@@ -49,8 +49,8 @@ export default class Store extends Vue {
       useBom: true,
       useKeysAsHeaders: true,
     };
-    const csvExporter = new ExportToCsv(options);
-    csvExporter.generateCsv(csv);
+  //  const csvExporter = new ExportToCsv(options);
+  //  csvExporter.generateCsv(csv);
   }
 
   async allCategories(): Promise<void> {

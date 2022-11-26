@@ -1,5 +1,7 @@
 <script lang="ts" src="./index.ts"></script>
-<style src="./style.css"></style>
+  <style src="./style.css"></style>
+
+
 
 <template>
   <div>
